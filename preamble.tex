@@ -1,0 +1,93 @@
+% まずはじめに \documentclass を指定する
+\documentclass[uplatex]{jsbook}
+%
+% Packages
+%
+\usepackage[version=3]{mhchem}
+\usepackage{geometry} % 余白の調整用
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs} % 表組みのパッケージ
+\usepackage{bm}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[subrefformat=parens]{subcaption}
+\usepackage{ascmac}
+\usepackage{braket} % ブラケット記法
+\usepackage{cite} % [n-m]形式の引用を用いるため
+%\usepackage{fancyhdr} % ヘッダ
+\usepackage{feynmp} % Feynmanダイアグラムを書くため
+\usepackage{color} % \debug 用に文字色をつける
+\usepackage{setspace} % setstretchを使うため
+\usepackage{newtxtext,newtxmath} % Times系フォントの使用
+
+%\usepackage{abstract}
+% 以下4つのパッケージはbibの著者名に出てきた欧文文字の文字化け対策として入れたが、
+% 吉田は↓で上手くいく理由を良く理解していない。
+% よく分からないパッケージは、それ無しで動くならコメントアウトしておくこと推奨。
+\usepackage[uplatex,deluxe]{otf} %  \usepackage[prefernoncjk]{pxcjkcat} より先に読み込むべし(according to pxcjkcatのサイト)
+\usepackage[prefernoncjk]{pxcjkcat}
+\usepackage[T1]{fontenc} % T1エンコーディング, Bibliographyの著者用
+%\usepackage[utf8]{inputenc}
+%
+% .bst ファイルは end.tex 内で指定することにしたから、次の行はコメントアウト
+%\bibliographystyle{osajnlt}
+%
+% 行間と余白の調整
+\setstretch{1.25}
+\geometry{top=3truecm,bottom=3truecm,right=3truecm,left=3truecm}
+%
+% 見出しをセリフ・太字にする
+\renewcommand{\headfont}{\bfseries}
+%
+% 脚注番号を記号に変える
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+% 脚注記号を改ページでリセットする
+\makeatletter
+\@addtoreset{footnote}{page}
+\makeatother
+%
+%「参考文献」を「References」にする
+\renewcommand{\bibname}{References}
+%「目次」を「Contents」にする
+\renewcommand{\contentsname}{Contents}
+%「第\CID{1624}章」を「Chapter x」にする
+\renewcommand{\prechaptername}{Chapter }
+\renewcommand{\postchaptername}{}
+
+%表のキャプションを 表1.1ではなく Tabel1.1にする
+\renewcommand{\tablename}{Table}
+\renewcommand{\figurename}{Figure}
+
+
+%% Appendix re-define
+\renewcommand{\appendixname}{Appendix~}
+
+%%目次にsabsectionを表示する
+\setcounter{tocdepth}{2}
+
+%
+% 
+\newcommand{\refeq}[1]{Eq.\,(\ref{#1})}
+\renewcommand\vec\bm
+\newcommand{\RR}{\vec{r}}
+\newcommand{\PP}{\vec{p}}
+\newcommand{\QQ}{\vec{q}}
+\newcommand{\KK}{\vec{k}}
+\newcommand{\TT}{\vec{t}}
+\renewcommand{\SS}{\vec{s}}
+\newcommand{\fermion}{\hat{\psi}}
+\newcommand{\boson}{\hat{\phi}}
+\newcommand{\BB}{\hat{b}}
+\newcommand{\CC}{\hat{c}}
+\newcommand{\momint}[1]{\frac{d^3{#1}}{(2\pi)^3}}
+\newcommand{\sh}{\mathrm{Y}}
+\newcommand{\schrodinger}{Schr\"{o}dinger }
+\newcommand{\Tr}{\mathrm{Tr}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\chrom}{\ce{Cr2O3}}
+%
+\newcommand{\debug}[1]{\textcolor{red}
+{\textbf{[#1]}}}
+\newcommand{\atom}[2][]{{}^{#1}\mathrm{#2}}
+%
+%
+%

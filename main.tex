@@ -1,0 +1,49 @@
+% \documentclass は preamble.tex の中に書かれているのでここには無い
+% したがって、メインの1行目で必ず preamble.tex を \input しなければならない
+\input{preamble}
+%
+% ここで \include を無効化する
+% \input された.texファイル内に書かれた \include は全て無効になる
+\renewcommand{\include}[1]{}
+
+%
+%
+% \begin{document} は begin.tex 内に書いてある
+\input{begin}
+%
+\frontmatter
+% タイトルページ
+\input{title}
+%
+% Abstract を目次に加える
+\addcontentsline{toc}{chapter}{Abstract}
+% Abstract ページ
+\input{abstract}
+%
+% 目次の出力
+\tableofcontents
+%q
+\mainmatter
+% 本文
+% TMP_chapter.tex をコピーして各章を書く
+% 各章は個別にコンパイルしてその章だけのPDFファイルを作成可能
+% main.tex をコンパイルすれば全体のPDFになる。
+% 動作原理は TMP_chapter.tex のコメント参照。
+% 使い方は実際に使った以下の各ファイルを参照。
+\input{ch1_intro}
+\input{ch2_method}
+\input{ch3_result}
+\input{ch4_conclusion}
+%
+\appendix
+%
+% Appendix は本文と同じフォーマット。TMP_chapter.tex をコピーして使う。
+\input{appdx1_supplement}
+%
+% Acknowledgements を目次に加える
+\addcontentsline{toc}{chapter}{Acknowledgements}
+% Acknowledgements
+\input{acknowledgement}
+%
+% \end{document} とbibファイル、bibスタイルの指定は end.tex 内に書いてある
+\input{end}
