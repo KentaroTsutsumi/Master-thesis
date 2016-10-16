@@ -1,0 +1,398 @@
+\include{preamble}
+\include{begin}
+%
+% Contents
+%
+\chapter{Theory and Method}
+%
+% introかも...
+%
+%\section{Formulation of Density Functional Theory for Superconductors}
+%Since BCS theory was established and electron-phonon interaction was found to be the
+%superconducting pairing interaction, there were 
+%\\
+%
+% introかも...
+%
+In order to calculate $T_\mathrm{c}$ from first-principles, 
+L\"{u}ders and his co-workers constructed the density functional theory for superconductors (SCDFT).
+By using SCDFT, it is able to calculate $T_\mathrm{c}$ from {\it ab-initio} electronic wave functions
+ and electron-phonon matrix elements and so on. 
+First, we will review their theory including electron-phonon interaction and Coulomb interaction. 
+After that, we will review how to include the effect of spin fluctuations into the SCDFT.
+
+\section{Density functionals and Kohn-Sham system for superconductors}
+In order to treat the electron-phonon and Coulomb interactions in superconductors like the Hohenberg-Kohn way, 
+we consider the many-body electron-nuclear Hamiltonian
+%
+\begin{equation}  %%%%%%% Hamiltonian
+   \hat{H} = \hat{T}^\mathrm{e} + \hat{T}^\mathrm{n} + \hat{U}^\mathrm{en} + \hat{U}^\mathrm{ee}
+                   + \hat{V}^\mathrm{e}_\mathrm{ext} + \hat{V}^\mathrm{n}_\mathrm{ext}
+                   + \hat{\Delta}_\mathrm{ext} - \mu\hat{N},
+\end{equation} 
+%
+where $\hat{T}^\mathrm{e}$ represents the electronic kinetic energy, $\hat{T}^\mathrm{n}$ the nuclear kinetic energy, 
+$\hat{U}^\mathrm{en}$ the electron-nuclear interaction, $\hat{U}^\mathrm{ee}$ the electron-electron interaction.
+The electronic external potential $\hat{V}^\mathrm{e}_\mathrm{ext}$ is defined as
+%
+\begin{equation} %%%%%%% electronic external potential
+	\hat{V}^\mathrm{e}_\mathrm{ext} = \sum_{\sigma}\int d^3r\hat{\Psi}^\dag_{\sigma}({\bm r})
+	                                                            v^\mathrm{e}_{\rm ext}(\bm{r})\hat{\Psi}_{\sigma}(\bm{r}), 
+\end{equation} 
+%
+where $\hat{\Psi}^\dag_{\sigma}({\bm r})$ is the electron creation operator. 
+$\hat{V}^\mathrm{n}_\mathrm{ext}$  is a $N$-body operator with respect to the nuclear coordinates
+%
+\begin{equation} %%%%%%% nuclear external potential
+	\hat{V}^\mathrm{n}_\mathrm{ext} = \sum_{\sigma}\int d^3\underline{\bm{R}}
+	                                                            v^\mathrm{n}_\mathrm{ext}(\underline{\bm{R}})
+	                                                            \hat{\Gamma}(\underline{\bm{R}}),
+\end{equation} 
+%
+where $\underline{\bm{R}}$ represents a set of the coordinates of $N$-body nuclei and 
+%
+\begin{equation} %%%%%%% nuclear density distribution
+	\hat{\Gamma}(\underline{\bm{R}}) = \hat{\Phi}^\dag \left(\bm{R}_1 \right) \cdots \hat{\Phi}^\dag \left(\bm{R}_N \right)
+	                                                          \hat{\Phi} \left(\bm{R}_N \right) \cdots \hat{\Phi} \left(\bm{R}_1 \right)
+\end{equation} 
+%
+is the $N$-body nuclear density matrix operator in which nuclear creation and annihilation operators 
+$\hat{\Phi}^\dag$ and $\hat{\Phi}$ are used. The term
+%
+\begin{equation} %%%%%%% external pairing potential
+	\hat{\Delta}_\mathrm{ext} = - \int d^3r \int d^3r' \left[\Delta^{\ast}_\mathrm{ext}(\bm{r}, \bm{r'})
+	                                                                            \hat{\Psi}_\uparrow(\bm{r})\hat{\Psi}_\downarrow(\bm{r'})
+	                                                                            + \rm{H.c.} \right].
+\end{equation} 
+%
+indicates the external pairing field. This term must be included in order to break the gauge invariance of
+the Hamiltonian. We will take the limit $\Delta_\mathrm{ext} \to 0$ at the end of the derivation.
+In this thesis, it is assumed that we treat singlet superconductors. However,  we can extend the formulation 
+for triplet superconductors straightforwardly.
+Finally, $\mu$ means the chemical potential and $\hat{N}$ is the number operator of electrons. 
+
+The formulation of this theory is based on three densities: (i) The usual electronic density 
+%
+\begin{equation} %%%%%%%  electronic density
+	n\left(\bm{r}\right) = \sum_{\sigma}\left<\hat{\Psi}^\dag_\sigma \left(\bm{r}\right)
+	                                                               \hat{\Psi}_\sigma \left(\bm{r}\right) \right>.
+\end{equation}
+%
+The bracket indicates the thermal average
+%
+\begin{equation}
+\begin{split}
+	\left< \hat{A} \right> = {\rm Tr}\hat{\rho}_0\hat{A}, \\
+	\hat{\rho}_0 = \frac{e^{-\beta\hat{H}}}{{\rm Tr}e^{-\beta\hat{H}}},
+\end{split}
+\end{equation}
+%
+where $\hat{\rho}_0$ is the grand canonical density operator and $\beta$ is the inverse temperature.
+
+(ii) The anomalous density
+%
+\begin{equation} %%%%%%%  anomalous density
+	\chi \bigl(\bm{r}, \bm{r'} \bigr) = \left<\hat{\Psi}^\dag_\uparrow \bigl(\bm{r}\bigr)
+	                                                    \hat{\Psi}_\downarrow \bigl(\bm{r'}\bigr) \right>
+\end{equation}
+%
+is the order parameter for the singlet superconductors. This quantity becomes zero above the $T_\mathrm{c}$ and finite below it.
+
+(iii) The diagonal part of nuclear $N$-body density matrix
+%
+\begin{equation} %%%%%%% diagonal part of nuclear density matrix
+	\Gamma(\underline{\bm{R}}) = \left<\hat{\Gamma}(\underline{\bm{R}}) \right>
+\end{equation}
+%
+is introduced to describe the nuclear degrees of freedom.
+
+Extending the Hohenberg-Kohn theorem in usual DFT for present multicomponent theory straightforwardly, 
+the existence of one-to-one mapping between the set of the densities $ \left\{ n(\bm{r}), \chi \bigl(\bm{r}, \bm{r'} \bigr), 
+\Gamma(\underline{\bm{R}}) \right\}$ and a set of the corresponding potentials 
+$ \left\{ v^{\rm e}_{\rm ext}(\bm{r}), \Delta_\mathrm{ext}(\bm{r}, \bm{r'}), v^{\rm n}_{\rm ext}(\underline{\bm{R}}) \right\}$
+is guaranteed.
+Consequently, all observable quantities are functionals of these densities. 
+This fact guarantees that the grand canonical potential 
+%
+\begin{equation}  %%%%%% grand canonical potential
+\begin{split}
+	\Omega[n, \chi, \Gamma] &= F[n, \chi, \Gamma] + \int d^3r n(\bm{r})[v^{\rm e}_{\rm ext}(\bm{r}) - \mu] \\
+	                                    &\quad- \int d^3r \int d^3r' \left[\chi \bigl(\bm{r}, \bm{r'} \bigr)
+	                                       \Delta^{\ast}_\mathrm{ext}(\bm{r}, \bm{r'}) + {\rm H.c.} \right]\\
+	                     &\quad+ \int d^3\underline{R} \Gamma(\underline{\bm{R}})v^{\rm n}_{\rm ext}(\underline{\bm{R}})
+\end{split}
+\end{equation}
+%
+is minimized by the ground state densities. The notation $A[f]$ means that $A$ is a functional of $f$.
+The functional $F$ is defined as
+%
+\begin{equation} %%%%%%% Free energy of interacting system
+\label{eq:Free_int}
+\begin{split}
+	F[n, \chi, \Gamma] &= T^{\rm e}[n, \chi, \Gamma] + T^{\rm n}[n, \chi, \Gamma] + U^{\rm en}[n, \chi, \Gamma] \\
+	                                  &\quad + U^{\rm ee}[n, \chi, \Gamma] - \frac{1}{\beta}S[n, \chi, \Gamma],
+\end{split}
+\end{equation}
+%
+where $S$ represents the entropy of the system
+%
+\begin{equation}
+	S[n, \chi, \Gamma] = -{\rm Tr}\left\{\hat{\rho}_0 [n, \chi, \Gamma]{\rm ln}\hat{\rho}_0 [n, \chi, \Gamma] \right\}.
+\end{equation}
+%
+
+In this formulation, the Kohn-Sham system consists of noninteracting electrons and {\it interacting} nuclei. 
+By including the interacting nuclei, we can treat lattice dynamics.
+%The difference from the usual DFT is the fact that we include the nuclei.
+The thermodynamic potential of the Kohn-Sham system is described as
+%
+\begin{equation} %%%%%% grand potential of the Kohn-Sham system
+\label{eq:grand_pot_KS}
+\begin{split}
+	\Omega_0[n, \chi, \Gamma] &= F_0[n, \chi, \Gamma] + \int d^3r n(\bm{r}) \left[v^{\rm e}_0(\bm{r})-\mu_0 \right] \\
+						&\quad \int d^3r \int d^3r' \left[\chi \bigl(\bm{r}, \bm{r'} \bigr)
+	                                       \Delta^{\ast}_0(\bm{r}, \bm{r'}) + {\rm H.c.} \right]\\
+	                   &\quad+ \int d^3\underline{R} \Gamma(\underline{\bm{R}})v^{\rm n}_0(\underline{\bm{R}}),
+\end{split}
+\end{equation}
+%
+where $v^{\mathrm n}_0(\bm{r}), \Delta_0(\bm{r}, \bm{r'}),$ and $\Gamma(\underline{\bm{R}})$ are the 
+Kohn-Sham potentials and $F_0$ is the counterpart of (\ref{eq:Free_int}) for the Kohn-Sham system, defined as
+%
+\begin{equation} %%%%%%% Free energy of Kohn-Sham system
+\begin{split}
+	F_0[n, \chi, \Gamma] &= T^{\rm e}_0[n, \chi, \Gamma] + T^{\rm n}_0[n, \chi, \Gamma] \\
+	                                     &\quad - \frac{1}{\beta}S_0[n, \chi, \Gamma].
+\end{split}
+\end{equation}
+%
+Here $T^{\rm e}_0[n, \chi, \Gamma], T^{\rm n}_0[n, \chi, \Gamma],$ and $S_0[n, \chi, \Gamma]$ 
+represents the electronic and nuclear kinetic energy and the entropy of the Kohn-Sham system, respectively.
+%
+
+The exchange-correlation free energy is defined as
+%
+\begin{equation}%%%%% ex-ch free energy functional 
+\begin{split}
+	F_{\mathrm {xc}}[n, \chi, \Gamma] &= F[n, \chi, \Gamma] - F_0[n, \chi, \Gamma] - U^{\rm nn}[\Gamma] \\
+							&\quad - E^{\rm ee}_{\rm H}[n, \chi, \Gamma] - E^{\rm en}_{\rm H}[n, \chi, \Gamma],
+\end{split}
+\end{equation}
+%
+where the Hartree terms are defined as
+%
+\begin{equation}%%%%% nuclear Hartree
+	U^{\rm nn}[\Gamma] = \sum_{\alpha \neq \beta}\int d^3\underline{\bm{R}}\Gamma({\underline{\bm{R}}})
+						\frac{Z^2}{\left| \bm{R}_\alpha - \bm{R}_\beta \right|},
+\end{equation}
+%
+\begin{equation}%%%%% anomalous Hartree
+	E^{\rm ee}_{\rm H}[n, \chi, \Gamma] = \frac{1}{2}\int d^3r\int d^3r' \frac{n(\bm{r})n(\bm{r'})}{|\bm{r}-\bm{r'}|}
+								+ \int d^3r\int d^3r' \frac{|\chi(\bm{r}, \bm{r'})|^2}{|\bm{r}-\bm{r'}|},
+\end{equation}
+%
+\begin{equation}%%%%% el-nuclear Hartree
+	E^{\rm en}_{\rm H}[n, \chi, \Gamma] = -Z\sum_{\alpha} \int d^3r \int d^3\underline{\bm{R}} 
+								\frac{n(\bm{r})\Gamma(\underline{\bm{R}})}{|\bm{r}-\bm{R}_\alpha|}.
+\end{equation}
+%
+Then we obtain the Kohn-Sham potentials 
+%
+\begin{equation} %%%%% Kohn-Sham potential for electron
+\begin{split}
+	v^{\rm e}_0[n, \chi, \Gamma]({\bm r}) &= -Z\sum_{\alpha} \int d^3 \underline{\bm{R}}
+									\frac{\Gamma(\underline{\bm{R}})}{|\bm{r}-\bm{R}_\alpha |} 
+				+ \int d^3 r' \frac{n(\bm{r'})}{|\bm{r}-\bm{r'}|} \\
+				& \quad + v^{\rm e}_{\rm xc}[n, \chi, \Gamma]({\bm r}),
+\end{split}
+\end{equation}
+%
+\begin{equation} %%%%% anomalous Kohn-Sham potential
+\begin{split}
+	\Delta_0[n, \chi, \Gamma]({\bm r}, {\bm r'}) = -\frac{\chi(\bm{r}, \bm{r'})}{|\bm{r}-\bm{r'}|}
+									 + \Delta_{\rm xc}[n, \chi, \Gamma]({\bm r}, {\bm r'}),
+\end{split}
+\end{equation}
+%
+\begin{equation} %%%%% nuclear potential
+\begin{split}
+	v^{\rm n}_0[n, \chi, \Gamma](\underline{\bm{R}}) &= \sum_{\alpha \neq \beta}
+											\frac{Z^2}{|\bm{R}_\alpha - \bm{R}_\beta|}
+										- Z\sum_{\alpha} \int d^3r \frac{n(\bm{r})}{|\bm{r} - \bm{R}_\alpha|} \\
+										&\quad + v^{\rm n}_{\rm xc}[n, \chi, \Gamma](\underline{\bm{R}}),
+\end{split}
+\end{equation}
+%
+where exchange-correlation potentials are defined as 
+%
+\begin{equation}
+	v^{\rm e}_{\rm xc}[n, \chi, \Gamma]({\bm r}) = \frac{\delta F_{\rm xc}[n, \chi, \Gamma]}{\delta n({\bm r})},
+\end{equation}
+%
+\begin{equation}
+	\Delta_{\rm xc}[n, \chi, \Gamma]({\bm r}, {\bm r'}) = - \frac{\delta F_{\rm xc}[n, \chi, \Gamma]}
+												{\delta \chi({\bm r}, {\bm r'})},
+\end{equation}
+%
+\begin{equation}
+	v^{\rm e}_{\rm xc}[n, \chi, \Gamma](\underline{\bm{R}}) = \frac{\delta F_{\rm xc}[n, \chi, \Gamma]}
+												{\delta \Gamma(\underline{\bm R})}.
+\end{equation}
+%
+These definitions are analogous to the definition in the standard DFT.
+%
+%
+\section{The Kohn-Sham equations}
+%
+We introduced the Kohn-Sham states in the previous section. 
+Now the problem of minimizing the grand canonical potential (\ref{eq:grand_pot_KS}) can be solved by
+solving a set of three differential equations self-consistently.
+Two of them describe the electronic degrees of freedom and the third desctibes the nuclear degrees of freedom.
+%
+
+The two coupled equations are as follows:
+%
+\begin{equation}
+	\left[-\frac{\nabla^2}{2} + v^{\rm e}_0(\bm{r}) - \mu \right]u_n(\bm{r}) +
+	\int d^3r'\Delta_0(\bm{r},\bm{r'})v_n({r'}) = \widetilde{E}_n u_n(\bm{r}),
+	\label{eq:KS-BdG-par}
+\end{equation}
+%
+\begin{equation}
+	-\left[-\frac{\nabla^2}{2} + v^{\rm e}_0(\bm{r}) - \mu \right]v_n(\bm{r}) +
+	\int d^3r'\Delta^{\ast}_0(\bm{r},\bm{r'})u_n({r'}) = \widetilde{E}_n v_n(\bm{r}),
+	\label{eq:KS-BdG-hole}
+\end{equation}
+%
+where $u_n(\bm{r})$ and $v_n(\bm{r})$ are particle and hole wavefunctions respectively.
+These equations are equivalent to the Bogoliubov-de Gennes equations. %%% must cite!!
+The equation for the nucleus 
+%
+\begin{equation}
+	\left[-\sum_{\alpha}\frac{\nabla^2_\alpha}{2M} + v^{\rm n}_0(\underline{\bm{R}}) \right]
+	\Phi_n(\underline{\bm{R}}) = {\mathcal E}_n\Phi_n(\underline{\bm{R}})
+	\label{eq:BO-approx}
+\end{equation}
+%
+where $\Phi_n(\underline{\bm{R}})$ is many-body nuclear wavefunction has the same structure as 
+the usual nuclear Born-Oppenheimer equation.
+%
+
+In priciple, when we solve the equations (\ref{eq:KS-BdG-par})-(\ref{eq:BO-approx}) iteratively, 
+we can obtain the ground state densities $\{n, \chi, \Gamma\}$.
+However, it requires extraordinary high accuracy to resolve the superconducting energy gap
+because the magnitude of it is about $10^{-3}$ \verb|~| $10^{-4}$ times typical electronic energy.
+In order to avoid this difficulty, so-called ``decoupling approximation'' is beneficial.
+
+In the decoupling approximation, we approximate the particle and hole one-particle wavefunctions as follows
+%
+\begin{equation}
+	u_n(\bm{r}) \approx u_n\varphi_n(\bm{r}),   v_n(\bm{r}) \approx v_n\varphi_n(\bm{r}), 
+	\label{eq:approx-wfc}
+\end{equation}
+%
+where $\varphi_n$ are calculated through the equation
+\begin{equation}
+	\left[ -\frac{\nabla^2}{2} + v^{\rm n}_0[n, \chi, \Gamma](\bm{r}) - \mu \right]
+	\varphi_n(\bm{r}) = \epsilon_n\varphi_n(\bm{r}).
+	\label{eq:KS-eq}
+\end{equation}
+%
+Then the eigenenergies in (\ref{eq:KS-BdG-par}) (\ref{eq:KS-BdG-hole}) is calculated as
+%
+\begin{equation}
+	\widetilde{E}_n = {\rm sgn}(\xi_n)\sqrt{\xi^2_n + |\Delta_n|^2}
+	                = {\rm sgn}(\xi_n) E_n
+\end{equation}
+%
+where $\xi_n = \epsilon_n - \mu$, and the matrix elements $\Delta_n$ are defined as
+%
+\begin{equation}
+	\Delta_n = \int d^3r\int d^3r' \varphi^{\ast}_n(\bm{r})\Delta_0(\bm{r}, \bm{r'})\varphi_n(\bm{r}).
+\end{equation}
+%
+In the decoupling approximation, the electronic densities and the anomalous densities 
+can be obtained easily as follows
+%
+\begin{equation}
+	n(\bm{r}) = \sum_{n} \left[1-\frac{\xi_n}{E_n}\tanh \left(\frac{\beta}{2}E_n \right) \right]
+	                     |\varphi_n(\bm{r})|^2,
+	\label{eq:el-density}
+\end{equation}
+%
+\begin{equation}
+	\chi(\bm{r}, \bm{r'}) = \sum_{n}\frac{\Delta_n}{2E_n}\tanh \left(\frac{\beta}{2}E_n \right)
+	\varphi_n(\bm{r})\varphi^{\ast}_n(\bm{r'}).
+	\label{eq:anom-density}
+\end{equation}
+%
+
+Next, we consider the nucear equation. Now we are interested in superconductors at relatively low tempereutre, 
+so it is reasonable to introduce the harmonic approximation. Then the equation (\ref{eq:BO-approx}) reads
+%
+\begin{equation}
+	\hat{H}^{\rm ph}_{\rm 0} = \sum_{\lambda, \bm{q}}\Omega_{\lambda, \bm{q}}
+	\left[\hat{b}^{\dag}_{\lambda, \bm{q}}b^{\dag}_{\lambda, \bm{q}} + \frac{1}{2} \right],
+	\label{eq:harm}
+\end{equation}
+%
+where $\Omega_{\lambda, \bm{q}}$ represents the phonon eigenfrequencies and 
+$\hat{b}^{\dag}_{\lambda, \bm{q}}$ and $\hat{b}_{\lambda, \bm{q}}$ are the creation and annihilation
+operator of the phonon from the branch $\lambda$ and wavevector $\bm{q}$.
+Then the nuclear density matrix is as follows
+%
+\begin{equation}
+	\Gamma(\underline{\bm{R}}) = \sum_{\lambda, \bm{q}}n_\beta(\Omega_{\lambda, \bm{q}})
+	|h_{\lambda, \bm{q}}(\bm{Q})|^2,
+\end{equation}
+%
+where $n_\beta(\Omega)$ means the Bose occupation numbers and $h_{\lambda, \bm{q}}(\bm{Q})$ are
+harmonic oscillator wavefunctions with respect to the collective coordinates $\bm{Q}$.
+
+Now we describe how to proceed the Kohn-Sham self-consistent calculation within the present approximations.
+At first, we approximate the Kohn-Sham potentials in order to start the self-consistent loop:
+(i) For $v^{\rm e}_0[n, \chi, \Gamma]$, we use the Kohn-Sham potential which comes from the 
+standard DFT caluclation for the nonsuperconducting ground state, i.e. $v^{\rm GS}_{\rm KS}[n]$.
+This approximation is reasonable because $v^{\rm e}_0[n, \chi, \Gamma]$ depends on $\chi$ and $\Gamma$ very weakly
+in the superconductors at low temperatures.
+(ii) 
+%%%%%%%%%%%%%%%%%%%%    Equation  %%%%%%%%%%%%%%%%%%%%%
+\section{Equation}\label{sec:method_model}
+\subsection{Equation}\label{sec:method_model_model}	
+% equation
+%  \begin{equation}  %%%%%%% Etot =
+%   E_{\rm{total}}(u_m,e_i)=E_0 + E_{\rm{phonon}}(u_m) + E_{\rm{spin}}(u_m,e_i).
+%\end{equation} 
+
+
+\section{Figure}\label{sec:method_parameters}
+
+
+
+%%%%%%%%%%%%%%%%%%%%% Figure %%%%%%%%%%%%%%%%%%%%%i%
+%\subsection{Figure}
+%FIGURE
+%\begin{figure} %%%%%%% FIGURE 4state-mapping
+%	\centering
+%	\includegraphics[width=14truecm,clip]{../figure/method/4statemapping.eps}
+%	\caption{The four different spin configurations   \label{fig:4states}}
+%\end{figure}
+%
+%\begin{figure}[h]
+% \begin{minipage}[b]{0.4\linewidth}
+%  \centering
+%     \subcaption{}
+%  \includegraphics[keepaspectratio, scale=0.2]
+%  {../figure/method/CoPt_2.eps}
+% \end{minipage}
+%  \begin{minipage}[b]{0.6\linewidth}
+%  \centering
+%    \subcaption{}
+%  \includegraphics[keepaspectratio, scale=0.6]
+%  {../figure/method/CoPt_mae_2.eps}
+%   \end{minipage}
+% \caption{(a) The unit cell of CoPt.  (b) Magnetic anisotropic energy of CoPt. }\label{fig:structure_copt}
+%\end{figure}
+%
+%
+\include{end}
