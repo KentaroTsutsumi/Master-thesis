@@ -15,7 +15,8 @@
 % introかも...
 %
 In order to calculate $T_\mathrm{c}$ from first-principles, 
-L\"{u}ders and his co-workers constructed the density functional theory for superconductors (SCDFT).
+L\"{u}ders and his co-workers constructed the density functional theory 
+for superconductors (SCDFT)\cite{Luders2005_1}.
 By using SCDFT, it is able to calculate $T_\mathrm{c}$ from {\it ab-initio} electronic wave functions
  and electron-phonon matrix elements and so on. 
 First, we will review their theory including electron-phonon interaction and Coulomb interaction. 
@@ -208,6 +209,7 @@ Then we obtain the Kohn-Sham potentials
 \end{equation}
 %
 \begin{equation} %%%%% anomalous Kohn-Sham potential
+\label{eq:Delta0}
 \begin{split}
 	\Delta_0[n, \chi, \Gamma]({\bm r}, {\bm r'}) = -\frac{\chi(\bm{r}, \bm{r'})}{|\bm{r}-\bm{r'}|}
 									 + \Delta_{\rm xc}[n, \chi, \Gamma]({\bm r}, {\bm r'}),
@@ -231,7 +233,8 @@ where exchange-correlation potentials are defined as
 %
 \begin{equation}
 	\Delta_{\rm xc}[n, \chi, \Gamma]({\bm r}, {\bm r'}) = - \frac{\delta F_{\rm xc}[n, \chi, \Gamma]}
-												{\delta \chi({\bm r}, {\bm r'})},
+							    {\delta \chi({\bm r}, {\bm r'})},
+	\label{eq:Deltaxc}
 \end{equation}
 %
 \begin{equation}
@@ -265,7 +268,7 @@ The two coupled equations are as follows:
 \end{equation}
 %
 where $u_n(\bm{r})$ and $v_n(\bm{r})$ are particle and hole wavefunctions respectively.
-These equations are equivalent to the Bogoliubov-de Gennes equations. %%% must cite!!
+These equations are equivalent to the Bogoliubov-de Gennes equations\cite{BdG1958}. %%% must cite!!
 The equation for the nucleus 
 %
 \begin{equation}
@@ -309,6 +312,7 @@ where $\xi_n = \epsilon_n - \mu$, and the matrix elements $\Delta_n$ are defined
 %
 \begin{equation}
 	\Delta_n = \int d^3r\int d^3r' \varphi^{\ast}_n(\bm{r})\Delta_0(\bm{r}, \bm{r'})\varphi_n(\bm{r}).
+	\label{eq:Deltan}
 \end{equation}
 %
 In the decoupling approximation, the electronic densities and the anomalous densities 
@@ -349,13 +353,77 @@ Then the nuclear density matrix is as follows
 where $n_\beta(\Omega)$ means the Bose occupation numbers and $h_{\lambda, \bm{q}}(\bm{Q})$ are
 harmonic oscillator wavefunctions with respect to the collective coordinates $\bm{Q}$.
 
-Now we describe how to proceed the Kohn-Sham self-consistent calculation within the present approximations.
-At first, we approximate the Kohn-Sham potentials in order to start the self-consistent loop:
-(i) For $v^{\rm e}_0[n, \chi, \Gamma]$, we use the Kohn-Sham potential which comes from the 
-standard DFT caluclation for the nonsuperconducting ground state, i.e. $v^{\rm GS}_{\rm KS}[n]$.
-This approximation is reasonable because $v^{\rm e}_0[n, \chi, \Gamma]$ depends on $\chi$ and $\Gamma$ very weakly
-in the superconductors at low temperatures.
-(ii) 
+%Now we describe how to proceed the Kohn-Sham self-consistent calculation within the present approximations.
+%At first, we approximate the Kohn-Sham potentials in order to start the self-consistent loop:
+%(i) For $v^{\rm e}_0[n, \chi, \Gamma]$, we use the Kohn-Sham potential which comes from the 
+%standard DFT caluclation for the nonsuperconducting ground state, i.e., $v^{\rm GS}_{\rm KS}[n]$.
+%This approximation is reasonable because $v^{\rm e}_0[n, \chi, \Gamma]$ depends on $\chi$ and $\Gamma$ very weakly
+%in the superconductors at low temperatures.
+%(ii) For pair potential $\Delta_0[n, \chi, \Gamma]$, we start from a square well potential 
+%centered at the Fermi energy which width is in the order of the Debye frequency and height is
+%
+Now we describe how to treat the density dependence of potentials in order to preceed calculations more simply.
+(i) For $v^{\rm e}_0[n, \chi, \Gamma]$, we neglect the dependense on $\chi$ and $\Gamma$ because 
+the typical electronic energies are three orders of magnitudes bigger than superconducting gap and phonons
+and consequently they do not modify electronic structures so much.
+(ii) For $v^{\rm n}_0[n, \chi, \Gamma]$, we neglect the dependence on $n$ and $\chi$ because
+we use the Born-Oppenheimer approximation. This approximation is reasonable because
+it is known that the calculations executed within the Born-Oppenheimer approximation well reproduce
+the experimental phonon dispersions\cite{Baroni2001}.
+
+\section{Gap equation}
+%
+Now we derive the gap equation for the potential $\Delta_n$. By inserting (\ref{eq:el-density}) 
+and (\ref{eq:anom-density}) in (\ref{eq:Delta0}) and insert (\ref{eq:Delta0}) into the 
+right-hand side of (\ref{eq:Deltan}), we get the gap equation
+%
+\begin{equation}
+	\Delta_n = \Delta_{{\rm Hxc}, n}[n, \chi, \Gamma],
+	\label{eq:Delta_gap}
+\end{equation}
+%
+where $\Delta_{{\rm Hxc},n}$ means the sum of the Hartree and excanhge-correlation terms.
+
+Around the transition temperature, the anomalous density $\chi$ becomes vanishingly small 
+and the gap equation (\ref{eq:Delta_gap}) can be linearized as below
+%
+\begin{equation}
+	\Delta_i = -\frac{1}{2}\sum_{i} {\mathcal F}_{{\rm Hxc}, i,j}[n, \chi, \Gamma]
+	\frac{\tanh[(\beta/2)\xi_j]}{\xi_j}\Delta_j,
+	\label{eq:line_gap}
+\end{equation}
+%
+where ${\mathcal F}_{{\rm Hxc}, i,j}$ are the Hartree exchange-correlation energy kernels which defined as
+%
+\begin{equation}
+	{\mathcal F}_{{\rm Hxc},i,j} = \left. -\frac{\delta \Delta_{{\rm Hxc}, i}}{\delta \chi_j} 
+	                               \right|_{\chi = 0}
+				       = \left. \frac{\delta^2(E^{\rm ee}_{\rm H}+F_{\rm xc})}
+				       {\delta \chi^{\ast}_i \delta \chi_j} \right|_{\chi = 0},
+	\label{eq:def-fxc}
+\end{equation}
+%
+where we defined the matrix element of anomalous density $\chi_i$ as
+%
+\begin{equation}
+	\chi_i = \int d^3r\int d^3r' \varphi^{\ast}_i(\bm{r})\chi(\bm{r}, \bm{r'})\varphi_i(\bm{r'}).
+	\label{eq:chi_i_def}
+\end{equation}
+%
+In practice, we solve the linearized gap equation (\ref{eq:line_gap}) with changing the temperature. 
+When we get the vanishingly-small $\Delta_i$ solution at some temperature, we regard that temperature
+as the superconducting transition temperature $T_{\rm c}$.
+%
+
+\section{Kernels of Gap Equation from functional derivatives}
+
+Through the previous sections, we derived the gap equation (\ref{eq:line_gap}) from a density functional
+theory for superconductors. In principle, it is able to calculate the $T_{\rm c}$ by solving 
+the gap equation for any superconductors. However, in order to calculate the kernels 
+${\mathcal F}_{{\rm Hxc},ij}$, 
+we have to make approximations for $\Delta_{\rm xc}$ in (\ref{eq:Delta0}) which is defined in
+(\ref{eq:Deltaxc}). In the following, we apply the Kohn-Sham perturbation theory
+and deribe the concrete expressions for ${\mathcal F}_{{\rm Hxc},ij}$.
 %%%%%%%%%%%%%%%%%%%%    Equation  %%%%%%%%%%%%%%%%%%%%%
 \section{Equation}\label{sec:method_model}
 \subsection{Equation}\label{sec:method_model_model}	
