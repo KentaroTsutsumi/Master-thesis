@@ -27,6 +27,7 @@ In order to treat the electron-phonon and Coulomb interactions in superconductor
 we consider the many-body electron-nuclear Hamiltonian
 %
 \begin{equation}  %%%%%%% Hamiltonian
+\label{eq:Hamil}
    \hat{H} = \hat{T}^\mathrm{e} + \hat{T}^\mathrm{n} + \hat{U}^\mathrm{en} + \hat{U}^\mathrm{ee}
                    + \hat{V}^\mathrm{e}_\mathrm{ext} + \hat{V}^\mathrm{n}_\mathrm{ext}
                    + \hat{\Delta}_\mathrm{ext} - \mu\hat{N},
@@ -117,6 +118,7 @@ This fact guarantees that the grand canonical potential
 %
 \begin{equation}  %%%%%% grand canonical potential
 \begin{split}
+	\label{eq:grand_pot}
 	\Omega[n, \chi, \Gamma] &= F[n, \chi, \Gamma] + \int d^3r n(\bm{r})[v^{\rm e}_{\rm ext}(\bm{r}) - \mu] \\
 	                                    &\quad- \int d^3r \int d^3r' \left[\chi \bigl(\bm{r}, \bm{r'} \bigr)
 	                                       \Delta^{\ast}_\mathrm{ext}(\bm{r}, \bm{r'}) + {\rm H.c.} \right]\\
@@ -175,6 +177,7 @@ The exchange-correlation free energy is defined as
 %
 \begin{equation}%%%%% ex-ch free energy functional 
 \begin{split}
+	\label{eq:Fxc-def}
 	F_{\mathrm {xc}}[n, \chi, \Gamma] &= F[n, \chi, \Gamma] - F_0[n, \chi, \Gamma] - U^{\rm nn}[\Gamma] \\
 							&\quad - E^{\rm ee}_{\rm H}[n, \chi, \Gamma] - E^{\rm en}_{\rm H}[n, \chi, \Gamma],
 \end{split}
@@ -336,7 +339,7 @@ so it is reasonable to introduce the harmonic approximation. Then the equation (
 %
 \begin{equation}
 	\hat{H}^{\rm ph}_{\rm 0} = \sum_{\lambda, \bm{q}}\Omega_{\lambda, \bm{q}}
-	\left[\hat{b}^{\dag}_{\lambda, \bm{q}}b^{\dag}_{\lambda, \bm{q}} + \frac{1}{2} \right],
+	\left[\hat{b}^{\dag}_{\lambda, \bm{q}}\hat{b}_{\lambda, \bm{q}} + \frac{1}{2} \right],
 	\label{eq:harm}
 \end{equation}
 %
@@ -422,8 +425,89 @@ theory for superconductors. In principle, it is able to calculate the $T_{\rm c}
 the gap equation for any superconductors. However, in order to calculate the kernels 
 ${\mathcal F}_{{\rm Hxc},ij}$, 
 we have to make approximations for $\Delta_{\rm xc}$ in (\ref{eq:Delta0}) which is defined in
-(\ref{eq:Deltaxc}). In the following, we apply the Kohn-Sham perturbation theory
-and deribe the concrete expressions for ${\mathcal F}_{{\rm Hxc},ij}$.
+(\ref{eq:Deltaxc}). In the following, we briefly review the Kohn-Sham perturbation theory,
+as described by G\"{o}rling and Levy\cite{Levy1994}, 
+and how to deribe the concrete expressions for ${\mathcal F}_{{\rm Hxc},ij}$.
+
+We consider the electron-nuclear system which Hamiltonian is defined as (\ref{eq:Hamil}).
+In order to apply the perturbation theory, we split the Hamiltonian into the unperturbed
+Hamiltonian $\hat{H}_0$ and the reminder which is treated as perturbation.
+In the unperturbed Hamiltonian, it is appropriate to consider that nuclei are fixed at their
+equiliblium position $\underline{{\bm R}}_0$, which are defined by nuclear 
+Kohn-Sham Hamiltonian (\ref{eq:BO-approx}). When applied the harmonic approximation,
+it can be rewritten as the phonon Hamiltonian (\ref{eq:harm}).
+%
+Then we construct the Kohn-Sham Hamiltonian within the Born-Oppenheimer approximation as follows
+%
+\begin{equation}
+	\hat{H}^{\rm e}_{\rm BO} = \hat{T}^{\rm e} + \hat{V}^{\rm e}_{{\rm latt},\underline{{\bm R}}_0}
+	+ \hat{V}^{\rm e}_{\rm Hxc} + \hat{\Delta}_{\rm Hxc},
+	\label{eq:BO-KS}
+\end{equation}
+%
+where $\hat{V}^{\rm e}_{{\rm latt},\underline{\bm R}_0}$ is the potential from the nuclei fixed at their
+equilibrium position $\underline{\bm R}_0$ and 
+%
+\begin{equation}
+	\hat{V}^{\rm e}_{\rm Hxc} = \sum_{\sigma}\int d^3r\hat{\Psi}^{\dag}_{\sigma}({\bm r})
+	\hat{\Psi}_{\sigma}({\bm r}) 
+	\left[
+		\int d^3r' \frac{n({\bm r'})}{|{\bm r}-{\bm r'}|} + v^{\rm e}_{\rm xc}(\bm r)
+	\right]
+\end{equation}
+%
+\begin{equation}
+\begin{split}
+	\hat{\Delta}_{\rm Hxc} = -\int d^3r \int d^3r'
+	\left\{
+		\hat{\Psi}_\uparrow({\bm r})\hat{\Psi}_\downarrow({\bm r'})
+		\left[
+			\frac{\chi^\ast({\bm r}, {\bm r'})}{|{\bm r}-{\bm r'}|} 
+			+ \Delta^\ast_{\rm xc}({\bm r}, {\bm r'})
+		\right]
+		+ {\rm H.c.}
+	\right\}
+	\label{eq:DeltaHxc}
+\end{split}
+\end{equation}
+%
+means the normal and anomalous Hartree term and exchange-correlation term.
+
+When we define the unperturbed Hamiltonian as $\hat{H}_0 = \hat{H}^{\rm ph}_0 + \hat{H}^{\rm e}_{\rm BO}$,
+the interaction Hamiltonian becomes
+%
+\begin{equation}
+	\hat{H}_1 = \hat{U}^{\rm ee} + \hat{U}^{\rm el-ph}_{\rm BO} - \hat{V}^{\rm n}_{\rm Hxc}
+	- \hat{V}^{\rm e}_{\rm Hxc} - \hat{\Delta}_{\rm Hxc}.
+	\label{eq:int_Hamil}
+\end{equation}
+%
+The electron-phonon coupling operator within the Born-Oppenheimer approximation
+$\hat{U}^{\rm el-ph}_{\rm BO}$ is 
+%
+\begin{equation}
+	\hat{U}^{\rm el-ph}_{\rm BO} = \sum_{\sigma} \sum_{\lambda,{\bm q}}
+	\int d^3r V^{\rm BO}_{\lambda, {\bm q}}({\bm r})
+	\hat{\Psi}^\dag_\sigma({\bm r}) \hat{\Psi}_\sigma({\bm r})
+	\hat{\Phi}_{\lambda, {\bm q}},
+	\label{eq:el-ph-coup-ope}
+\end{equation}
+%
+where $V^{\rm BO}_{\lambda, {\bm q}}({\bm r})$ is the gradient of the electronic Kohn-Sham potential
+with respect to the nuclear collective coordinates $\bm Q$ and 
+$\hat{\Phi}_{\lambda, {\bm q}} = \hat{b}^\dag_{\lambda,-{\bm q}} + \hat{b}_{\lambda, {\bm q}}$ is the
+phononic field operator.
+%
+
+We defined the Hamiltonian $\hat{H}_0$ and $\hat{H}_1$ above and now we can apply the perturbation
+approach in order to obtain the explicit expression for kernels in gap equation defined as
+(\ref{eq:def-fxc}). 
+From the definition of $F_{\rm xc}$ in (\ref{eq:Fxc-def}),
+$F_{\rm xc}$ can be obtained by applying the perturbative approach to the difference of 
+thermodynamic potentials $\Omega - \Omega_0$ (see (\ref{eq:grand_pot}) and (\ref{eq:grand_pot_KS}))
+and its functional derivatives with respect to the anomalous density are the kernels of the 
+gap equation.
+
 %%%%%%%%%%%%%%%%%%%%    Equation  %%%%%%%%%%%%%%%%%%%%%
 \section{Equation}\label{sec:method_model}
 \subsection{Equation}\label{sec:method_model_model}	
