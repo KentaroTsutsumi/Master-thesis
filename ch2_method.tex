@@ -497,17 +497,91 @@ where $V^{\rm BO}_{\lambda, {\bm q}}({\bm r})$ is the gradient of the electronic
 with respect to the nuclear collective coordinates $\bm Q$ and 
 $\hat{\Phi}_{\lambda, {\bm q}} = \hat{b}^\dag_{\lambda,-{\bm q}} + \hat{b}_{\lambda, {\bm q}}$ is the
 phononic field operator.
+Using $V^{\rm BO}_{\lambda, {\bm q}}({\bm r})$, the electron-phonon coupling constant is deined as 
+%
+\begin{equation}
+	g^{n{\bm k},n'{\bm k}+{\bm q}}_{\lambda {\bm q}} = \int d^3r \varphi^\ast_{n{\bm k}}({\bm r})
+	V^{\rm BO}_{\lambda, {\bm q}}({\bm r})\varphi_{n'{\bm k}+{\bm q}}({\bm r}).
+	\label{eq:el-ph-coup-g}
+\end{equation}
 %
 
 We defined the Hamiltonian $\hat{H}_0$ and $\hat{H}_1$ above and now we can apply the perturbation
 approach in order to obtain the explicit expression for kernels in gap equation defined as
-(\ref{eq:def-fxc}). 
-From the definition of $F_{\rm xc}$ in (\ref{eq:Fxc-def}),
+(\ref{eq:def-fxc}).
+Considering the definition of $F_{\rm xc}$ in (\ref{eq:Fxc-def}),
 $F_{\rm xc}$ can be obtained by applying the perturbative approach to the difference of 
-thermodynamic potentials $\Omega - \Omega_0$ (see (\ref{eq:grand_pot}) and (\ref{eq:grand_pot_KS}))
-and its functional derivatives with respect to the anomalous density are the kernels of the 
+thermodynamic potentials $\Delta\Omega = \Omega - \Omega_0$ 
+(see (\ref{eq:grand_pot}) and (\ref{eq:grand_pot_KS}))
+and its functional derivatives with respect to the anomalous density become the kernels of the 
 gap equation.
 
+In the following, we introduce the explicit expressions for $F_{\rm xc}$ derived by L\"{u}ders {\it et al.}.
+They expanded $\Delta\Omega$ in the series of topologically distinct connected diagrams 
+and brought the lowest-order diagrams to derive $F_{\rm xc}$.
+
+At first, we define and calculate the Kohn-Sham propagators which appear in considering diagrams.
+The usual Green's function is defined as
+%
+\begin{equation}
+	G^{\rm s}_{\sigma\sigma'}({\bm r}\tau,{\bm r'}\tau') = -
+	\langle \hat{\mathcal T} \hat{\psi}_\sigma({\bm r}\tau)\hat{\psi}^\dag_{\sigma'}
+	\left({\bm r'}\tau'\right)
+	\rangle_{\rm s},
+	\label{eq:Gfuncdef}
+\end{equation}
+%
+where $\hat{\mathcal T}$ is the time-ordering operator and $\langle \cdots \rangle_{\rm s}$ 
+means the average with respect to the Kohn-Sham density operator $\hat{\rho}_{\rm s}$.
+The representation of this Green's function is Fig.\ref{fig:Garrow}.
+%
+In addition to the usual Green's function, following average which is nonvanishing
+in superconductors should be considered:
+%
+\begin{equation}
+	F^{\rm s}_{\sigma\sigma'}({\bm r}\tau,{\bm r'}\tau') = -
+	\langle \hat{\mathcal T} \hat{\psi}_\sigma({\bm r}\tau)\hat{\psi}_{\sigma'}
+	\left({\bm r'}\tau'\right)
+	\rangle_{\rm s},
+	\label{eq:Ffuncdef}
+\end{equation}
+%
+\begin{equation}
+	F^{{\rm s}\dag}_{\sigma\sigma'}({\bm r}\tau,{\bm r'}\tau') = -
+	\langle \hat{\mathcal T} \hat{\psi}^\dag_\sigma({\bm r}\tau)\hat{\psi}^\dag_{\sigma'}
+	\left({\bm r'}\tau'\right)
+	\rangle_{\rm s}.
+	\label{eq:Fdagfuncdef}
+\end{equation}
+%
+These functions are represented in the Feynman diagrams as Fig.\ref{fig:Farrow} (for $F^{\rm s}$)
+and Fig.\ref{fig:Fdagarrow} (for $F^{\rm s\dag}$).
+%
+\begin{figure}[h]
+\begin{minipage}[b]{0.3\linewidth}
+	\centering
+	\subcaption{}
+	\includegraphics[keepaspectratio, scale=0.5]
+	{../figure/method/Greenfuncarrow.eps}
+	\label{fig:Garrow}
+\end{minipage}
+\begin{minipage}[b]{0.3\linewidth}
+	\centering
+	\subcaption{}
+	\includegraphics[keepaspectratio, scale=0.5]
+	{../figure/method/Farrow.eps}
+	\label{fig:Farrow}
+\end{minipage}
+\begin{minipage}[b]{0.3\linewidth}
+	\centering
+	\subcaption{}
+	\includegraphics[keepaspectratio, scale=0.5]
+	{../figure/method/Fdagarrow.eps}
+	\label{fig:Fdagarrow}
+\end{minipage}
+\caption{Diagram corresponding to (a) $G^{\rm s}$, (b) $F^{\rm s}$ and (c) $F^{\rm s\dag}$}
+\end{figure}
+%
 %%%%%%%%%%%%%%%%%%%%    Equation  %%%%%%%%%%%%%%%%%%%%%
 \section{Equation}\label{sec:method_model}
 \subsection{Equation}\label{sec:method_model_model}	
