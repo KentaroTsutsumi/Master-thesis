@@ -309,6 +309,7 @@ Then the eigenenergies in (\ref{eq:KS-BdG-par}) (\ref{eq:KS-BdG-hole}) is calcul
 \begin{equation}
 	\widetilde{E}_n = {\rm sgn}(\xi_n)\sqrt{\xi^2_n + |\Delta_n|^2}
 	                = {\rm sgn}(\xi_n) E_n
+			\label{eq:KS-energy}
 \end{equation}
 %
 where $\xi_n = \epsilon_n - \mu$, and the matrix elements $\Delta_n$ are defined as
@@ -582,6 +583,173 @@ and Fig.\ref{fig:Fdagarrow} (for $F^{\rm s\dag}$).
 \caption{Diagram corresponding to (a) $G^{\rm s}$, (b) $F^{\rm s}$ and (c) $F^{\rm s\dag}$}
 \end{figure}
 %
+Finally, the phonon propagator represented as a wavy line is defined as 
+%
+\begin{equation}
+	D^{\rm s}_{\lambda,{\bm q}}(\tau,\tau') = \langle \hat{\mathcal T}
+	\hat{\Phi}_{\lambda, {\bm q}}(\tau)\hat{\Phi}^\dag_{\lambda, {\bm q}}(\tau')
+	\rangle_{\rm s}.
+	\label{eq:ph-prop}
+\end{equation}
+%
+In practice, it is convenient to consider in the imaginary frequency space instead of the imaginary time space.
+The Fourier transform from the imaginary time space to the imaginary frequency space 
+of the normal Green's function (\ref{eq:Gfuncdef}) is defined as
+%
+\begin{equation}
+	G^{\rm s}_{\sigma\sigma'}({\bm r}\tau,{\bm r'}\tau') = \frac{1}{\beta}
+	\sum_{\omega_n}e^{-i\omega_n(\tau-\tau')}G^{\rm s}_{\sigma\sigma'}({\bm r},{\bm r'},\omega_n)
+	,
+	\label{eq:Fouriertrans}
+\end{equation}
+%
+where $\omega_n=(2n+1)/\beta$ are the odd Matsubara frequencies. 
+The transform for the anomalous propagators are defined similarly. 
+With these definitions and after some calculations, the frequency-dependent propagators read
+%
+\begin{equation}
+	G^{\rm s}_{\sigma\sigma'}({\bm r},{\bm r'},\omega_n) = \delta_{\sigma\sigma'}
+	\sum_{i}
+	\left[
+		\frac{u_i(\bm r)u^\ast_i(\bm r')}{i\omega_n-E_i} - 
+		\frac{v_i(\bm r)v^\ast_i(\bm r')}{i\omega_n+E_i}
+	\right],
+	\label{eq:Gfreq}
+\end{equation}
+%
+\begin{equation}
+	F^{\rm s}_{\sigma\sigma'}({\bm r},{\bm r'},\omega_n) = \delta_{\sigma,-\sigma'}{\rm sgn}(\sigma')
+	\sum_{i}
+	\left[
+		\frac{v^\ast_i(\bm r)u_i(\bm r')}{i\omega_n+E_i} - 
+		\frac{u_i(\bm r)v^\ast_i(\bm r')}{i\omega_n-E_i}
+	\right],
+	\label{eq:Ffreq}
+\end{equation}
+%
+\begin{equation}
+	F^{\rm s\ast}_{\sigma\sigma'}({\bm r},{\bm r'},\omega_n) = \delta_{\sigma,-\sigma'}{\rm sgn}(\sigma)
+	\sum_{i}
+	\left[
+		\frac{u^\ast_i(\bm r)v_i(\bm r')}{i\omega_n+E_i} - 
+		\frac{v_i(\bm r)u^\ast_i(\bm r')}{i\omega_n-E_i}
+	\right],
+	\label{eq:Fdagfreq}
+\end{equation}
+%
+in terms of the Kohn-Sham eigenfunctions and the Kohn-Sham eigenenergies 
+(see from (\ref{eq:approx-wfc}) to (\ref{eq:KS-energy})).
+On the other hand, the Fourier transform of phonon propagator is defined as
+%
+\begin{equation}
+	D^{\rm s}_{\lambda, \bm q}(\nu_n) = - \frac{2\Omega_{\lambda, \bm q}}
+	{\nu^2_n + \Omega^2_{\lambda, \bm q}},
+	\label{eq:phtrans}
+\end{equation}
+%
+where $\nu_n = 2n\pi/\beta$ are the even Matsubara frequencies.
+Now we are ready to derive the explicit expressions of lowest-order contributions to $F_{\rm xc}$.
+As mentioned before, now we consider the contributions from the Coulomb interaction and the electron-phonon interaction
+but do not consider the effect of spin fluctuations.
+
+%
+\begin{figure}[h]
+\begin{minipage}[b]{0.5\linewidth}
+	\centering
+	\subcaption{}
+	\includegraphics[keepaspectratio, scale=0.7]
+	{../figure/method/Fbxc.eps}
+	\label{fig:Fbxc}
+\end{minipage}
+\begin{minipage}[b]{0.5\linewidth}
+	\centering
+	\subcaption{}
+	\includegraphics[keepaspectratio, scale=0.7]
+	{../figure/method/Fcxc.eps}
+	\label{fig:Fcxc}
+\end{minipage}
+\caption{Lowest-order phononic contributions to $F_{\rm xc}$.}
+\end{figure}
+%
+\clearpage
+%
+\subsection*{Phononic kernels}
+Lowest-order contributions from electron-phonon interaction can be written as
+%
+\begin{equation}
+	F^1_{\rm xc} = \frac{1}{2}
+	\sum_{\lambda, {\bm q}}\sum_{ij} |g^{ij}_{\lambda,{\bm q}}|^2
+	\frac{\Delta_i\Delta^\ast_j}{E_iE_j}
+	\left[
+		I(E_i,E_j,\Omega_{\lambda,{\bm q}}) - I(E_i,-E_j,\Omega_{\lambda,{\bm q}})
+	\right],
+	\label{eq:Fbxc}
+\end{equation}
+%
+\begin{equation}
+	F^2_{\rm xc} = - \frac{1}{2} 
+	\sum_{\lambda, {\bm q}}\sum_{ij} |g^{ij}_{\lambda,{\bm q}}|^2
+	\left[
+		\left( 1 + \frac{\xi_i}{E_i}\frac{\xi_j}{E_j} \right) I(E_i, E_j, \Omega_{\lambda, {\bm q}})
+		+ \left( 1 - \frac{\xi_i}{E_i}\frac{\xi_j}{E_j} \right) I(E_i, -E_j, \Omega_{\lambda, {\bm q}})
+	\right],
+	\label{eq:Fcxc}
+\end{equation}
+%
+where the explicit form of function $I$ is 
+%
+\begin{equation}
+	I(E_i, E_j, \Omega) = f_\beta(E_i)f_\beta(E_j)n_\beta(\Omega)
+	\left[
+		\frac{e^{\beta E_i}-e^{\beta(E_j+\Omega)}}{E_i-E_j-\Omega} -
+		\frac{e^{\beta E_j}-e^{\beta(E_i+\Omega)}}{E_i-E_j+\Omega}
+	\right].
+	\label{eq:Ifunc}
+\end{equation}
+%
+The diagrammatic expression of $F^1_{\rm xc}$ and $F^2_{\rm xc}$ is depicted in 
+Figs.\ref{fig:Fbxc} and \ref{fig:Fcxc}, respectively.
+
+Now we can compute the phononic contributions to the exchange-correlation kernels ${\mathcal F}_{{\rm Hxc},ij}$
+(see (\ref{eq:def-fxc})).
+The exchange-correlation kernel arising from $F^1_{\rm xc}$ is nondiagonal and its form is
+%
+\begin{equation}
+	{\mathcal K}^{\rm ph}_{ij} = \frac{2}{\tanh[(\beta/2)\xi_i]\tanh[(\beta/2)\xi_j]}
+	\sum_{\lambda, \bm q} |g^{ij}_{\lambda, \bm q}|^2
+	\left[
+		I(\xi_i, \xi_j, \Omega_{\lambda, \bm q}) - I(\xi_i, -\xi_j, \Omega_{\lambda, \bm q})
+	\right].
+	\label{eq:Kph}
+\end{equation}
+%
+On the other hand, the exchange-correlation kernel arising from $F^2_{\rm xc}$ is diagonal.
+Its explicit form derived by perturbation theory (PT) directly reads
+%
+\begin{equation}
+\begin{split}
+	\label{eq:ZphPT}
+	{\mathcal Z}^{\rm ph, PT}_i &= - \frac{2}{\sum_{j} \frac{\beta/2}{\cosh^2[(\beta/2)\xi_j]}}
+	\left[
+		\frac{1}{\xi_i} - \frac{\beta/2}{\sinh[(\beta/2)\xi_i]\cosh[(\beta/2)\xi_i]}
+	\right]
+	\sum_{jl}\sum_{\lambda, \bm q} |g^{jl}_{\lambda, \bm q}|^2 I'(\xi_i, \xi_j, \Omega_{\lambda, \bm q}) \\
+	&\quad + \frac{1}{\tanh[(\beta/2)\xi_i]}
+	\sum_{j}\sum_{\lambda, \bm q} |g^{ij}_{\lambda, \bm q}|^2
+	\left\{
+		\frac{1}{\xi_j} [I(\xi_i, \xi_j, \Omega_{\lambda, \bm q}) - I(\xi_i, -\xi_j, \Omega_{\lambda, \bm q})]
+		- 2I'(\xi_i, \xi_j, \Omega_{\lambda, \bm q})
+	\right\},
+\end{split}
+\end{equation}
+%
+where the function $I'$ is defined as
+%
+\begin{equation}
+	I'(\xi_i, \xi_j, \Omega_{\lambda, \bm q}) = 
+	\frac{\partial}{\partial \xi_i} I(\xi_i, \xi_j, \Omega_{\lambda, \bm q}).
+	\label{eq:Iprime}
+\end{equation}
 %%%%%%%%%%%%%%%%%%%%    Equation  %%%%%%%%%%%%%%%%%%%%%
 \section{Equation}\label{sec:method_model}
 \subsection{Equation}\label{sec:method_model_model}	
