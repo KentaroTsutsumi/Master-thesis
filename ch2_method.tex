@@ -191,6 +191,7 @@ where the Hartree terms are defined as
 \end{equation}
 %
 \begin{equation}%%%%% anomalous Hartree
+	\label{eq:anomHartree}
 	E^{\rm ee}_{\rm H}[n, \chi, \Gamma] = \frac{1}{2}\int d^3r\int d^3r' \frac{n(\bm{r})n(\bm{r'})}{|\bm{r}-\bm{r'}|}
 								+ \int d^3r\int d^3r' \frac{|\chi(\bm{r}, \bm{r'})|^2}{|\bm{r}-\bm{r'}|},
 \end{equation}
@@ -677,7 +678,7 @@ but do not consider the effect of spin fluctuations.
 Lowest-order contributions from electron-phonon interaction can be written as
 %
 \begin{equation}
-	F^1_{\rm xc} = \frac{1}{2}
+	F^{(1)}_{\rm xc} = \frac{1}{2}
 	\sum_{\lambda, {\bm q}}\sum_{ij} |g^{ij}_{\lambda,{\bm q}}|^2
 	\frac{\Delta_i\Delta^\ast_j}{E_iE_j}
 	\left[
@@ -687,7 +688,7 @@ Lowest-order contributions from electron-phonon interaction can be written as
 \end{equation}
 %
 \begin{equation}
-	F^2_{\rm xc} = - \frac{1}{2} 
+	F^{(2)}_{\rm xc} = - \frac{1}{2} 
 	\sum_{\lambda, {\bm q}}\sum_{ij} |g^{ij}_{\lambda,{\bm q}}|^2
 	\left[
 		\left( 1 + \frac{\xi_i}{E_i}\frac{\xi_j}{E_j} \right) I(E_i, E_j, \Omega_{\lambda, {\bm q}})
@@ -707,15 +708,16 @@ where the explicit form of function $I$ is
 	\label{eq:Ifunc}
 \end{equation}
 %
-The diagrammatic expression of $F^1_{\rm xc}$ and $F^2_{\rm xc}$ is depicted in 
+The diagrammatic expression of $F^{(1)}_{\rm xc}$ and $F^{(2)}_{\rm xc}$ is depicted in 
 Figs.\ref{fig:Fbxc} and \ref{fig:Fcxc}, respectively.
 
 Now we can compute the phononic contributions to the exchange-correlation kernels ${\mathcal F}_{{\rm Hxc},ij}$
 (see (\ref{eq:def-fxc})).
-The exchange-correlation kernel arising from $F^1_{\rm xc}$ is nondiagonal and its form is
+The exchange-correlation kernel arising from $F^{(1)}_{\rm xc}$ is nondiagonal and its form is
 %
 \begin{equation}
-	{\mathcal K}^{\rm ph}_{ij} = \frac{2}{\tanh[(\beta/2)\xi_i]\tanh[(\beta/2)\xi_j]}
+	{\mathcal F}^{(1)}_{{\rm Hxc},ij}
+	\equiv{\mathcal K}^{\rm ph}_{ij} = \frac{2}{\tanh[(\beta/2)\xi_i]\tanh[(\beta/2)\xi_j]}
 	\sum_{\lambda, \bm q} |g^{ij}_{\lambda, \bm q}|^2
 	\left[
 		I(\xi_i, \xi_j, \Omega_{\lambda, \bm q}) - I(\xi_i, -\xi_j, \Omega_{\lambda, \bm q})
@@ -723,8 +725,15 @@ The exchange-correlation kernel arising from $F^1_{\rm xc}$ is nondiagonal and i
 	\label{eq:Kph}
 \end{equation}
 %
-On the other hand, the exchange-correlation kernel arising from $F^2_{\rm xc}$ is diagonal.
-Its explicit form derived by perturbation theory (PT) directly reads
+On the other hand, the exchange-correlation kernel arising from $F^{(2)}_{\rm xc}$ is diagonal.
+Now we define the diagonal part of exchange-correlation kernel ${\mathcal Z}^{\rm ph, full}_i$ as
+%
+\begin{equation}
+	{\mathcal F}^{(2)}_{{\rm Hxc},ij} = \delta_{ij}
+	\frac{E_i}{\tanh[(\beta/2)\xi_i]}{\mathcal Z}^{\rm ph,PT}_i,
+	\label{eq:FxcZphPT}
+\end{equation}
+and its explicit form derived by perturbation theory (PT) directly reads
 %
 \begin{equation}
 \begin{split}
@@ -750,6 +759,110 @@ where the function $I'$ is defined as
 	\frac{\partial}{\partial \xi_i} I(\xi_i, \xi_j, \Omega_{\lambda, \bm q}).
 	\label{eq:Iprime}
 \end{equation}
+%
+However, it is found that the direct use of ${\mathcal Z}^{\rm ph, PT}_i$ leads numerical instabilities\cite{Luders2005_1},
+then an alternative expression is developed. The numerically-stable expression for diagonal kernel is 
+%
+\begin{equation}
+	{\mathcal Z}^{\rm ph}_i = \frac{1}{\tanh[(\beta/2)\xi_i]}
+	\sum_{j}\sum_{\lambda, \bm q} |g^{ij}_{\lambda, \bm q}|^2
+	\left[
+		J(\xi_i, \xi_j, \Omega_{\lambda, \bm q}) +
+		J(\xi_i, -\xi_j, \Omega_{\lambda, \bm q})
+	\right],
+	\label{eq:Zphprac}
+\end{equation}
+%
+where the function $J$ is defined as
+%
+\begin{equation}
+	J(\xi, \xi, \Omega) = \tilde{J}(\xi, \xi, \Omega) + \tilde{J}(\xi, \xi, -\Omega), 
+	\label{eq:Jfunc}
+\end{equation}
+%
+\begin{equation}
+	\tilde{J}(\xi, \xi', \Omega) = 
+	- \frac{f_\beta(\xi) + n_\beta(\Omega)}{\xi-\xi'-\Omega}
+	\left[
+		\frac{f_\beta(\xi') + f_\beta(\xi-\Omega)}{\xi-\xi'-\Omega} -
+		\beta f_\beta(\xi-\Omega) f_\beta(-\xi'+\Omega)
+	\right].
+	\label{eq:Jtildefunc}
+\end{equation}
+%
+%
+\subsection*{Electron-electron kernels}
+%
+We now develop the exchange-correlation kernels arising from the Coulomb interaction.
+From the definition of ${\mathcal F}_{{\rm Hxc},ij}$ (\ref{eq:def-fxc}), it can be seen that
+there are two terms that contribute to the kernels. The first is the anomalous Hartree energy (\ref{eq:anomHartree}), 
+and the second is the exchange-correlation free energy $F^{(3)}_{\rm xc}$ (Fig.\ref{fig:Fcoulxc}).
+%
+\begin{figure} %%%%%%% FIGURE Coulombic free energy
+	\centering
+	\includegraphics[width=5truecm,clip]{../figure/method/Fcoulxc.eps}
+	\caption{Lowest-order electronic contributions to the $F_{\rm xc}$. A dashed line means the screened Coulomb interaction.}
+	\label{fig:Fcoulxc}
+\end{figure}
+%
+For convenience, an approximation is applied to {\it both} of the anomalous Hartree energy and $F_{\rm xc}$ 
+as follows\cite{Luders2005_1}:
+%
+\begin{equation}
+	F^{(3)}_{\rm xc} + E^{{\rm ee}, \chi}_{\rm H} = \int d^3r \int d^3r'
+	\Big| \chi(\bm r - \bm r') \Big|^2 v^{\rm screen}(\bm r - \bm r'),
+	\label{Fcoulxcapprox}
+\end{equation}
+%
+where $v^{\rm screen}(\bm r - \bm r')$ means a static screened Coulomb interaction.
+Within this approximation, the exchange-correlation kernel from electron-electron interaction
+can be written as
+%
+\begin{equation}
+	\label{eq:Kel}
+\begin{split}
+	{\mathcal K}^{\rm el}_{ij} &\equiv \frac{\delta^2 \left( F^{(3)}_{\rm xc} + E^{{\rm ee},\chi}_{\rm H} \right)}
+	{\delta \chi^\ast_i \delta\chi_j} \\
+	& = v^{\rm screen}_{ij},
+\end{split}
+\end{equation}
+%
+where
+%
+\begin{equation}
+	v^{\rm screen}_{ij} = \int d^3r \int d^3r' \varphi^\ast_i(\bm r)\varphi_i({\bm r'})
+	v^{\rm screen}(\bm r, {\bm r'}) \varphi_j(\bm r) \varphi^\ast_j({\bm r'}).
+	\label{eq:Keldef}
+\end{equation}
+%
+
+There are some way how to approximate the screened Coulomb interaction. L\"{u}ders {\it et al.} applied the
+Thomas-Fermi interaction to the Coulomb interaction.
+We applied RPA in our calculation, so we now summarize the expression of the screened Coulomb interaction in RPA.
+Furthermore, it should be taken account of the dynamical structure of the Coulomb interaction which is represented by
+frequency-dependent dielectric function $\Pi$.
+$\Pi$ is given by the following equation
+%
+\begin{equation}
+	\Pi(\bm r, \bm r', \omega) = \Pi_0(\bm r, \bm r', \omega) + 
+	\iint d^3r_1d^3r_2\Pi_0(\bm r, \bm r_1, \omega) 
+	\left(
+	\frac{1}{|\bm r_1 - \bm r_2|} + \frac{\delta^2E_{\rm xc}}{\delta\rho(\bm r_1)\delta\rho(\bm r_2)}
+	\right)
+	\Pi(\bm r_2, \bm r', \omega), 
+	\label{eq:Pieq}
+\end{equation}
+%
+where $\Pi_0$ indicates the independent-particle polarization function
+%
+\begin{equation}
+	\Pi_0(\bm r, \bm r', \omega) = \sum_{ij}
+	\frac{\theta(-\xi_i)-\theta(\xi_j)}{\xi_j-\xi_i+i\omega}
+	\varphi^\ast_i(\bm r)\varphi^\ast_j(\bm r')\varphi_i(\bm r')\varphi_j(\bm r),
+	\label{eq:chi0}
+\end{equation}
+%
+where $\theta(\xi)$ is the step function.
 %%%%%%%%%%%%%%%%%%%%    Equation  %%%%%%%%%%%%%%%%%%%%%
 \section{Equation}\label{sec:method_model}
 \subsection{Equation}\label{sec:method_model_model}	
