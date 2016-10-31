@@ -823,25 +823,27 @@ can be written as
 \begin{split}
 	{\mathcal K}^{\rm el}_{ij} &\equiv \frac{\delta^2 \left( F^{(3)}_{\rm xc} + E^{{\rm ee},\chi}_{\rm H} \right)}
 	{\delta \chi^\ast_i \delta\chi_j} \\
-	& = v^{\rm screen}_{ij},
+	& = v^{\rm scr}_{ij},
 \end{split}
 \end{equation}
 %
 where
 %
 \begin{equation}
-	v^{\rm screen}_{ij} = \int d^3r \int d^3r' \varphi^\ast_i(\bm r)\varphi_i({\bm r'})
-	v^{\rm screen}(\bm r, {\bm r'}) \varphi_j(\bm r) \varphi^\ast_j({\bm r'}).
+	v^{\rm scr}_{ij} = \int d^3r \int d^3r' \varphi^\ast_i(\bm r)\varphi_i({\bm r'})
+	v^{\rm scr}(\bm r, {\bm r'}) \varphi_j(\bm r) \varphi^\ast_j({\bm r'}).
 	\label{eq:Keldef}
 \end{equation}
 %
 
-There are some way how to approximate the screened Coulomb interaction. L\"{u}ders {\it et al.} applied the
-Thomas-Fermi interaction to the Coulomb interaction.
-We applied RPA in our calculation, so we now summarize the expression of the screened Coulomb interaction in RPA.
+There are some way how to approximate the screened Coulomb interaction $v^{\rm scr}(\bm r, \bm r')$. 
+L\"{u}ders {\it et al.} applied the Thomas-Fermi interaction to the Coulomb interaction\cite{Luders2005_1}.
+There are also some studies which applies the random phase approximation to $v^{\rm scr}$\cite{RA2012}.
+In our calculation, we applied the adiabatic local density approximation(ALDA)\cite{Zangwill1980} and 
+so we now summarize the expression of the screened Coulomb interaction in ALDA.
 Furthermore, it should be taken account of the dynamical structure of the Coulomb interaction which is represented by
-frequency-dependent dielectric function $\Pi$.
-$\Pi$ is given by the following equation
+the frequency-dependent polarization function $\Pi$.
+The polarization function $\Pi$ is obtained by the following equation
 %
 \begin{equation}
 	\Pi(\bm r, \bm r', \omega) = \Pi_0(\bm r, \bm r', \omega) + 
@@ -862,7 +864,19 @@ where $\Pi_0$ indicates the independent-particle polarization function
 	\label{eq:chi0}
 \end{equation}
 %
-where $\theta(\xi)$ is the step function.
+where $\theta(\xi)$ is the step function. We used adiabatic local density apploximation(ALDA)\cite{TDDFT} to calculate
+the polarization function $\Pi$. Now the screened Coulomb interaction within the ALDA is written as
+%
+\begin{equation}
+	v^{\rm scr}(\bm r, \bm r', \omega) = \frac{1}{|\bm r - \bm r'|} + 
+	\iint d^3r_1 d^3r_2 
+	\left(
+	\frac{1}{|\bm r - \bm r_1|} + \frac{\delta^2E_{\rm xc}}{\delta\rho(\bm r)\delta\rho(\bm r_1)}
+	\right)
+	\Pi(\bm r_1, \bm r_2, \omega) \frac{1}{|\bm r_2 - \bm r'|}
+	\label{eq:vscr}
+\end{equation}
+%
 %%%%%%%%%%%%%%%%%%%%    Equation  %%%%%%%%%%%%%%%%%%%%%
 \section{Equation}\label{sec:method_model}
 \subsection{Equation}\label{sec:method_model_model}	
