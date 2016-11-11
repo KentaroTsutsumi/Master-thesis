@@ -649,7 +649,7 @@ On the other hand, the Fourier transform of phonon propagator is defined as
 \end{equation}
 %
 where $\nu_n = 2n\pi/\beta$ are the even Matsubara frequencies.
-Now we are ready to derive the explicit expressions of lowest-order contributions to $F_{\rm xc}$.
+Now we are ready to derive the explicit expressions for lowest-order contributions to $F_{\rm xc}$.
 As mentioned before, now we consider the contributions from the Coulomb interaction and the electron-phonon interaction
 but do not consider the effect of spin fluctuations.
 
@@ -708,7 +708,7 @@ where the explicit form of function $I$ is
 	\label{eq:Ifunc}
 \end{equation}
 %
-The diagrammatic expression of $F^{(1)}_{\rm xc}$ and $F^{(2)}_{\rm xc}$ is depicted in 
+The diagrammatic expression for $F^{(1)}_{\rm xc}$ and $F^{(2)}_{\rm xc}$ is depicted in 
 Figs.\ref{fig:Fbxc} and \ref{fig:Fcxc}, respectively.
 
 Now we can compute the phononic contributions to the exchange-correlation kernels ${\mathcal F}_{{\rm Hxc},ij}$
@@ -840,7 +840,7 @@ There are some way how to approximate the screened Coulomb interaction $v^{\rm s
 L\"{u}ders {\it et al.} applied the Thomas-Fermi interaction to the Coulomb interaction\cite{Luders2005_1}.
 There are also some studies which applies the random phase approximation to $v^{\rm scr}$\cite{RA2012}.
 In our calculation, we applied the adiabatic local density approximation(ALDA)\cite{Zangwill1980} and 
-so we now summarize the expression of the screened Coulomb interaction in ALDA.
+so we now summarize the expression for the screened Coulomb interaction in ALDA.
 Furthermore, it should be taken account of the dynamical structure of the Coulomb interaction which is represented by
 the frequency-dependent polarization function $\Pi$.
 The polarization function $\Pi$ is obtained by the following equation
@@ -906,6 +906,39 @@ $W_{n\bm kn'\bm k'}({\rm i}\omega)$ as below
 We describe how to calcurate the summation with respect to the even Matsubara frequency in (\ref{eq:Keldyn})
 in Appendix.
 
+\section{Spin fluctuations kernel from Sham-Shl\"{u}ter connection}
+In the previous section, we derived the phononic and 
+electron-electron Coulomb kernel from functional derivatives.
+Now we review the derivation of the expression for kernels arising 
+from spin fluctuations by Essenberger and coworkers
+\cite{Essenberger2014}.
+
+\begin{figure} %%%%%%% FIGURE Coulombic free energy
+	\centering
+	\includegraphics[width=5truecm,clip]{../figure/method/self-energy.eps}
+	\caption{Self-energy diagram of spin fluctuations described with particle-hole propagator $\Lambda$.}
+	\label{fig:SF-self}
+\end{figure}
+We start from particle-hole propagator $\Lambda$ in order to 
+take account of spin fluctuations in self-energy (Fig. \ref{fig:SF-self}).
+Particl-hole propagator $\Lambda$ contains all irreducible 
+diagrams with respect to Coulomb interaction and has two 
+incoming and outgoing points. Now we study the properties of 
+particle-hole propagators.In the following, we assume that we 
+consider about the case of collinear magnetic systems and 
+then the Green's function becomes diagonal with respect to spin indices.
+We consider one of the Hedin's equation(\cite{Sole1994})
+%
+\begin{equation}
+	\Gamma(1,2,3) = \delta(1,2)\delta(1,3) + 
+	\int d(4,5,6,7)\frac{\delta\Sigma(1,2)}{\deltaG(4,5)}
+	G(4,6)G(7,5)\Gamma(6,7,3).
+	\label{eq:Hedineq}
+\end{equation}
+%
+The coordinate 1 indicates that $1=\{\bm r_1, \tau_1, \sigma_1\}$, 
+where $\bm r_1$, $\tau_1$, $\sigma_1$ is the real space coordinate,
+the Matsubara time and the spin index, respectively.
 %%%%%%%%%%%%%%%%%%%%    Equation  %%%%%%%%%%%%%%%%%%%%%
 \section{Equation}\label{sec:method_model}
 \subsection{Equation}\label{sec:method_model_model}	
