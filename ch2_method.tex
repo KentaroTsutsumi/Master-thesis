@@ -916,37 +916,99 @@ from spin fluctuations by Essenberger and coworkers
 \begin{figure} %%%%%%% FIGURE Coulombic free energy
 	\centering
 	\includegraphics[width=5truecm,clip]{../figure/method/self-energy.eps}
-	\caption{Self-energy diagram of spin fluctuations described with particle-hole propagator $\Lambda$.}
+	\caption{Self-energy diagram of spin fluctuations described with particle-hole propagator $\Lambda$. A double-line indicates the full Green's function.}
 	\label{fig:SF-self}
 \end{figure}
 We start from particle-hole propagator $\Lambda$ in order to 
 take account of spin fluctuations in self-energy (Fig. \ref{fig:SF-self}).
-Particl-hole propagator $\Lambda$ contains all irreducible 
+Particle-hole propagator $\Lambda$ contains all irreducible 
 diagrams with respect to Coulomb interaction and has two 
-incoming and outgoing points. Now we study the properties of 
-particle-hole propagators.In the following, we assume that we 
-consider about the case of collinear magnetic systems and 
+incoming and outgoing points. 
+In the following, we assume that we consider about the case of collinear magnetic systems and 
 then the Green's function becomes diagonal with respect to spin indices.
-We consider one of the Hedin's equation\cite{Sole1994}
+We consider one of the Hedin's equation\cite{Sole1994} which is depicted
+in Fig.\ref{fig:Hedineq}
 %
 \begin{equation}
 	\Gamma(1,2,3) = \delta(1,2)\delta(1,3) + 
-	\int d(4,5,6,7)\frac{\delta\Sigma(1,2)}{\delta G(4,5)}
+	\int d(4,5,6,7)\Lambda_0(1,2,4,5)
 	G(4,6)G(7,5)\Gamma(6,7,3),
 	\label{eq:Hedineq}
 \end{equation}
 %
-where
+where 
 %
 \begin{equation}
-	\Lambda_0(1,2,3,4) = \frac{\delta\Sigma(1,2)}{\delta G(3,4)}.
+	\Lambda_0(1,2,3,4) = \frac{\delta\Sigma^{\rm V}(1,2)}{\delta G(3,4)}.
 	\label{eq:lambda0}
 \end{equation}
 %
+\begin{figure} %%%%%%% FIGURE Hedin's eq.
+	\centering
+	\includegraphics[width=8truecm,clip]{../figure/method/Hedineq.eps}
+	\caption{Diagrammatic representation of one of the Hedin's equations.}
+	\label{fig:Hedineq}
+\end{figure}
 The coordinate 1 indicates that $1=\{\bm r_1, \tau_1, \sigma_1\}$, 
 where $\bm r_1$, $\tau_1$, $\sigma_1$ is the real space coordinate,
-the Matsubara time and the spin index, respectively.
+the Matsubara imaginary time and the spin index, respectively.
 $\Lambda_0$ is called an irreducible particle-hole propagator\cite{Arya2008}.
+The self-energy used to calculate $\Lambda_0$ is written as $\Sigma^{\rm V}$.
+We will apply an approximation for $\Sigma^{\rm V}$ later.
+The $\Lambda_0$ contains all connected and irreducible diagrams with
+respect to the Coulomb interaction and the particle-hole propagator.
+If we obtain the $\Lambda_0$, we can get the $\Lambda$ by using the
+Bethe-Salpeter equation(BSE)\cite{BSE1951} for $\Lambda$.
+However, before considering the BSE for $\Lambda$, we have to note that
+there can be two possible contributions to $\Lambda_0$.
+
+The functional derivative of the self-energy with respect to $G$ 
+correspond to the removal of one Green's function in self-energy. 
+Hence, the two possible contributions to $\Lambda_0$ come from
+the type of the Green's function which is removed.
+If the removed Green's function was a factor of a loop, we call
+the resulting contribution to $\Lambda_0$ as direct contribution $\Lambda^{\rm d}$.
+Otherwise, we call these contributions as crossed ones and define as $\Lambda^{\rm c}$.
+Then we can write these contributions as follows
+%
+\begin{equation}
+	\Lambda^{\rm c}_0(1,2,3,4) \equiv \delta_{\sigma_1\sigma_3}
+	\delta_{\sigma_2\sigma_4}\Lambda^{\rm c}_0(1,2,3,4),
+	\label{eq:defcross}
+\end{equation}
+%
+\begin{equation}
+	\Lambda^{\rm d}_0(1,2,3,4) \equiv \delta_{\sigma_1\sigma_2}
+	\delta_{\sigma_3\sigma_4}\Lambda^{\rm d}_0(1,2,3,4).
+	\label{eq:defdirect}
+\end{equation}
+%
+It should be noted that crossed and direct contributions have different 
+signs due to the difference of the number of loops:
+%
+\begin{equation}
+	\Lambda^{\rm c}_0(1,2,3,4) = \frac{\delta\Sigma^{\rm V}(1,2)}
+	{\delta G(3,4)}, 
+	\label{eq:cross}
+\end{equation}
+%
+\begin{equation}
+	\Lambda^{\rm d}_0(1,2,3,4) = -\frac{\delta\Sigma^{\rm V}(1,2)}
+	{\delta G(3,4)}.
+	\label{eq:direct}
+\end{equation}
+%
+
+From Eqs. (\ref{eq:lambda0}), (\ref{eq:cross}) and (\ref{eq:direct}), 
+the total irreducible particle-hole propagator can be written as follows:
+%
+\begin{equation}
+	\Lambda_0(1,2,3,4) = \frac{\delta\Sigma^{\rm V}}{\delta G(3,4)}
+	= \Lambda^{\rm c} - \Lambda^{\rm d} \equiv \Lambda^{{\rm c} - {\rm d}}.
+	\label{eq:lambdadiff}
+\end{equation}
+%
+
 %%%%%%%%%%%%%%%%%%%%    Equation  %%%%%%%%%%%%%%%%%%%%%
 \section{Equation}\label{sec:method_model}
 \subsection{Equation}\label{sec:method_model_model}	
