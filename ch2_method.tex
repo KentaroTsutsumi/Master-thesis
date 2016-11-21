@@ -582,6 +582,7 @@ and Fig.\ref{fig:Fdagarrow} (for $F^{\rm s\dag}$).
 	\label{fig:Fdagarrow}
 \end{minipage}
 \caption{Diagram corresponding to (a) $G^{\rm s}$, (b) $F^{\rm s}$ and (c) $F^{\rm s\dag}$}
+\label{fig:arrows}
 \end{figure}
 %
 Finally, the phonon propagator represented as a wavy line is defined as 
@@ -952,6 +953,8 @@ where
 The coordinate 1 indicates that $1=\{\bm r_1, \tau_1, \sigma_1\}$, 
 where $\bm r_1$, $\tau_1$, $\sigma_1$ is the real space coordinate,
 the Matsubara imaginary time and the spin index, respectively.
+The coordinates 1 and 4 are connected to the lines which go outside,
+and the coordinates 2 and 3 are connected to the lines which come inside.
 $\Lambda_0$ is called an irreducible particle-hole propagator\cite{Arya2008}.
 The self-energy used to calculate $\Lambda_0$ is written as $\Sigma^{\rm V}$.
 We will apply an approximation for $\Sigma^{\rm V}$ later.
@@ -969,7 +972,7 @@ the type of the Green's function which is removed.
 If the removed Green's function was a factor of a loop, we call
 the resulting contribution to $\Lambda_0$ as direct contribution $\Lambda^{\rm d}$.
 Otherwise, we call these contributions as crossed ones and define as $\Lambda^{\rm c}$.
-Then we can write these contributions as follows
+Then we can write these contributions as follows:
 %
 \begin{equation}
 	\Lambda^{\rm c}_0(1,2,3,4) \equiv \delta_{\sigma_1\sigma_3}
@@ -1003,11 +1006,122 @@ the total irreducible particle-hole propagator can be written as follows:
 %
 \begin{equation}
 	\Lambda_0(1,2,3,4) = \frac{\delta\Sigma^{\rm V}(1,2)}{\delta G(3,4)}
-	= \Lambda^{\rm c} - \Lambda^{\rm d} \equiv \Lambda^{{\rm c} - {\rm d}}.
+	= \Lambda^{\rm c}_0 - \Lambda^{\rm d}_0 \equiv \Lambda^{{\rm c} - {\rm d}}_0.
 	\label{eq:lambdadiff}
 \end{equation}
 %
+\begin{figure}[h]
+\centering{
+\begin{minipage}[b]{0.3\linewidth}
+	\subcaption{}
+	\includegraphics[keepaspectratio, scale=0.5]
+	{../figure/method/crosscross.eps}
+	\label{fig:crosscross}
+\end{minipage}
+\begin{minipage}[b]{0.3\linewidth}
+	\centering
+	\subcaption{}
+	\includegraphics[keepaspectratio, scale=0.5]
+	{../figure/method/crossdirect.eps}
+	\label{fig:crossdirect}
+\end{minipage}
+\begin{minipage}[b]{0.3\linewidth}
+	\centering
+	\subcaption{}
+	\includegraphics[keepaspectratio, scale=0.5]
+	{../figure/method/directdirect.eps}
+	\label{fig:directdirect}
+\end{minipage}
+\caption{Diagrammatic representation how higher order propagator is constructed. Bold dashed lines indicate that connected two points have the same spins.}
+}
+\end{figure}
+%
+Furthermore, we have to consider how higher order irreducible particle-hole propagators are constructed.
+There can be three patterns how crossed and direct contributions are linked:
+(a) If two crossed contributions are connected, the resulting contribution is also crossed one(Fig.\ref{fig:crosscross}).
+(b) If crossed and direct contributions are linked, the resulting contribution becomes direct one(Fig.\ref{fig:crossdirect}).
+(c) If two direct contributions are linked, the resulting contribution is also direct one(Fig.\ref{fig:directdirect}). 
+In this case, we have to pay attention to the sign of this contribution because one additional loop appears.
 
+With these considerations, the BSE for $\Lambda$ becomes as follows:
+%
+\begin{equation}
+	\Lambda = \sum_{n=0}^{\infty}\Lambda^{\rm c}_{(n)} + \sum_{n=0}^{\infty}\Lambda^{\rm d}_{(n)},
+	\label{eq:BSE}
+\end{equation}
+%
+\begin{equation}
+	\Lambda^{\rm c}_{(n+1)} = \Lambda^{\rm c}_0GG\Lambda^{\rm c}_{(n)},
+	\label{eq:cnplus1}
+\end{equation}
+%
+\begin{equation}
+	\Lambda^{\rm d}_{(n+1)} = \Lambda^{\rm d}_0GG\Lambda^{\rm c}_{(n)}
+	+ \Lambda^{\rm c}_0GG\Lambda^{\rm d}_{(n)}
+	- \Lambda^{\rm d}_0GG\Lambda^{\rm d}_{(n)},
+	\label{eq:dnplus1}
+\end{equation}
+%
+where $(n)$ means the order of the irreducible particle-hole propagator
+and $\Lambda^{\rm c, \rm d}_{(0)}$ is equal to $\Lambda^{\rm c, \rm d}_0$ defined in Eqs.(\ref{eq:defcross}) and (\ref{eq:defdirect}).
+From Eqs.(\ref{eq:cnplus1}) and (\ref{eq:dnplus1}), we can construct the BSE for $\Lambda^{\rm c - \rm d}$ as
+%
+\begin{equation}
+	\Lambda^{\rm c - \rm d}= \Lambda_0 + 
+	\Lambda_0GG\Lambda^{\rm c - \rm d},
+	\label{eq:BSELambda}
+\end{equation}
+%
+where $\Lambda_0$ is defined in Eq.(\ref{eq:lambdadiff}).
+
+\begin{figure} %%%%%%% FIGURE F-self-energy
+	\centering
+	\includegraphics[width=5truecm,clip]{../figure/method/Fself.eps}
+	\caption{Crossed and direct contribution to self-energy with anomalous Green's function $F$.}
+	\label{fig:Fself}
+\end{figure}
+So far, we considered only the normal Green's function because
+we neglected the effects of spin fluctuations on superconductors.
+We are interested in the theory in superconductors, so we have to 
+construct the self-energy comes from spin fluctuations(Fig.\ref{fig:SF-self})
+with normal and anomalous Green's functions(Fig.\ref{fig:arrows}).
+In anomalous terms in which $F$ and $F^\dag$ appear, no loop is created
+when we construct the self-energy(Fig.\ref{fig:Fself}).
+Therefore, crossed and direct contribution to the self-energy have the 
+same sign and the resulting expression reads as
+%
+\begin{equation}
+	\Sigma^{\rm SF}_F \equiv \iint d34 \tau^{\rm z}
+	\begin{pmatrix}
+		0 & F(3,4)\Lambda^{\rm c + \rm d}(1,3,4,2) \\
+		F^\dag(3,4)\Lambda^{\rm c + \rm d}(3,1,2,4) &0
+	\end{pmatrix}.
+	\label{eq:Fself}
+\end{equation}
+%
+In this expression, the order of coordinates in $\Lambda$ correspond to the definition of $\Lambda$ as stated before.
+On the other hand, in normal contributions, the sign of crossed term and
+direct one is different because one extra loop appears in the crossed term(Fig.\ref{fig:Gself}).
+%
+\begin{figure} %%%%%%% FIGURE G-self-energy
+	\centering
+	\includegraphics[width=5truecm,clip]{../figure/method/Gself.eps}
+	\caption{Crossed and direct contribution to self-energy with normal Green's function $G$.}
+	\label{fig:Gself}
+\end{figure}
+%
+With this normal contributions, the equation of the self-energy from spin fluctuations can be written as follows:
+%
+\begin{equation}
+	\Sigma^{\rm SF} \equiv \iint d34 \tau^{\rm z}
+	\begin{pmatrix}
+		-G(3,4)\Lambda^{\rm c - \rm d}(1,3,2,4) & F(3,4)\Lambda^{\rm c + \rm d}(1,3,4,2) \\
+		F^\dag(3,4)\Lambda^{\rm c + \rm d}(3,1,2,4) & -G^\dag(3,4)\Lambda^{\rm c - \rm d}(3,1,4,2)
+	\end{pmatrix}.
+	\label{eq:GFself}
+\end{equation}
+%
+From the above expression, it can be seen that the 
 %%%%%%%%%%%%%%%%%%%%    Equation  %%%%%%%%%%%%%%%%%%%%%
 \section{Equation}\label{sec:method_model}
 \subsection{Equation}\label{sec:method_model_model}	
