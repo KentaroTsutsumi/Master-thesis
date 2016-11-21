@@ -1064,7 +1064,7 @@ With these considerations, the BSE for $\Lambda$ becomes as follows:
 %
 where $(n)$ means the order of the irreducible particle-hole propagator
 and $\Lambda^{\rm c, \rm d}_{(0)}$ is equal to $\Lambda^{\rm c, \rm d}_0$ defined in Eqs.(\ref{eq:defcross}) and (\ref{eq:defdirect}).
-From Eqs.(\ref{eq:cnplus1}) and (\ref{eq:dnplus1}), we can construct the BSE for $\Lambda^{\rm c - \rm d}$ as
+From Eqs.(\ref{eq:cnplus1}) and (\ref{eq:dnplus1}), we obtain the BSE for $\Lambda^{\rm c - \rm d}$ as
 %
 \begin{equation}
 	\Lambda^{\rm c - \rm d}= \Lambda_0 + 
@@ -1121,7 +1121,65 @@ With this normal contributions, the equation of the self-energy from spin fluctu
 	\label{eq:GFself}
 \end{equation}
 %
-From the above expression, it can be seen that the 
+
+We obtained the equation for the self-energy from spin fluctuations with $\Lambda^{\rm c + \rm d}$ and $\Lambda^{\rm c - \rm d}$.
+We can simplify the expression because it is already assumed that we are now interested in singlet cuperconductor and magnetic collinear system.
+From this assumption, we already know that the normal Green's function 
+conserves the spin while the anomalous one flips the spin(see from Eq.
+(\ref{eq:Gfuncdef}) to Eq.(\ref{eq:Fdagfuncdef})).
+According to these spin properties of Green's functions, it can be seen that
+the 11 and 22 element of Eq.(\ref{eq:GFself}) depend only on $\Lambda^{\rm c - \rm d}_{\sigma_1\sigma\sigma_2\sigma}$ 
+while the 12 and 21 element depend only on $\Lambda^{\rm c + \rm d}_{\sigma_1\sigma-\sigma\sigma_2}$.
+
+Furthermore, considering the spin properties of $\Lambda^{\rm c}$ and 
+$\Lambda^{\rm d}$ (see Eq.(\ref{eq:defcross}) and (\ref{eq:defdirect})),
+following relations can be straightforwardly derived:
+%
+\begin{equation}
+	\Lambda^{\rm c + \rm d}_{\sigma\sigma-\sigma-\sigma} =
+	\Lambda^{\rm d}_{\sigma\sigma-\sigma-\sigma} =
+	- \Lambda^{\rm c - \rm d}_{\sigma\sigma-\sigma-\sigma},
+	\label{eq:lambdasimp1}
+\end{equation}
+%
+\begin{equation}
+	\Lambda^{\rm c + \rm d}_{\sigma-\sigma\sigma-\sigma} =
+	\Lambda^{\rm c}_{\sigma-\sigma\sigma-\sigma} =
+	\Lambda^{\rm c - \rm d}_{\sigma-\sigma\sigma-\sigma}.
+	\label{eq:lambdasimp2}
+\end{equation}
+%
+By using these relations, we can rewrite the expression of the self-energy as follows:
+%
+\begin{equation}
+	\bar{\Sigma}^{\rm{SF}}_{11} = -\delta_{\sigma_1\sigma_2}G_{\sigma_1}
+	\sum_{\sigma}\Lambda^{\rm c - \rm d}_{\sigma_1\sigma\sigma_1\sigma},
+	\label{eq:Sigma11}
+\end{equation}
+%
+\begin{equation}
+	\bar{\Sigma}^{\rm{SF}}_{22} = \delta_{\sigma_1\sigma_2}G^{\dag}_{\sigma_1}
+	\sum_{\sigma}\Lambda^{\rm c - \rm d}_{\sigma\sigma_1\sigma\sigma_1},
+	\label{eq:Sigma22}
+\end{equation}
+%
+\begin{equation}
+	\bar{\Sigma}^{\rm{SF}}_{12} = \delta_{\sigma_1-\sigma_2}F_{\sigma_1}
+	\sum_{\sigma}(1-2\delta_{\sigma\sigma_1})\Lambda^{\rm c - \rm d}_{\sigma_1\sigma-\sigma-\sigma_1},
+	\label{eq:Sigma12}
+\end{equation}
+%
+\begin{equation}
+	\bar{\Sigma}^{\rm{SF}}_{21} = -\delta_{\sigma_1-\sigma_2}F^{\dag}_{\sigma_1}
+	\sum_{\sigma}(1-2\delta_{\sigma\sigma_1})\Lambda^{\rm c - \rm d}_{\sigma\sigma_1-\sigma_1-\sigma}.
+	\label{eq:Sigma21}
+\end{equation}
+%
+This is a more convenient result than Eq.({\ref{eq:GFself}}) because 
+we have to solve the BSE for only $\Lambda^{\rm c - \rm d}$ and 
+we do not have to compute both $\Lambda^{\rm c}$ and $\Lambda^{\rm d}$ separately.
+In the above expression, we omitted the integral and we will use this notation below unless the expression lead any ambiguity. 
+
 %%%%%%%%%%%%%%%%%%%%    Equation  %%%%%%%%%%%%%%%%%%%%%
 \section{Equation}\label{sec:method_model}
 \subsection{Equation}\label{sec:method_model_model}	
