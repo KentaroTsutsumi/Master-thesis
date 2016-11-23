@@ -920,11 +920,29 @@ from spin fluctuations by Essenberger and coworkers
 	\caption{Self-energy diagram of spin fluctuations described with particle-hole propagator $\Lambda$. A double-line indicates the full Green's function.}
 	\label{fig:SF-self}
 \end{figure}
-We start from particle-hole propagator $\Lambda$ in order to 
+
+In order to surpass the GW approximation, at first the $T$-matrix\cite{Gordon1961,Ersoy2010} is considered.
+The $T$-matrix is defined through the Bethe-Salpeter equation\cite{BSE1951} as
+%
+\begin{equation}
+	T(1,2,3,4) = w(1,3)\delta_{13}\delta_{24} + 
+	w(1,2)G(1,5)G(2,6)T(5,6,3,4),
+	\label{eq:T-BSE}
+\end{equation}
+%
+where $w$ indicates the screened Coulomb interaction.
+The coordinate 1 indicates that $1=\{\bm r_1, \tau_1, \sigma_1\}$, 
+where $\bm r_1$, $\tau_1$, $\sigma_1$ is the real space coordinate,
+the Matsubara imaginary time and the spin index, respectively.
+Using this $T$-matrix, the contribution of spin fluctuations to the self-energy can be written as $\bar{\Sigma}^{T}=\bar{G}T$.
+Is is known that the response function within the $T$-matrix approximation reasonably describes the magnetic response function\cite{Ersoy2010,Onida2002}.
+However, due to the reason we discuss later, we do not directly use this $T$-matrix.
+
+Alternatively, we start from particle-hole propagator $\Lambda$ in order to 
 take account of spin fluctuations in self-energy (Fig. \ref{fig:SF-self}).
 Particle-hole propagator $\Lambda$ contains all irreducible 
 diagrams with respect to Coulomb interaction and has two 
-incoming and outgoing points. 
+incoming and outgoing points. The $T$-matrix is fully contained in the$\Lambda$.
 In the following, we assume that we consider about the case of collinear magnetic systems and 
 then the Green's function becomes diagonal with respect to spin indices.
 We consider one of the Hedin's equation\cite{Sole1994} which is depicted
@@ -950,9 +968,6 @@ where
 	\caption{Diagrammatic representation of one of the Hedin's equations.}
 	\label{fig:Hedineq}
 \end{figure}
-The coordinate 1 indicates that $1=\{\bm r_1, \tau_1, \sigma_1\}$, 
-where $\bm r_1$, $\tau_1$, $\sigma_1$ is the real space coordinate,
-the Matsubara imaginary time and the spin index, respectively.
 The coordinates 1 and 4 are connected to the lines which go outside,
 and the coordinates 2 and 3 are connected to the lines which come inside.
 $\Lambda_0$ is called an irreducible particle-hole propagator\cite{Arya2008}.
@@ -1088,10 +1103,10 @@ with normal and anomalous Green's functions(Fig.\ref{fig:arrows}).
 In anomalous terms in which $F$ and $F^\dag$ appear, no loop is created
 when we construct the self-energy(Fig.\ref{fig:Fself}).
 Therefore, crossed and direct contribution to the self-energy have the 
-same sign and the resulting expression reads as
+same sign and the resulting expression reads
 %
 \begin{equation}
-	\Sigma^{\rm SF}_F \equiv \iint d34 \tau^{\rm z}
+	\bar{\Sigma}^{\rm SF}_F \equiv \iint d34 \tau^{\rm z}
 	\begin{pmatrix}
 		0 & F(3,4)\Lambda^{\rm c + \rm d}(1,3,4,2) \\
 		F^\dag(3,4)\Lambda^{\rm c + \rm d}(3,1,2,4) &0
@@ -1113,7 +1128,7 @@ direct one is different because one extra loop appears in the crossed term(Fig.\
 With this normal contributions, the equation of the self-energy from spin fluctuations can be written as follows:
 %
 \begin{equation}
-	\Sigma^{\rm SF} \equiv \iint d34 \tau^{\rm z}
+	\bar{\Sigma}^{\rm SF} \equiv \iint d34 \tau^{\rm z}
 	\begin{pmatrix}
 		-G(3,4)\Lambda^{\rm c - \rm d}(1,3,2,4) & F(3,4)\Lambda^{\rm c + \rm d}(1,3,4,2) \\
 		F^\dag(3,4)\Lambda^{\rm c + \rm d}(3,1,2,4) & -G^\dag(3,4)\Lambda^{\rm c - \rm d}(3,1,4,2)
@@ -1178,8 +1193,50 @@ By using these relations, we can rewrite the expression of the self-energy as fo
 This is a more convenient result than Eq.({\ref{eq:GFself}}) because 
 we have to solve the BSE for only $\Lambda^{\rm c - \rm d}$ and 
 we do not have to compute both $\Lambda^{\rm c}$ and $\Lambda^{\rm d}$ separately.
-In the above expression, we omitted the integral and we will use this notation below unless the expression lead any ambiguity. 
+In the above expression, we omitted the integral and we will use this 
+notation below unless the expression leads any ambiguity. 
 
+In the previous explanation, we derived the approximated expression of the self-energy from spin fluctuations.
+However, there is one problem in the previous expression.
+If we want to calculate the self-energy along with the expression from (\ref{eq:Sigma11}) to (\ref{eq:Sigma21}), 
+we need to calculate the four-point function $\Lambda^{\rm c - \rm d}$ and the resulting integration omitted in the previous expressions becomes 
+too complex to execute.
+In order to avoid this difficulty, we apply a crude approximation to the
+self-energy $\Sigma^{V}$ which is used to calculate $\Lambda_0$ (see Eq.(\ref{eq:lambda0})) and obtain the $\Lambda$ as a two-point function.
+The approximation is that we use the Kohn-Sham potential as the $\Sigma^{V}$\cite{Sole1994}:
+%
+\begin{equation}
+	\Sigma^{V}(1,2) \approx \delta_{\tau_1\tau_2}\delta_{\bm r_1\bm r_2}
+	v^{\rm xc}_{\sigma_1\sigma_2}(\bm r_1 \tau_1),
+	\label{eq:localapp}
+\end{equation}
+%
+where $v^{\rm xc}$ means the Kohn-Sham potential.
+Within this approximation, the functional derivative of $\Sigma^{V}$
+can be calculated using the following result:
+%
+\begin{equation}
+\begin{split}
+	\frac{\delta v^{\rm xc}_{\sigma_1\sigma_2}(\bm x_1)}{\delta G(3,4)}
+	&= \sum_{\sigma_5\sigma_6} \int d{\bm x}_5 
+	\frac{\delta v^{\rm xc}_{\sigma_1\sigma_2}(\bm x_1)}{\delta\rho_{\sigma_5\sigma_6}(\bm x_5)}
+	\frac{\delta\rho_{\sigma_5\sigma_6}(\bm x_5)}{\delta G(3,4)} \\
+	&= \iint d5d6 f^{\rm xc}_{\sigma_1\sigma_2\sigma_5\sigma_6}(\bm x_1 \bm x_5)
+	\frac{\delta G(5,6)}{\delta G(3,4)}\delta_{\bm x_5\bm x_6} \\
+	&= f^{\rm xc}_{\sigma_1\sigma_2\sigma_5\sigma_6}(\bm x_1, \bm x_3)\delta_{\bm x_3 \bm x_4},
+	\label{eq:dervxc}
+\end{split}
+\end{equation}
+%
+where $\bm x_1 = (\bm r_1 \tau_1)$ and $f^{\rm xc}$ is defined as
+%
+\begin{equation}
+	f^{\rm xc}_{\sigma_1\sigma_2\sigma_5\sigma_6}(\bm x_1 \bm x_5)
+	\equiv 
+	\frac{\delta v^{\rm xc}_{\sigma_1\sigma_2}(\bm x_1)}{\delta\rho_{\sigma_5\sigma_6}(\bm x_5)}.
+	\label{eq:deffxc}
+\end{equation}
+%
 %%%%%%%%%%%%%%%%%%%%    Equation  %%%%%%%%%%%%%%%%%%%%%
 \section{Equation}\label{sec:method_model}
 \subsection{Equation}\label{sec:method_model_model}	
