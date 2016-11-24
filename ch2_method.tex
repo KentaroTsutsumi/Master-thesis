@@ -1237,6 +1237,122 @@ where $\bm x_1 = (\bm r_1 \tau_1)$ and $f^{\rm xc}$ is defined as
 	\label{eq:deffxc}
 \end{equation}
 %
+
+If we approximate the full Green's function in (\ref{eq:BSELambda}) by the Kohn-Sham one, 
+the BSE for $\Lambda^{\rm c - \rm d}$ reads as
+%
+\begin{equation}
+	\begin{split}
+	\Lambda^{\rm c - \rm d} &= 4f^{\rm xc} + 16f^{\rm xc}G^{\rm KS}G^{\rm KS}f^{\rm xc}
+	+ 64f^{\rm xc}G^{\rm KS}G^{\rm KS}f^{\rm xc}G^{\rm KS}G^{\rm KS}f^{\rm xc} + \cdots \\
+	&= 4f^{\rm xc} + 16f^{\rm xc}\frac{\chi^{\rm KS}}{1-f^{\rm xc}\chi^{\rm KS}}f^{\rm xc}, 
+	\label{eq:Dysonlambda}
+\end{split}
+\end{equation}
+%
+where $\chi^{\rm KS}$ is the Kohn-Sham susceptibility. If we write the spin indices explicitly,
+the above expression can be written as follows:
+%
+\begin{equation}
+	\Lambda^{\rm c - \rm d}_{\sigma_1\sigma_1\sigma_2\sigma_2} = 4f^{\rm xc}_{\sigma_1\sigma_1\sigma_2\sigma_2} 
+	+ 16 \sum_{\sigma_6\sigma_7}f^{\rm xc }_{\sigma_1\sigma_1\sigma_6\sigma_6}
+	P_{\sigma_6\sigma_6\sigma_7\sigma_7}f^{\rm xc}_{\sigma_7\sigma_7\sigma_2\sigma_2},
+	\label{eq:longlambda}
+\end{equation}
+%
+\begin{equation}
+	\Lambda^{\rm c - \rm d}_{\sigma-\sigma\sigma-\sigma} = 4f^{\rm xc}_{\sigma-\sigma\sigma-\sigma} 
+	+ 16 f^{\rm xc }_{\sigma-\sigma\sigma-\sigma}
+	P_{\sigma-\sigma\sigma-\sigma}f^{\rm xc}_{\sigma-\sigma\sigma-\sigma},
+	\label{eq:translambda}
+\end{equation}
+%
+where $P$ indicates the proper part of the response function. The full response function can be obtained
+by solving the following Dyson equation:
+%
+\begin{equation}
+	\chi_{\sigma_1\sigma_2\sigma_3\sigma_4} = P_{\sigma_1\sigma_2\sigma_3\sigma_4}
+	+ \delta_{\sigma_1\sigma_2}\delta_{\sigma_3\sigma_4} \sum_{\sigma\sigma'}
+	P_{\sigma_1\sigma_2\sigma\sigma}v\chi_{\sigma'\sigma'\sigma_3\sigma_4},
+	\label{eq:chiDyson}
+\end{equation}
+%
+where $v$ indicates the bare Coulomb interaction.
+The full response function in the spin basis describes how the spin-resolved charge density is modified
+due to the external field:
+%
+\begin{equation}
+	\chi_{\sigma_1\sigma_2\sigma_3\sigma_4}(\bm x_1,\bm x_2) \equiv
+	\frac{\delta\rho_{\sigma_1\sigma_2}(\bm x_1)}{\delta\varphi^{\rm ext}_{\sigma_3\sigma_4}(\bm x_2)}.
+	\label{eq:spinchi}
+\end{equation}
+%
+In equations from (\ref{eq:Sigma11}) to (\ref{eq:Sigma21}), $\Lambda^{\rm c - \rm d}$ is still the
+four-point function with respect to spin and difficult to handle.
+To simplify these equations, we transform these four-point quantities into the quantities which have
+two labels of the Pauli matrices; i.e.,
+%
+\begin{equation}
+	\chi_{ij}(\bm x_1, \bm x_2) \equiv 
+	\frac{\delta\rho_i(\bm x_1)}{\delta\varphi^{\rm ext}_{j}(\bm x_2)}.
+	\label{eq:Paulichi}
+\end{equation}
+%
+In this form, $\chi$ determines the change of the electronic charge $\rho$ or magnetic moment $\bm m$
+due to the external physical fields.
+The basis transformation between these two representations is defined as 
+%
+\begin{equation}
+	\begin{split}
+	& A_{\alpha\beta\delta\gamma} = \frac{1}{4}\sum_{ij}
+	\sigma^{i}_{\alpha\beta}A_{ij}\sigma^{j}_{\gamma\delta}, \\
+	& A_{ij} = \sum_{\alpha\beta\gamma\delta}
+	\sigma^{i}_{\beta\alpha}A_{\alpha\beta\gamma\delta}\sigma^{i}_{\delta\gamma},
+	\label{eq:basistrans}
+\end{split}
+\end{equation}
+%
+where $\sigma^{i}$ is the Pauli matrices
+%
+\begin{equation}
+	\sigma^0 = 
+	\begin{pmatrix}
+		1 & 0 \\
+		0 & 1
+	\end{pmatrix},
+	\sigma^x = 
+	\begin{pmatrix}
+		0 & 1 \\
+		1 & 0
+	\end{pmatrix},
+	\sigma^y = 
+	\begin{pmatrix}
+		0 & -\rm i \\
+		\rm i & 0
+	\end{pmatrix},
+	\sigma^z = 
+	\begin{pmatrix}
+		1 & 0 \\
+		0 & -1
+	\end{pmatrix}.
+	\label{eq:Pauli}
+\end{equation}
+%
+It should be noted that the full response function is sparse for the magnetic collinear system
+%
+\begin{equation}
+	\chi_{ij} = 
+	\begin{pmatrix}
+		\chi_{xx} & \chi_{xy} & 0 & 0 \\
+		\chi_{yx} & \chi_{yy} & 0 & 0 \\
+		0 & 0 & \chi_{zz} & \chi_{z0} \\
+		0 & 0 & \chi_{0z} & \chi_{00} \\
+	\end{pmatrix},
+	\label{eq:sparsechi}
+\end{equation}
+%
+and the full response function is equal to the proper one $\chi_{ij} = P_{ij}$ if 
+$i, j \in \{x,y\}$.
 %%%%%%%%%%%%%%%%%%%%    Equation  %%%%%%%%%%%%%%%%%%%%%
 \section{Equation}\label{sec:method_model}
 \subsection{Equation}\label{sec:method_model_model}	
