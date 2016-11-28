@@ -12,32 +12,82 @@ effect of spin fluctuations. We also show that the magnitude of $\mathcal K^{\rm
 resulting amount of $T_{c}$ reduction is related to the electronic locarization.
 
 \section{Computational details}
-We used Quantum ESPRESSO\cite{QE} to obtain the Kohn-Sham energies and wave functions.
+We used the Quantum ESPRESSO\cite{QE} package to obtain the Kohn-Sham energies and wave functions.
 We obtained the phonon frequencies and electron-phonon coupling by using the density functional
 perturbation theory(DFPT)\cite{DFPT}.
-We applied the optimized tetrahedron method\cite{opttetra} to execute the Brillouin zone
-integration for the Kohn-Sham polarization function.
+We used the GGA-PBE exchange-correlation functional\cite{GGAPBE} and the norm-conserving 
+pseudopotentials\cite{normcons} for all materials. 
+The scalar relativistic correction was applied to the Nb pseudopotential.
+The numerical conditions are listed in Table\ref{tab:numcond}.
+We used the first order of Hermite-Gaussian smearing function\cite{Paxton1989} 
+with width = $0.025$Ry for metallic calculations.
+
+\begin{table}[hbtp]
+	\centering
+	\caption{Numerical conditions.}
+	\begin{tabular}{lccc}
+		\hline \hline
+		& V & Nb & Al \\
+		\hline
+	$k$ grid (structure optimization) & $12\times12\times12$ & $12\times12\times12$ & $12\times12\times12$ \\
+	$q$ grid (dynamical matrices) & $ 8\times8\times8$ & $8\times8\times8$ & $8\times8\times8$ \\
+	$k$ grid (phonon linewidth) & $48\times48\times48$ & $48\times48\times48$ & $48\times48\times48$ \\
+	wavefunction energy cutoff & 80Ry & 80Ry & 20Ry \\
+	charge density energy cutoff & 320Ry & 320Ry & 80Ry \\
+	\hline \hline
+	\end{tabular}
+	\label{tab:numcond}
+\end{table}
+
+\section{Results}
+Calculated results are summarized in table\ref{tab:results}.
+
+\begin{table}[hbtp]
+	\centering
+	\caption{Calculation results. The calculated $T_c$ is obtained with RPA + adiabatic LDA} 
+	\begin{tabular}{lccc}
+		\hline \hline
+		& V & Nb & Al \\
+		\hline
+		lattice constant $a$ [\AA] & 3.00 & 3.28 & 4.04 \\
+		lattice constant $a$ [\AA] (experiment) & 3.02\cite{Kuentzler1985} & 3.31\cite{Laesser1985} & 4.04\cite{Sumiyama1990} \\
+		\hline
+		$\lambda$ & 1.31 & 1.39 & 0.42 \\
+		$\omega_{\rm ln}$ & 212 & 175 & 298 \\
+		\hline
+		$T_c$ (static, without SF) [K] & 10.5 & 7.4 & 0.5 \\
+		$T_c$ (dynamical, without SF) [K] & 17.8 & 11.1 & 1.4 \\
+		$T_c$ (static, with SF) [K] & 5.0 & 6.2 & 0.4 \\
+		$T_c$ (dynamical, with SF) [K] & 8.3 & 8.9 & 1.4 \\
+		$T_c$ (Thomas Fermi, without SF) [K] & - & 9.5\cite{Luders2005} & 0.14\cite{Luders2005} \\
+		$T_c$ (static RPA, without SF) [K] & - & - & 0.8\cite{RA2013} \\
+		$T_c$ (dynamical RPA, without SF) [K] & - & - & 1.4\cite{RA2013} \\
+		$T_c$ (experimental)\cite{Ashcroft} [K] & 5.38 & 9.50 & 1.14 \\
+		\hline \hline
+	\end{tabular}
+	\label{tab:results}
+\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%  CRYSTAL STRUCTURE  %%%%%%%%%%%%%%%%
-\section{Table} \label{sec:Constructing the Model}
-
-%%%%%%%%%%%%%%%%%%%%%   FORCE CONSTANT  %%%%%%%%%%%%%%%%
-\subsection{Table}  \label{sec:Force Constant}
-Chapter reference  Fig\ref{fig:structure_copt}. 
-
-\begin{table}[hbtp] %%%%% TABLE FREAUENCIES
-  \centering
-  \begin{tabular}{lcccccccc}
-    \hline \hline
-    &\multicolumn{2}{c}{A$_{2u}$ modes} & & \multicolumn{4}{c}{E$_u$ modes } \\ 
-   \hline 
-    LDA+U (this work)  & 407  & 574  & & 311 & 447 & 562 & 635\\
-    PBE (Ref.\cite{Ye2014}) & 388 & 522 & & 297 & 427 & 510 & 610  \\
-    Expt. (Ref.\cite{Lucovsky1977})  & 402 & 533  & & 305 & 440 & 538 & 609 \\
-    \hline \hline
-  \end{tabular}
-    \caption{Phonon frequencies ($\rm{cm^{-1}}$) }
-\label{tab:freq}
-\end{table}
+%\section{Table} \label{sec:Constructing the Model}
+%
+%%%%%%%%%%%%%%%%%%%%%%   FORCE CONSTANT  %%%%%%%%%%%%%%%%
+%\subsection{Table}  \label{sec:Force Constant}
+%Chapter reference  Fig\ref{fig:structure_copt}. 
+%
+%\begin{table}[hbtp] %%%%% TABLE FREAUENCIES
+%  \centering
+%  \begin{tabular}{lcccccccc}
+%    \hline \hline
+%    &\multicolumn{2}{c}{A$_{2u}$ modes} & & \multicolumn{4}{c}{E$_u$ modes } \\ 
+%   \hline 
+%    LDA+U (this work)  & 407  & 574  & & 311 & 447 & 562 & 635\\
+%    PBE (Ref.\cite{Ye2014}) & 388 & 522 & & 297 & 427 & 510 & 610  \\
+%    Expt. (Ref.\cite{Lucovsky1977})  & 402 & 533  & & 305 & 440 & 538 & 609 \\
+%    \hline \hline
+%  \end{tabular}
+%    \caption{Phonon frequencies ($\rm{cm^{-1}}$) }
+%\label{tab:freq}
+%\end{table}
 
 \include{end}
