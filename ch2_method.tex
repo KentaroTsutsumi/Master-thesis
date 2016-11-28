@@ -1519,7 +1519,7 @@ the gap equation which is similar to the conventional one (\ref{eq:truegapeq}):
 \end{equation}
 %
 \begin{equation}
-	\mathcal Z_{k} = \mathcal Z^{\rm ph}_{k} - \mathcal Z^{\rm SF}_{k} 
+	\mathcal Z_{k} = \mathcal Z^{\rm ph}_{k} + \mathcal Z^{\rm SF}_{k} 
 	\label{eq:Zsum}
 \end{equation}
 %
@@ -1559,9 +1559,13 @@ the gap equation which is similar to the conventional one (\ref{eq:truegapeq}):
 %
 In the above equations, $k = \{n,\bm k \}$ and the kernels labeled ph and el are same as ones
 derived in the preivious section. Note that the contribution from spin fluctuations to $\mathcal Z$
-has the different sign from phonon contribution, while in $\mathcal K$ they have same signs.
+has the same sign from phonon contribution, while in $\mathcal K$ they have different signs.
+In $\mathcal K$, the electron phonon interaction is attracting but the interaction mediated by
+spin fluctuations is repulsive.
 This sign difference comes from the number of loops contained in diagrams discussed above
 (see (\ref{eq:Fself})). The detail of derivation of these equations are described in Appendix.
+In practice, the Matsubara summation in (\ref{eq:ZSFdef}) is too complex and numerically demanding.
+Therefore, in our calculation we neglect the term ${\mathcal Z}^{SF}$.
 %%%%%%%%%%%%%%%%%%%%    Equation  %%%%%%%%%%%%%%%%%%%%%
 \section{Equation}\label{sec:method_model}
 \subsection{Equation}\label{sec:method_model_model}	

@@ -1,0 +1,54 @@
+This is pBibTeX, Version 0.99d-j0.33 (utf8.euc) (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: ch2_method.aux
+A level-1 auxiliary file: end.aux
+The style file: osajnl.bst
+Database file #1: library_intro.bib
+Database file #2: library_method.bib
+Database file #3: library_result.bib
+Warning--empty journal in Luders2005_1
+Warning--empty title in RA2012
+Warning--empty title in MarquesphD
+You've used 20 entries,
+            2587 wiz_defined-function locations,
+            734 strings with 7390 characters,
+and the built_in function-call counts, 6971 in all, are:
+= -- 510
+> -- 227
+< -- 0
++ -- 83
+- -- 63
+* -- 492
+:= -- 844
+add.period$ -- 37
+call.type$ -- 20
+change.case$ -- 17
+chr.to.int$ -- 0
+cite$ -- 23
+duplicate$ -- 678
+empty$ -- 689
+format.name$ -- 81
+if$ -- 1520
+int.to.chr$ -- 0
+int.to.str$ -- 20
+missing$ -- 179
+newline$ -- 64
+num.names$ -- 20
+pop$ -- 214
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 94
+stack$ -- 0
+substring$ -- 405
+swap$ -- 440
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 3
+while$ -- 47
+width$ -- 22
+write$ -- 178
+is.kanji.str$ -- 0
+(There were 3 warnings)

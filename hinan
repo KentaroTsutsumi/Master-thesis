@@ -1,0 +1,29 @@
+If we take into account of the frequency-dependent screened Coulomb interaction,
+the formulation for ${\mathcal K}^{\rm el}_{ij}$ should be modified as follows\cite{ra2013}:
+%
+\begin{equation}
+	{\mathcal K}^{\rm el, dyn}_{n\bm k,n'\bm k'} = 
+	\lim_{\{\Delta_{n\bm k}\} \to 0}
+	\frac{1}{\tanh[(\beta/2)E_{n\bm k}]}\frac{1}{\tanh[(\beta/2)E_{n'\bm k'}]}
+	\frac{1}{\beta^2}
+	\sum_{\tilde{\omega}_1\tilde{\omega}_2}
+	F_{n\bm k}({\rm i}\tilde\omega_1)F_{n'\bm k'}({\rm i}\tilde\omega_2)
+	W_{n\bm kn'\bm k'}[{\rm i}(\tilde\omega_1 - \tilde\omega_2)],
+	\label{eq:Keldyn}
+\end{equation}
+%
+where $F_{n\bm k}({\rm i}\tilde\omega) = 
+\frac{1}{\rm i \tilde\omega + E_{n\bm k}}-\frac{1}{\rm i \tilde\omega + E_{n\bm k}}$
+and $\tilde\omega$ means the bosonic Matsubara frequency and we defined 
+$W_{n\bm kn'\bm k'}({\rm i}\omega)$ as below
+%
+\begin{equation}
+	W_{n\bm kn'\bm k'}({\rm i}\omega) = 
+	\int d^3r \int d^3r' \varphi_{n\bm k}(\bm r)\varphi_{n-\bm k}({\bm r'})
+	v^{\rm scr}(\bm r, {\bm r'}, \omega) \varphi_{n'\bm k'}(\bm r) \varphi_{n'-\bm k'}({\bm r'}).
+	\label{eq:dynWnknk}
+\end{equation}
+%
+We describe how to calcurate the summation with respect to the even Matsubara frequency
+in Appendix.
+

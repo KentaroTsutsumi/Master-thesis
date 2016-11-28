@@ -1,0 +1,97 @@
+\begin{thebibliography}{10}
+\newcommand{\enquote}[1]{``#1''}
+
+\bibitem{Luders2005_1}
+M.~L{\"u}ders, M.~Marques, N.~Lathiotakis, A.~Floris, G.~eta, L.~Fast,
+  A.~Continenza, S.~Massidda, and E.~Gross, \enquote{Ab initio theory of
+  superconductivity. i. density functional formalism and approximate
+  functionals,}  \textbf{72} (2005).
+
+\bibitem{BdG1958}
+N.~N. Bogoliubov, \enquote{A new method in the theory of supercondictibity,}
+  Sov. Phys. JETP \textbf{7}, 41 (1958).
+
+\bibitem{Baroni2001}
+S.~Baroni, S.~{De Gironcoli}, A.~{Dal Corso}, and P.~Giannozzi,
+  \enquote{{Phonons and related crystal properties from density-functional
+  perturbation theory},} Reviews of Modern Physics \textbf{73}, 515 (2001).
+
+\bibitem{Levy1994}
+A.~G\"orling and M.~Levy, \enquote{Exact kohn-sham scheme based on perturbation
+  theory,} Phys. Rev. A \textbf{50}, 196--204 (1994).
+
+\bibitem{RA2012}
+R.~Akashi, K.~Nakamura, R.~Arita, and M.~Imada, Phys. Rev. B \textbf{86},
+  054513 (2012).
+
+\bibitem{Zangwill1980}
+A.~Zangwill and P.~Soven, \enquote{Density-functional approach to local-field
+  effects in finite systems: Photoabsorption in the rare gases,} Phys. Rev. A
+  \textbf{21}, 1561--1572 (1980).
+
+\bibitem{TDDFT}
+M.~A.~L. Marques, C.~A. Ullrich, F.~Nogueira, A.~Rubio, K.~Burke, and E.~K.~U.
+  Gross, \emph{Time-Dependent Density Functional Theory} (Springer, Berlin,
+  2006).
+
+\bibitem{ra2013}
+R.~Akashi and R.~Arita, \enquote{Development of density-functional theory for a
+  plasmon-assisted superconducting state: Application to lithium under high
+  pressures,} Phys. Rev. Lett. \textbf{111}, 057006 (2013).
+
+\bibitem{Essenberger2014}
+F.~Essenberger, A.~Sanna, A.~Linscheid, F.~Tandetzky, G.~Profeta, P.~Cudazzo,
+  and E.~K.~U. Gross, \enquote{Superconducting pairing mediated by spin
+  fluctuations from first principles,} Phys. Rev. B \textbf{90}, 214504 (2014).
+
+\bibitem{Gordon1961}
+G.~Baym and L.~P. Kadanoff, \enquote{Conservation laws and correlation
+  functions,} Phys. Rev. \textbf{124}, 287--299 (1961).
+
+\bibitem{Ersoy2010}
+E.~\ifmmode \mbox{\c{S}}\else \c{S}\fi{}a\ifmmode \mbox{\c{s}}\else
+  \c{s}\fi{}\ifmmode \imath \else \i \fi{}o\ifmmode~\breve{g}\else
+  \u{g}\fi{}lu, A.~Schindlmayr, C.~Friedrich, F.~Freimuth, and S.~Bl\"ugel,
+  \enquote{Wannier-function approach to spin excitations in solids,} Phys. Rev.
+  B \textbf{81}, 054434 (2010).
+
+\bibitem{BSE1951}
+E.~E. Salpeter and H.~A. Bethe, \enquote{A relativistic equation for
+  bound-state problems,} Phys. Rev. \textbf{84}, 1232--1242 (1951).
+
+\bibitem{Onida2002}
+G.~Onida, L.~Reining, and A.~Rubio, \enquote{Electronic excitations:
+  density-functional versus many-body green's-function approaches,} Rev. Mod.
+  Phys. \textbf{74}, 601--659 (2002).
+
+\bibitem{Sole1994}
+R.~Del~Sole, L.~Reining, and R.~W. Godby, \enquote{\textit{GW}
+  \ensuremath{\Gamma} approximation for electron self-energies in
+  semiconductors and insulators,} Phys. Rev. B \textbf{49}, 8024--8028 (1994).
+
+\bibitem{Arya2008}
+F.~Aryasetiawan and S.~Biermann, \enquote{Generalized hedin's equations for
+  quantum many-body systems with spin-dependent interactions,} Phys. Rev. Lett.
+  \textbf{100}, 116402 (2008).
+
+\bibitem{Vignale1985}
+G.~Vignale and K.~S. Singwi, \enquote{Effective two-body interaction in coulomb
+  fermi liquids,} Phys. Rev. B \textbf{32}, 2156--2166 (1985).
+
+\bibitem{Zhu1986}
+X.~Zhu and A.~W. Overhauser, \enquote{Plasmon-pole and paramagnon-pole model of
+  an electron liquid,} Phys. Rev. B \textbf{33}, 925--936 (1986).
+
+\bibitem{Runge1984}
+E.~Runge and E.~K.~U. Gross, \enquote{Density-functional theory for
+  time-dependent systems,} Phys. Rev. Lett. \textbf{52}, 997--1000 (1984).
+
+\bibitem{Sham1983}
+L.~J. Sham and M.~Schl\"uter, \enquote{Density-functional theory of the energy
+  gap,} Phys. Rev. Lett. \textbf{51}, 1888--1891 (1983).
+
+\bibitem{MarquesphD}
+M.~Marques, Ph.D. thesis, Bayerische Julius-Maximilians Universit\"at
+  W\"urzburg (1998).
+
+\end{thebibliography}
