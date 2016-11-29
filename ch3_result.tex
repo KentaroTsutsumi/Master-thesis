@@ -41,10 +41,37 @@ with width = $0.025$Ry for metallic calculations.
 
 \section{Results}
 Calculated results are summarized in table\ref{tab:results}.
+The lattice constants resulting from the structure optimization agree with the experimental ones.
+We used the theoretically optimized lattice constants in the following calculations.
+The results labeled static are obtained by neglecting the frequency dependence of the 
+screened Coulomb interaction and spin fuctuations-mediated interaction.
+We applied the ALDA for the screened Coulomb interaction as mentioned in the previous chapter, 
+while RPA is applied in Ref.\cite{RA2013}.
 
+In case of V, we obtain $T_c = 17.8$K with dinamical calculation when we did not take account of 
+spin fluctuations and this value is extremely higher than experimental value.
+On the other hand, when we include the spin fluctuations, $T_c$ is reduced to $8.3$K.
+Although this value is still higher than exprerimental one by about 60\%, the agreement between 
+the experimental value is improved.
+In case of Nb, we obtain $T_c = 11.1$K with dinamical calculation when we did not take account of 
+spin fluctuations and this value is higher than experimental value by about 15\%.
+On the other hand, when we include the spin fluctuations, $T_c$ is reduced to $8.9$K.
+The qualitative trend that the $T_c$ is reduced due to the effect of spin fluctuations is same as 
+in case of V, but the amount of reduction of $T_c$ is relatively smaller than in case of V.
+This quantitatively different behavior comes from the strength of electronic locarization in each material.
+
+The ferromagnetic fluctuations come from the exchange effect: Two electrons having same spins are 
+required to be saparated in space due to the Pauli's rule. As a result, in the 
+nearly homogeneous system, these two electron have lower energy than that of two electrons having 
+opposite spins and the ferromagnetic fluctuations are induced.
+In addition, the exchange effect is significant in strongly localized electrons.
+Returning to the present results, there are 4$d$ electrons in Nb, while there are 3$d$ electrons 
+in V and they are strongly locarized than 4$d$ electrons. 
+
+%
 \begin{table}[hbtp]
 	\centering
-	\caption{Calculation results. The calculated $T_c$ is obtained with RPA + adiabatic LDA} 
+	\caption{Calculation results. SF means spin fluctuations.} 
 	\begin{tabular}{lccc}
 		\hline \hline
 		& V & Nb & Al \\
@@ -67,7 +94,7 @@ Calculated results are summarized in table\ref{tab:results}.
 	\end{tabular}
 	\label{tab:results}
 \end{table}
-
+%
 %%%%%%%%%%%%%%%%%%%%%  CRYSTAL STRUCTURE  %%%%%%%%%%%%%%%%
 %\section{Table} \label{sec:Constructing the Model}
 %
