@@ -66,10 +66,13 @@ nearly homogeneous system, these two electron have lower energy than that of two
 opposite spins and the ferromagnetic fluctuations are induced.
 In addition, the exchange effect is significant in strongly localized electrons.
 Returning to the present results, there are 4$d$ electrons in Nb, while there are 3$d$ electrons 
-in V and they are strongly locarized than 4$d$ electrons. 
-
+in V and they are strongly locarized than 4$d$ electrons. Therefore, the effect of spin fluctuations
+is stronger in V than in Nb.
+The result in Al can be interpreted similarly. In case of Al, the $T_c$ reduction due to spin fluctuations
+is not observed. This result is reasonable because there are nearly free electrons in Al and the
+exchange effect is relatively smaller than in case of V and Nb.
 %
-\begin{table}[hbtp]
+\begin{table}[htbp]
 	\centering
 	\caption{Calculation results. SF means spin fluctuations.} 
 	\begin{tabular}{lccc}
@@ -94,6 +97,77 @@ in V and they are strongly locarized than 4$d$ electrons.
 	\end{tabular}
 	\label{tab:results}
 \end{table}
+
+We found that the effect of spin fluctuations on $T_c$ is at least qualitatively reasonable and 
+the amount of the $T_c$ reduction is related to the electronic locarization.
+In order to investigate how spin fluctuations affect on the $T_c$ closely, we 
+consider the partially averaged nondiagonal exchange correlation kernel which is defined as
+%
+\begin{equation}
+	\mathcal K_{n\bm k}(\xi) \equiv \frac{1}{N(\xi)}
+	\sum_{n'\bm k'} \mathcal K_{n\bm n'\bm k'}\delta(\xi - \xi_{n'\bm k'}).
+	\label{eq:aveK}
+\end{equation}
+%
+
+The averaged exchange correlation kernels and corresponding gap functions calculated for V 
+are plotted in Fig.\ref{fig:Vaveker}. The kernel originated from the electron-phonon interaction
+$\mathcal K^{\rm ph}$ is negative within the low energy region and nearly zero in the region 
+where $\xi \gtrsim 1$eV. The kernels of the static Coulomb interaction is nearly constant in the
+whole energy region. On the other hand, the kernel stemmed from the plasmon-induced dynamical
+Coulomb interaction rises from nearly zero to positive around $\xi \approx 10^{-1}$eV.
+This contribution suppresses the effective repulsion between quasiparticles due to the 
+retardian effect and the resulting $T_c$ is enhanced compared to that of static approximation
+\cite{RA2013}.
+The kernel originated from dynamical spin fluctuations is nearly positive constant in the energy region where
+the contribution from the dynamical Coulomb interaction is nearly zero and that from the
+electron-phonon interaction is negative. In the high-energy region, on the other hand, 
+the contribution from spin fluctuations reduces to zero. 
+Furthermore, the magnitude of repulsion due to spin fluctuations in low-energy region is comparative 
+to that of the static Coulomb interaction. This energy dependence of
+$\mathcal K^{\rm SF}$ suppresses the low-energy positive gap function (Fig.\ref{fig:Vaveker}(b)) and
+the resulting $T_c$ strongly.
+It should be noted that a cusp is observed in the gap function with spin fluctuations 
+around $\xi \approx 10^{-2}{\rm eV}$. This cusp may be caused by the result that there is a small
+peak in spin fluctuations kernel between $\xi = 10^{-1}{\rm eV}$ and $10^{-2}{\rm eV}$ and
+$\mathcal K^{\rm SF}$ is slightly reduced in low-energy region.
+
+%
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=12truecm,clip]{../figure/result/V_kernels.pdf}
+	\caption{(a) Decomposition of the averaged exchange-correlation kernels defined in 
+		(\ref{eq:aveK}) at $T=0.01$K in V. (b) Corresponding gap funtions without 
+	and with SF. $\xi$ is the energy measured from the chemical potential $\mu$.}
+	\label{fig:Vaveker}
+\end{figure}
+%
+
+Next, we see the averaged exchange-correlation kernels calculated for Nb in Fig.\ref{fig:Nbaveker}.
+In case of Nb, the quantitive trend is same as in case of V: The averaged kernel of spin fluctuations
+is nearly positive constant and reduces to zero in high energy region.
+However, the magnitude of the kernel $\mathcal K^{\rm SF}$ is relatively smaller than that of V.
+%
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=12truecm,clip]{../figure/result/Nb_kernels.pdf}
+	\caption{(a) Decomposition of the averaged exchange-correlation kernels
+		at $T=0.01$K in Nb. (b) Corresponding gap funtions without 
+	and with SF.}
+	\label{fig:Nbaveker}
+\end{figure}
+%
+
+Finally, we see the averaged exchange-correlation kernels calculated for Al in Fig.\ref{fig:Alaveker}.
+%
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=12truecm,clip]{../figure/result/Al_kernels.pdf}
+	\caption{(a) Decomposition of the averaged exchange-correlation kernels
+		at $T=0.01$K in Al. (b) Corresponding gap funtions without 
+	and with SF.}
+	\label{fig:Alaveker}
+\end{figure}
 %
 %%%%%%%%%%%%%%%%%%%%%  CRYSTAL STRUCTURE  %%%%%%%%%%%%%%%%
 %\section{Table} \label{sec:Constructing the Model}
