@@ -32,7 +32,7 @@ superconducting phase. However, in practice, it is not appropriate: Thanks to th
 Hohenberg-Kohn therem\cite{HK1964}, the order parameter $\chi(\bm r, \bm r')$ is written as the 
 functional of the electronic density. However, the functional is non-local and its explicit form 
 is unknown. An idea\cite{Oliveira1988} to avoid this difficulty 
-is to treat the order parameter as a basic density in DFT and describe a physical quantity
+is to treat the order parameter as a basic density in DFT and describe all observable quantities
 as a functional of the electronic density and the order parameter.
 Based on this DFT for superconductors(SCDFT), numerical scheme to calculate $T_c$ from the
 first-principles has been developed recently. In 2005, L\"{u}ders {\it et al.} implemented a 
@@ -41,8 +41,9 @@ method\cite{Luders2005} to consider the phonon mediated pairing. In 2014, Essenb
 We review these theoretical formulation below.
 
 \section{Density functionals and Kohn-Sham system for superconductors}
-In order to treat the electron-phonon and Coulomb interactions in superconductors like the Hohenberg-Kohn way, 
-we consider the many-body electron-nuclear Hamiltonian
+We consider a system of electrons and nuclei. For the later discussion which is anologous to the 
+Hohenberg-Kohn theorem in traditional DFT, we start from the following
+first-principles many-body electron-nuclear Hamiltonian
 %
 \begin{equation}  %%%%%%% Hamiltonian
 \label{eq:Hamil}
@@ -53,7 +54,7 @@ we consider the many-body electron-nuclear Hamiltonian
 %
 where $\hat{T}^\mathrm{e}$ represents the electronic kinetic energy, $\hat{T}^\mathrm{n}$ the nuclear kinetic energy, 
 $\hat{U}^\mathrm{en}$ the electron-nuclear interaction, $\hat{U}^\mathrm{ee}$ the electron-electron interaction.
-The electronic external potential $\hat{V}^\mathrm{e}_\mathrm{ext}$ is defined as
+The electronic external potential $\hat{V}^\mathrm{e}_\mathrm{ext}$ representing applied electric field is defined as
 %
 \begin{equation} %%%%%%% electronic external potential
 	\hat{V}^\mathrm{e}_\mathrm{ext} = \sum_{\sigma}\int d^3r\hat{\Psi}^\dag_{\sigma}({\bm r})
@@ -61,12 +62,12 @@ The electronic external potential $\hat{V}^\mathrm{e}_\mathrm{ext}$ is defined a
 \end{equation} 
 %
 where $\hat{\Psi}^\dag_{\sigma}({\bm r})$ is the electron creation operator. 
-$\hat{V}^\mathrm{n}_\mathrm{ext}$  is a $N$-body operator with respect to the nuclear coordinates
+$\hat{V}^\mathrm{n}_\mathrm{ext}$  is an $N$-body operator with respect to the nuclear coordinates
 %
 \begin{equation} %%%%%%% nuclear external potential
-	\hat{V}^\mathrm{n}_\mathrm{ext} = \sum_{\sigma}\int d^3\underline{\bm{R}}
-	                                                            v^\mathrm{n}_\mathrm{ext}(\underline{\bm{R}})
-	                                                            \hat{\Gamma}(\underline{\bm{R}}),
+	\hat{V}^\mathrm{n}_\mathrm{ext} = \int d^{3N}\underline{\bm{R}}
+                                          v^\mathrm{n}_\mathrm{ext}(\underline{\bm{R}})
+                                          \hat{\Gamma}(\underline{\bm{R}}),
 \end{equation} 
 %
 where $\underline{\bm{R}}$ represents a set of the coordinates of $N$-body nuclei and 
@@ -89,7 +90,7 @@ indicates the external pairing field. This term must be included in order to bre
 the Hamiltonian. We will take the limit $\Delta_\mathrm{ext} \to 0$ at the end of the derivation.
 In this thesis, it is assumed that we treat singlet superconductors. However,  we can extend the formulation 
 for triplet superconductors straightforwardly.
-Finally, $\mu$ means the chemical potential and $\hat{N}$ is the number operator of electrons. 
+Finally, $\mu$ means the chemical potential and $\hat{N}$ is the total number operator of electrons. 
 
 The formulation of this theory is based on three densities: (i) The usual electronic density 
 %
@@ -116,7 +117,7 @@ where $\hat{\rho}_0$ is the grand canonical density operator and $\beta$ is the 
 	                                                    \hat{\Psi}_\downarrow \bigl(\bm{r'}\bigr) \right>
 \end{equation}
 %
-is the order parameter for the singlet superconductors. This quantity becomes zero above the $T_\mathrm{c}$ and finite below it.
+is the order parameter for the singlet superconductors. This quantity becomes zero above the $T_\mathrm{c}$ and non-zero below it.
 
 (iii) The diagonal part of nuclear $N$-body density matrix
 %
@@ -126,7 +127,7 @@ is the order parameter for the singlet superconductors. This quantity becomes ze
 %
 is introduced to describe the nuclear degrees of freedom.
 
-Extending the Hohenberg-Kohn theorem in usual DFT for present multicomponent theory straightforwardly, 
+Extending the Hohenberg-Kohn theorem in usual DFT\cite{HK1964,Mermin1965} for present multicomponent theory straightforwardly, 
 the existence of one-to-one mapping between the set of the densities $ \left\{ n(\bm{r}), \chi \bigl(\bm{r}, \bm{r'} \bigr), 
 \Gamma(\underline{\bm{R}}) \right\}$ and a set of the corresponding potentials 
 $ \left\{ v^{\rm e}_{\rm ext}(\bm{r}), \Delta_\mathrm{ext}(\bm{r}, \bm{r'}), v^{\rm n}_{\rm ext}(\underline{\bm{R}}) \right\}$
@@ -204,7 +205,7 @@ The exchange-correlation free energy is defined as
 where the Hartree terms are defined as
 %
 \begin{equation}%%%%% nuclear Hartree
-	U^{\rm nn}[\Gamma] = \sum_{\alpha \neq \beta}\int d^3\underline{\bm{R}}\Gamma({\underline{\bm{R}}})
+	U^{\rm nn}[\Gamma] = \sum_{\alpha \neq \beta}\int d^{3N}\underline{\bm{R}}\Gamma({\underline{\bm{R}}})
 						\frac{Z^2}{\left| \bm{R}_\alpha - \bm{R}_\beta \right|},
 \end{equation}
 %
@@ -223,7 +224,7 @@ Then we obtain the Kohn-Sham potentials
 %
 \begin{equation} %%%%% Kohn-Sham potential for electron
 \begin{split}
-	v^{\rm e}_0[n, \chi, \Gamma]({\bm r}) &= -Z\sum_{\alpha} \int d^3 \underline{\bm{R}}
+	v^{\rm e}_0[n, \chi, \Gamma]({\bm r}) &= -Z\sum_{\alpha} \int d^{3N} \underline{\bm{R}}
 									\frac{\Gamma(\underline{\bm{R}})}{|\bm{r}-\bm{R}_\alpha |} 
 				+ \int d^3 r' \frac{n(\bm{r'})}{|\bm{r}-\bm{r'}|} \\
 				& \quad + v^{\rm e}_{\rm xc}[n, \chi, \Gamma]({\bm r}),
@@ -264,13 +265,13 @@ where exchange-correlation potentials are defined as
 												{\delta \Gamma(\underline{\bm R})}.
 \end{equation}
 %
-These definitions are analogous to the definition in the standard DFT.
+These definitions are analogous to that in the standard DFT.
 %
 %
 \section{The Kohn-Sham equations}
 %
-We introduced the Kohn-Sham states in the previous section. 
-Now the problem of minimizing the grand canonical potential (\ref{eq:grand_pot_KS}) can be solved by
+We introduced the Kohn-Sham system in the previous section 
+Now the problem of minimizing the grand canonical potential (\ref{eq:grand_pot_KS}) can be recast to
 solving a set of three differential equations self-consistently.
 Two of them describe the electronic degrees of freedom and the third desctibes the nuclear degrees of freedom.
 %
@@ -291,23 +292,24 @@ The two coupled equations are as follows:
 %
 where $u_n(\bm{r})$ and $v_n(\bm{r})$ are particle and hole wavefunctions respectively.
 These equations are equivalent to the Bogoliubov-de Gennes equations\cite{BdG1958}. %%% must cite!!
-The equation for the nucleus 
+The equation for the nuclei
 %
 \begin{equation}
 	\left[-\sum_{\alpha}\frac{\nabla^2_\alpha}{2M} + v^{\rm n}_0(\underline{\bm{R}}) \right]
-	\Phi_n(\underline{\bm{R}}) = {\mathcal E}_n\Phi_n(\underline{\bm{R}})
+	\Phi_n(\underline{\bm{R}}) = {\mathcal E}_n\Phi_n(\underline{\bm{R}}),
 	\label{eq:BO-approx}
 \end{equation}
 %
-where $\Phi_n(\underline{\bm{R}})$ is many-body nuclear wavefunction has the same structure as 
+where $\Phi_n(\underline{\bm{R}})$ is many-body nuclear wavefunction, has the same structure as 
 the usual nuclear Born-Oppenheimer equation.
 %
 
-In priciple, when we solve the equations (\ref{eq:KS-BdG-par})-(\ref{eq:BO-approx}) iteratively, 
+In principle, when we solve the equations (\ref{eq:KS-BdG-par})-(\ref{eq:BO-approx}) iteratively, 
 we can obtain the ground state densities $\{n, \chi, \Gamma\}$.
-However, it requires extraordinary high accuracy to resolve the superconducting energy gap
+It is not so difficult to calculate the electronic band structure for whole energy range.
+However, at the same time, it requires extraordinarily high accuracy to resolve the superconducting energy gap
 because the magnitude of it is about $10^{-3}$ \verb|~| $10^{-4}$ times typical electronic energy.
-In order to avoid this difficulty, so-called ``decoupling approximation'' is beneficial.
+In order to avoid this difficulty, so-called ``decoupling approximation''\cite{Gross1991,KurthphD,LudersphD} is employed.
 
 In the decoupling approximation, we approximate the particle and hole one-particle wavefunctions as follows
 %
@@ -354,7 +356,7 @@ can be obtained easily as follows
 \end{equation}
 %
 
-Next, we consider the nucear equation. Now we are interested in superconductors at relatively low tempereutre, 
+Next, we consider the nuclear equation. Now we are interested in superconductors at relatively low temperature, 
 so it is reasonable to introduce the harmonic approximation. Then the equation (\ref{eq:BO-approx}) reads
 %
 \begin{equation}
@@ -389,15 +391,15 @@ Now we describe how to treat the density dependence of potentials in order to pr
 (i) For $v^{\rm e}_0[n, \chi, \Gamma]$, we neglect the dependense on $\chi$ and $\Gamma$ because 
 the typical electronic energies are three orders of magnitudes bigger than superconducting gap and phonons
 and consequently they do not modify electronic structures so much.
-(ii) For $v^{\rm n}_0[n, \chi, \Gamma]$, we neglect the dependence on $n$ and $\chi$ because
+(ii) For $v^{\rm n}_0[n, \chi, \Gamma]$, we neglect the dependence on $\chi$ because
 we use the Born-Oppenheimer approximation. This approximation is reasonable because
 it is known that the calculations executed within the Born-Oppenheimer approximation well reproduce
 the experimental phonon dispersions\cite{Baroni2001}.
 
 \section{Gap equation}
 %
-Now we derive the gap equation for the potential $\Delta_n$. By inserting (\ref{eq:el-density}) 
-and (\ref{eq:anom-density}) in (\ref{eq:Delta0}) and insert (\ref{eq:Delta0}) into the 
+We derive the gap equation for the potential $\Delta_n$. By inserting (\ref{eq:el-density}) 
+and (\ref{eq:anom-density}) in (\ref{eq:Delta0}) and inserting (\ref{eq:Delta0}) into the 
 right-hand side of (\ref{eq:Deltan}), we get the gap equation
 %
 \begin{equation}
@@ -405,7 +407,7 @@ right-hand side of (\ref{eq:Deltan}), we get the gap equation
 	\label{eq:Delta_gap}
 \end{equation}
 %
-where $\Delta_{{\rm Hxc},n}$ means the sum of the Hartree and excanhge-correlation terms.
+where $\Delta_{{\rm Hxc},n}$ means the sum of the Hartree and exchange-correlation terms.
 
 Around the transition temperature, the anomalous density $\chi$ becomes vanishingly small 
 and the gap equation (\ref{eq:Delta_gap}) can be linearized as below
@@ -437,21 +439,20 @@ where we defined the matrix element of anomalous density $\chi_i$ as
 \section{Kernels of Gap Equation from functional derivatives}
 
 Through the previous sections, we derived the gap equation (\ref{eq:line_gap}) from a density functional
-theory for superconductors. In principle, it is able to calculate the $T_{\rm c}$ by solving 
-the gap equation for any superconductors. However, in order to calculate the kernels 
-${\mathcal F}_{{\rm Hxc},ij}$, 
-we have to make approximations for $\Delta_{\rm xc}$ in (\ref{eq:Delta0}) which is defined in
-(\ref{eq:Deltaxc}). In the following, we briefly review the Kohn-Sham perturbation theory,
+theory for superconductors. In principle, it is possible to calculate the $T_{\rm c}$ by solving 
+the gap equation for any superconductors. However, the exact expression of $F_{\rm xc}$ in (\ref{eq:def-fxc})
+is unknown yet, so we have to make approximations to $F^{\rm xc}$.
+In the following, we briefly review the Kohn-Sham perturbation theory,
 as described by G\"{o}rling and Levy\cite{Levy1994}, 
-and how to deribe the concrete expressions for ${\mathcal F}_{{\rm Hxc},ij}$.
+and how to derive the concrete expressions for ${\mathcal F}_{{\rm Hxc},ij}$.
 
-We consider the electron-nuclear system which Hamiltonian is defined as (\ref{eq:Hamil}).
+We consider the electron-nuclear system whose Hamiltonian is defined as (\ref{eq:Hamil}).
 In order to apply the perturbation theory, we split the Hamiltonian into the unperturbed
-Hamiltonian $\hat{H}_0$ and the reminder which is treated as perturbation.
+Hamiltonian $\hat{H}_0$ and the remainder which is treated as perturbation.
 In the unperturbed Hamiltonian, it is appropriate to consider that nuclei are fixed at their
-equiliblium position $\underline{{\bm R}}_0$, which are defined by nuclear 
-Kohn-Sham Hamiltonian (\ref{eq:BO-approx}). When applied the harmonic approximation,
-it can be rewritten as the phonon Hamiltonian (\ref{eq:harm}).
+equiliblium position $\underline{{\bm R}}_0$, which are determined by nuclear 
+Kohn-Sham Hamiltonian (\ref{eq:BO-approx}). When the harmonic approximation is applied,
+it can be simplified to the phonon Hamiltonian (\ref{eq:harm}).
 %
 Then we construct the Kohn-Sham Hamiltonian within the Born-Oppenheimer approximation as follows
 %
@@ -523,16 +524,16 @@ Using $V^{\rm BO}_{\lambda, {\bm q}}({\bm r})$, the electron-phonon coupling con
 %
 
 We defined the Hamiltonian $\hat{H}_0$ and $\hat{H}_1$ above and now we can apply the perturbation
-approach in order to obtain the explicit expression for kernels in gap equation defined as
+approach to obtain the explicit expression for kernels in gap equation defined as
 (\ref{eq:def-fxc}).
-Considering the definition of $F_{\rm xc}$ in (\ref{eq:Fxc-def}),
+According to Eq.(\ref{eq:Fxc-def}),
 $F_{\rm xc}$ can be obtained by applying the perturbative approach to the difference of 
 thermodynamic potentials $\Delta\Omega = \Omega - \Omega_0$ 
 (see (\ref{eq:grand_pot}) and (\ref{eq:grand_pot_KS}))
 and its functional derivatives with respect to the anomalous density become the kernels of the 
 gap equation.
 
-In the following, we introduce the explicit expressions for $F_{\rm xc}$ derived by L\"{u}ders {\it et al.}.
+In the following, we introduce the explicit expressions for $F_{\rm xc}$ derived by L\"{u}ders {\it et al.}\cite{Luders2005}.
 They expanded $\Delta\Omega$ in the series of topologically distinct connected diagrams 
 and brought the lowest-order diagrams to derive $F_{\rm xc}$.
 
@@ -665,7 +666,7 @@ On the other hand, the Fourier transform of phonon propagator is defined as
 %
 where $\nu_n = 2n\pi/\beta$ are the even Matsubara frequencies.
 Now we are ready to derive the explicit expressions for lowest-order contributions to $F_{\rm xc}$.
-As mentioned before, now we consider the contributions from the Coulomb interaction and the electron-phonon interaction
+At this point, we consider the contributions from the Coulomb interaction and the electron-phonon interaction
 but do not consider the effect of spin fluctuations.
 
 %
