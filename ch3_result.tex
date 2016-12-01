@@ -105,7 +105,7 @@ consider the partially averaged nondiagonal exchange correlation kernel which is
 %
 \begin{equation}
 	\mathcal K_{n\bm k}(\xi) \equiv \frac{1}{N(\xi)}
-	\sum_{n'\bm k'} \mathcal K_{n\bm n'\bm k'}\delta(\xi - \xi_{n'\bm k'}).
+	\sum_{n'\bm k'} \mathcal K_{n\bm k n'\bm k'}\delta(\xi - \xi_{n'\bm k'}).
 	\label{eq:aveK}
 \end{equation}
 %
@@ -147,6 +147,7 @@ Next, we see the averaged exchange-correlation kernels calculated for Nb in Fig.
 In case of Nb, the quantitive trend is same as in case of V: The averaged kernel of spin fluctuations
 is nearly positive constant and reduces to zero in high energy region.
 However, the magnitude of the kernel $\mathcal K^{\rm SF}$ is relatively smaller than that of V.
+As noted above, this is due to the strength of the electronic locarization.
 %
 \begin{figure}[h]
 	\centering
@@ -159,6 +160,34 @@ However, the magnitude of the kernel $\mathcal K^{\rm SF}$ is relatively smaller
 %
 
 Finally, we see the averaged exchange-correlation kernels calculated for Al in Fig.\ref{fig:Alaveker}.
+The kernel $\mathcal K^{\rm SF}$ is significantly smaller than that of the static Coulomb interaction.
+Therefore, the corresponding gap function and the resulting $T_c$ is not so modified.
+%
+% kokokara DISCUSSION deha ?????
+%
+Here we should note about the expression of the spin fluctuations-mediated interaction (\ref{eq:finallambda}).
+As mentioned in the previous chapter, we neglected the linear term of $f^{\rm xc}$ defined as 
+(\ref{eq:deffxc}). If we include the linear term, we observe an unreasonable result in the
+calculation for Al: The gap function is enhanced in low-energy region and the resulting $T_c$
+is also enhanced. It can be considered that this strange results may comes from the frequency
+dependence of $\Lambda^{\rm SF}$. Here we show the expression of $\Lambda^{\rm SF}$ with the linear term in crystals 
+which is written with the double-Fourier transformation\cite{Hybertsen1987}
+%
+\begin{equation}
+	\Lambda^{\rm SF}_{\mathbf G \mathbf G'}(\mathbf q, \omega) = f^{\rm xc}(\mathbf G' - \mathbf G) - 
+	3\sum_{\mathbf G_1 \mathbf G_2} f^{\rm xc}(\mathbf G_1 - \mathbf G)\chi_{\mathbf G_1 \mathbf G_2}(\mathbf q, \omega)
+	f^{\rm xc}(\mathbf G' - \mathbf G_2).
+	\label{eq:lambdamiss}
+\end{equation}
+%
+In the above expression, there is a frequency-dependent term and a frequency-independent term.
+The reason why $f^{\rm xc}$ is frequency-independent is that we carried out a local approximation
+to the starting self-energy $\Sigma^{V}$ (see (\ref{eq:localapp})). Within this approximation,
+one is obliged to apply the adiabatic approximation to $f^{\rm xc}(\bm r,t)$ and therefore $f^{\rm xc}$
+becomes $\omega$-independent.
+%
+% kokomade DISCUSSION deha ?????
+%
 %
 \begin{figure}[h]
 	\centering

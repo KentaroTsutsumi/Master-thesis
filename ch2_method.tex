@@ -14,13 +14,31 @@
 %
 % introかも...
 %
-In order to calculate $T_\mathrm{c}$ from first-principles, 
-L\"{u}ders and his co-workers constructed the density functional theory 
-for superconductors (SCDFT)\cite{Luders2005_1}.
-By using SCDFT, it is able to calculate $T_\mathrm{c}$ from {\it ab-initio} electronic wave functions
- and electron-phonon matrix elements and so on. 
-First, we will review their theory including electron-phonon interaction and Coulomb interaction. 
-After that, we will review how to include the effect of spin fluctuations into the SCDFT.
+%In order to calculate $T_\mathrm{c}$ from first-principles, 
+%L\"{u}ders and his co-workers constructed the density functional theory 
+%for superconductors (SCDFT)\cite{Luders2005}.
+%By using SCDFT, it is able to calculate $T_\mathrm{c}$ from {\it ab-initio} electronic wave functions
+% and electron-phonon matrix elements and so on. 
+%First, we review their theory including electron-phonon interaction and Coulomb interaction. 
+%After that, we review how to include the effect of spin fluctuations into the SCDFT.
+Expansion of density functional theory\cite{HK1964,KS1965} (DFT) to describe the superconducting phase 
+has been developed
+%\cite{Kreibich2001,Oliveira1988} 
+. Kreibich and Gross\cite{Kreibich2001} developed a multicomponent DFT which treats electrons and 
+nuclei on the same footing by introducing the diagonal part of nuclear $N$-body density matrix 
+$\Gamma(\underline{\bm R})$ in order to go beyond the Born-Oppenheimer approximation.
+In principle, the multicomponent DFT framework should be able to describe the phonon-driven 
+superconducting phase. However, in practice, it is not appropriate: Thanks to the 
+Hohenberg-Kohn therem\cite{HK1964}, the order parameter $\chi(\bm r, \bm r')$ is written as the 
+functional of the electronic density. However, the functional is non-local and its explicit form 
+is unknown. An idea\cite{Oliveira1988} to avoid this difficulty 
+is to treat the order parameter as a basic density in DFT and describe a physical quantity
+as a functional of the electronic density and the order parameter.
+Based on this DFT for superconductors(SCDFT), numerical scheme to calculate $T_c$ from the
+first-principles has been developed recently. In 2005, L\"{u}ders {\it et al.} implemented a 
+method\cite{Luders2005} to consider the phonon mediated pairing. In 2014, Essenberger {\it et al.}
+\cite{Essenberger2014} extended this method to include the effect of spin fluctuations.
+We review these theoretical formulation below.
 
 \section{Density functionals and Kohn-Sham system for superconductors}
 In order to treat the electron-phonon and Coulomb interactions in superconductors like the Hohenberg-Kohn way, 
@@ -414,10 +432,6 @@ where we defined the matrix element of anomalous density $\chi_i$ as
 	\chi_i = \int d^3r\int d^3r' \varphi^{\ast}_i(\bm{r})\chi(\bm{r}, \bm{r'})\varphi_i(\bm{r'}).
 	\label{eq:chi_i_def}
 \end{equation}
-%
-In practice, we solve the linearized gap equation (\ref{eq:line_gap}) with changing the temperature. 
-When we get the vanishingly-small $\Delta_i$ solution at some temperature, we regard that temperature
-as the superconducting transition temperature $T_{\rm c}$.
 %
 
 \section{Kernels of Gap Equation from functional derivatives}
@@ -1380,7 +1394,7 @@ more transparent form as follows
 \begin{equation}
 	\Lambda^{\rm c - \rm d}_{\sigma-\sigma\sigma-\sigma} = 
 	2f^{\rm F}_{\sigma}\chi^{\rm F}_{\sigma}f^{\rm F}_{\sigma},
-	\label{eq:translombdaafter}
+	\label{eq:translambdaafter}
 \end{equation}
 %
 where the two-point funtions are defined as ($z_{\uparrow} = 1$,$z_{\downarrow} = -1$)
@@ -1400,7 +1414,7 @@ where the two-point funtions are defined as ($z_{\uparrow} = 1$,$z_{\downarrow} 
 In (\ref{eq:longlambdaafter}), we subtracted $f^{\rm xc}_{\sigma_1\sigma_1\sigma_2\sigma_2}+
 f^{\rm T}_{0\sigma_1}P_{00}f_{0\sigma_2}$ in order to avoid the double counting.
 In fact, this contribution is already included in the self-energy from the screened Coulomb interaction.
-In addition, we neglected $f^{\rm xc}_{\sigma-\sigma\sigma-\sigma}$ in (\ref{eq:translombdaafter})
+In addition, we neglected $f^{\rm xc}_{\sigma-\sigma\sigma-\sigma}$ in (\ref{eq:translambdaafter})
 in order to avoid the physically unreasonable result. We will discuss this problem later.
 
 So far we derived the two-point expression of the effective interaction $\Lambda^{\rm c - \rm d}$.
@@ -1565,19 +1579,80 @@ spin fluctuations is repulsive.
 This sign difference comes from the number of loops contained in diagrams discussed above
 (see (\ref{eq:Fself})). The detail of derivation of these equations are described in Appendix.
 In practice, the Matsubara summation in (\ref{eq:ZSFdef}) is too complex and numerically demanding.
-Therefore, in our calculation we neglect the term ${\mathcal Z}^{SF}$.
+Therefore, in our calculation we neglect the term ${\mathcal Z}^{\rm SF}$.
+
+\section{Estimating $T_{\rm c}$}
+So far, we have derived the SCDFT gap equation with the effect of spin fluctuations.
+Furthermore, it is possible to simplify the equation (\ref{eq:aftergapeq}).
+In practice, the direct use of electron-phonon coupling $g^{n\bm k,n'\bm k'}_{\lambda\bm q}$ in
+Eqs.(\ref{eq:Zphprac}) and(\ref{eq:Kph}) is numerically demanding because it has many indices.
+In order to handle this quantity more easily, the $n\bm k$-averaged fucntionals have been
+introduced\cite{Marques2005} as follows:
+%
+\begin{equation}
+	\begin{split}
+	\mathcal K^{\rm ph, ave}_{n\bm k, n'\bm k'} &= \mathcal K^{\rm ph}(\xi_{n\bm k},\xi_{n'\bm k'}) \\
+	& = \frac{2}{\tanh[(\beta/2)\xi_{n\bm k}]\tanh[(\beta/2)\xi_{n'\bm k'}]}
+	\frac{1}{N(0)} \int d\omega \alpha^2F(\omega)[I(\xi_{n\bm k},\xi'_{n' \bm k'},\omega) - I(\xi_{n\bm k},-\xi'_{n' \bm k'},\omega)],
+	\label{eq:aveKph}
+\end{split}
+\end{equation}
+%
+\begin{equation}
+	\begin{split}
+	\mathcal Z^{\rm ph, ave}_{n \bm k} &= \mathcal Z^{\rm ph}(\xi_{n \bm k}) \\
+	& = - \frac{1}{\tanh[(\beta/2)\xi_{n\bm k}]} \int_{-\mu}^{\infty} d\xi'
+	\int d\omega \alpha^2F(\omega)[J(\xi_{n\bm k},\xi',\omega) + J(\xi_{n\bm k},-\xi', \omega)],
+	\label{eq:aveZph}
+\end{split}
+\end{equation}
+%
+where the $\alpha^2F(\omega)$ is called as the Eliashberg function and defined as
+%
+\begin{equation}
+	\begin{split}
+	& \sum_{n\bm k n'\bm k' \nu} \delta(\xi-\xi_{n\bm k})\delta(\xi'-\xi_{n'\bm k'})
+	\delta(\omega-\omega_{\nu\bm k - \bm k'})|g^{n\bm k,n'\bm k'}_{\nu \bm k - \bm k'}|^2 \\
+	&\quad \approx \sum_{n\bm k n'\bm k' \nu} \delta(\xi_{n\bm k})\delta(\xi_{n'\bm k'})
+	\delta(\omega-\omega_{\nu\bm k - \bm k'}) |g^{n\bm k,n'\bm k'}_{\nu \bm k - \bm k'}|^2 \\
+ 	&\quad \equiv N(0)\alpha^2F(\omega).
+	\label{eq:a2F}
+\end{split}
+\end{equation}
+%
+In this expression, the detailed information of the electronic structure is included in the
+Eliashberg function which is considerably easier to handle.
+This approximation is expected to be accurate if the electronic structure does not have the
+strong $n\bm k$-dependence near the Fermi energy and this condition is fulfilled in case of 
+many superconductors.
+With the Eliashberg function, the electron-phonon coupling coefficient $\lambda$ is defined as
+%
+\begin{equation}
+	\lambda = 2\int d\omega \frac{\alpha^2F(\omega)}{\omega},
+	\label{eq:elphlambda}
+\end{equation}
+%
+and the logarithmic averaged phonon frequencies $\omega_{\rm ln}$ is defined as
+%
+\begin{equation}
+	\omega_{\rm ln} = \exp\left[ \frac{2}{\lambda}\int d\omega \frac{\alpha^2F(\omega)}{\omega}\ln \omega \right].
+	\label{eq:omegaln}
+\end{equation}
+%
+
+In order to estimate $T_{\rm c}$, we solve the partially linearized gap equation (\ref{eq:aftergapeq}) with changing 
+the temperature. When we get the vanishingly-small $\Delta_{k}$ solution at some temperature, 
+we regard that temperature as the superconducting transition temperature $T_{\rm c}$.
+%
 %%%%%%%%%%%%%%%%%%%%    Equation  %%%%%%%%%%%%%%%%%%%%%
-\section{Equation}\label{sec:method_model}
-\subsection{Equation}\label{sec:method_model_model}	
+%\section{Equation}\label{sec:method_model}
+%\subsection{Equation}\label{sec:method_model_model}	
 % equation
 %  \begin{equation}  %%%%%%% Etot =
 %   E_{\rm{total}}(u_m,e_i)=E_0 + E_{\rm{phonon}}(u_m) + E_{\rm{spin}}(u_m,e_i).
 %\end{equation} 
 
-
-\section{Figure}\label{sec:method_parameters}
-
-
+%\section{Figure}\label{sec:method_parameters}
 
 %%%%%%%%%%%%%%%%%%%%% Figure %%%%%%%%%%%%%%%%%%%%%i%
 %\subsection{Figure}
