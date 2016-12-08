@@ -8,26 +8,67 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%   PURPOSE OF THIS STUDY %%%%%%%%%%%%%%%%
-\section{History of theoretical studies on superconductors}
-Superconductivity has been one of the most attracting topics in condensed matter physics since its
-discovery in 1911\cite{Onnes1911}. Since then, physical properties of metals in low temperatures are
-studied closely and it is found that various metals show the similar properties, 
-zero resistivity, in low temperatures. In 1933\cite{Meissner1933}, it is found that
-superconductors show the perfect diamagnetism which means that the external magnetic field is 
-perfectly excluded from the superconductors. Theoretical studies to understand the microscopic 
-mechanism of these macroscopic phenomena have been carried out.
+\section{History of studies on conventional superconductors: Overview}
+Since its discovery in 1911\cite{Onnes1911}, superconductivity has been one of the most fascinating
+subject in the condensed matter physics. One of the characteristic properties of superconductors is
+the zero resistivity and another is the Meissner effect\cite{Meissner1933}.
+The latter means that bulk superconductors exclude the magnetic flux.
+In 1950, Maxwell\cite{Maxwell1950} and Reynolds\cite{Reynolds1950} independently discovered the 
+isotope effect for Hg,
+%
+\begin{equation}
+	T_{c} \propto M^{-\alpha}, \alpha \approx 0.5,
+	\label{eq:isotope}
+\end{equation}
+%
+where $T_c$ is the superconducting transition temperature and $M$ indicates the mass of ion.
+Although many results were presented experimentally soon after the discovery of superconductors,
+it took a nearly half century until a successful microscopic theory for superconductors is presented.
 
-Due to the physical and mathematical complexity, it took so long time until one successful
-microscopic theory is proposed. Based on the insight that the electron-phonon interaction induces
-the effective attraction between electrons\cite{Froehlich1950}, Bardeen, Cooper and Schrieffer(BCS)
-constructed an 
+In 1950, Fr\"{o}hlich\cite{Froehlich1950} demonstrated that the electron-phonon interaction induces the
+effective attractive interaction between electrons. This idea is consistent to the Meissner effect.
+Based on this idea that the electronic condensation originates from the electron-phonon interaction, 
+Bardeen, Cooper and Schrieffer(BCS)\cite{BCS1957} successfully constructed the microscopic 
+theory by introducing the electronic many-body wave function which consist of electron pairs named as
+Cooper pairs\cite{Cooper1956}. According to the BCS theory, $T_c$ is written as
+%
+\begin{equation}
+	T_{c} \propto \omega\exp \left( -\frac{1}{N(0)V} \right),
+	\label{eq:TcBCS}
+\end{equation}
+%
+where $\omega, N(0), V$ is the typical phonon frequency, the density of states at the Fermi energy, 
+and the characteristic attractive interaction between electrons respectively.
+
+In the BCS theory, the effective interaction between electrons is only assumed to be attractive and
+the detail of the interaction is not studied.
+In the late 1950s and 1960s, the detail of the phonon-mediated pairing interaction, namely the 
+dynamical strucure of the electron-phonon interactinon, is studied by means of the Green's function 
+formalism\cite{Migdal1958,Nambu1960,Eliashberg1960,Morel1962,Schrieffer1964,Scalapino1966}. 
+This theory is called as Migdal-Eliashberg(ME) theory.
+McMillan\cite{McMillan1968} solved the Eliashberg equation analytically and numerically, and derived
+the equation which describe $T_c$ with a simple analytic funcion. Later, the McMillan's equation
+was revised by Allen and Dynes\cite{AllenDynes} and the resulting formula is
+%
+\begin{equation}
+	T_c = \frac{\omega_{\rm ln}}{1.2} \exp \left( -\frac{1.04(1+\lambda)}
+	{\lambda-\mu^{\ast}(1+0.62\lambda)} \right),
+	\label{eq:MAD}
+\end{equation}
+%
+where $\omega_{\rm ln}$ indicates the logarithmic average of the typical phonon frequencies and
+$\lambda$ is the dimensionless electron-phonon coupling. Finally, $\mu^{\ast}$ is the effective Coulomb
+parater defined as
+%
+\begin{equation}
+	\mu^{\ast} \equiv \frac{\mu}{1 + \mu \ln \left[ \frac{E_c}{\omega_{\rm ph}} \right]},
+	\label{eq:mustar}
+\end{equation}
+%
+where $\mu$ is the dimensionless Coulomb interaction parameter defined as the product of the density
+of states at the Fermi energy and the averaged screened Coulomb interaction, $E_c$ is the
+electronic band width and $\omega_{\rm ph}$ is the typical phonon frequency.
 
 
-
-
-\begin{equation} %%%%%%% electronic external potential
-	\hat{V}^\mathrm{e}_\mathrm{ext} = \sum_{\sigma}\int d^3r\hat{\Psi}^\dag_{\sigma}({\bm r})
-	                                                            v^\mathrm{e}_{\rm ext}(\bm{r})\hat{\Psi}_{\sigma}(\bm{r}), 
-\end{equation} 
 
 \include{end}
