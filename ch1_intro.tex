@@ -26,7 +26,7 @@ Although many results were presented experimentally soon after the discovery of 
 it took a nearly half century until a successful microscopic theory for superconductors is presented.
 
 In 1950, Fr\"{o}hlich\cite{Froehlich1950} demonstrated that the electron-phonon interaction induces the
-effective attractive interaction between electrons. This idea is consistent to the Meissner effect.
+effective attractive interaction between electrons. This idea is consistent to the isotope effect.
 Based on this idea that the electronic condensation originates from the electron-phonon interaction, 
 Bardeen, Cooper and Schrieffer(BCS)\cite{BCS1957} successfully constructed the microscopic 
 theory by introducing the electronic many-body wave function which consist of electron pairs named as
@@ -46,14 +46,15 @@ In the late 1950s and 1960s, the detail of the phonon-mediated pairing interacti
 dynamical strucure of the electron-phonon interactinon, is studied by means of the Green's function 
 formalism\cite{Migdal1958,Nambu1960,Eliashberg1960,Morel1962,Schrieffer1964,Scalapino1966}. 
 This theory is called as Migdal-Eliashberg(ME) theory.
-McMillan\cite{McMillan1968} solved the Eliashberg equation analytically and numerically, and derived
-the equation which describe $T_c$ with a simple analytic funcion. Later, the McMillan's equation
-was revised by Allen and Dynes\cite{AllenDynes} and the resulting formula is
+McMillan\cite{McMillan1968} solved the Eliashberg equations\cite{Parks1969} numerically, 
+and statistically derived an equation which describe $T_c$ with a simple analytic funcion. 
+Later, the McMillan's equation was improved by Allen and Dynes\cite{AllenDynes} and the resulting 
+equation often called McMillan-Allen-Dynes formula is
 %
 \begin{equation}
 	T_c = \frac{\omega_{\rm ln}}{1.2} \exp \left( -\frac{1.04(1+\lambda)}
 	{\lambda-\mu^{\ast}(1+0.62\lambda)} \right),
-	\label{eq:MAD}
+	\label{eq:Allen}
 \end{equation}
 %
 where $\omega_{\rm ln}$ indicates the logarithmic average of the typical phonon frequencies and
@@ -68,6 +69,36 @@ parater defined as
 where $\mu$ is the dimensionless Coulomb interaction parameter defined as the product of the density
 of states at the Fermi energy and the averaged screened Coulomb interaction, $E_c$ is the
 electronic band width and $\omega_{\rm ph}$ is the typical phonon frequency.
+The reduction of the Coulomb parameter from $\mu$ to $\mu^{\ast}$ due to the difference of 
+typical electronic and phononic energy range is called as retardian effect\cite{Bogo1958,Morel1962}.
+In the exponential function of the above formula (\ref{eq:Allen}), $\lambda$ in the numerator
+stems from the mass renormalization, while the first $\lambda$ in the denominater originates from
+the attractive interaction mediated by phonons. The subtraction of $\mu^{\ast}$ from $\lambda$ in the
+denominater reflects the fact that the screened Coulomb interaction is repulsive.
+
+\section{Effect of spin fluctuations in conventional superconductors} %%%%% Title should be modified?
+The Eliashberg equations are believed to provide accurate results for $T_c$
+if reliable normal-state quantities, e.g. the electronic band structure, the electron-phonon coupling,
+phonon frequencies and the Coulomb interaction constant $\mu^{\ast}$, are given.
+However, it is found that, for some transition metals, $T_c$ obtained by solving the 
+Eliashberg equations is higher than experimental value by factor 2 or more.
+For example, the calculated $T_c$ for both of Nb ($T_c = 9.2 \rm K$) and V ($T_c = 5.3 \rm K$) is
+about 16K\cite{Papa1977}. 
+
+In 1979, Rietschel and Winter\cite{Rietschel1979} analyzed the Eliashberg
+equations including the effect of spin fluctuations(paramagnons). They employed the particle-hole 
+$t$-matrix\cite{Parks1969,Berk1966,Schrieffer1968} to consider the effect of spin fluctuations with 
+some parameters. They estimated the paramagnon contribution to the mass enhancement $m^{\ast}/m$ 
+by fitting the parameters in order to reproduce the resulting $T_c$ for Nb and V.
+
+\begin{figure} %%%%%%% FIGURE 
+	\centering
+	\includegraphics[width=8truecm,clip]{../figure/intro/Tc_lambdaspin.eps}
+	\caption{hogehoge.}
+	\label{fig:Tc_lambdaspin}
+\end{figure}
+
+
 
 
 
