@@ -4,6 +4,7 @@
 % Contents
 %
 \chapter{Theory and Method}
+\label{theory}
 %
 % introかも...
 %
@@ -113,7 +114,7 @@ where $\hat{\rho}_0$ is the grand canonical density operator and $\beta$ is the 
 (ii) The anomalous density
 %
 \begin{equation} %%%%%%%  anomalous density
-	\chi \bigl(\bm{r}, \bm{r'} \bigr) = \left<\hat{\Psi}^\dag_\uparrow \bigl(\bm{r}\bigr)
+	\chi \bigl(\bm{r}, \bm{r'} \bigr) = \left<\hat{\Psi}_\uparrow \bigl(\bm{r}\bigr)
 	                                                    \hat{\Psi}_\downarrow \bigl(\bm{r'}\bigr) \right>
 \end{equation}
 %
@@ -131,7 +132,7 @@ Extending the Hohenberg-Kohn theorem in usual DFT\cite{HK1964,Mermin1965} for pr
 the existence of one-to-one mapping between the set of the densities $ \left\{ n(\bm{r}), \chi \bigl(\bm{r}, \bm{r'} \bigr), 
 \Gamma(\underline{\bm{R}}) \right\}$ and a set of the corresponding potentials 
 $ \left\{ v^{\rm e}_{\rm ext}(\bm{r}), \Delta_\mathrm{ext}(\bm{r}, \bm{r'}), v^{\rm n}_{\rm ext}(\underline{\bm{R}}) \right\}$
-is guaranteed.
+is guaranteed\cite{HK1964, Mermin1965}.
 Consequently, all observable quantities are functionals of these densities. 
 This fact guarantees that the grand canonical potential 
 %
@@ -164,7 +165,7 @@ where $S$ represents the entropy of the system
 %
 
 In this formulation, the Kohn-Sham system consists of noninteracting electrons and {\it interacting} nuclei. 
-By including the interacting nuclei, we can treat lattice dynamics.
+(By including the interacting nuclei, we can treat lattice dynamics.) ($\leftarrow$ to be revised)
 %The difference from the usual DFT is the fact that we include the nuclei.
 The thermodynamic potential of the Kohn-Sham system is described as
 %
@@ -178,8 +179,9 @@ The thermodynamic potential of the Kohn-Sham system is described as
 \end{split}
 \end{equation}
 %
-where $v^{\mathrm n}_0(\bm{r}), \Delta_0(\bm{r}, \bm{r'}),$ and $\Gamma(\underline{\bm{R}})$ are the 
-Kohn-Sham potentials and $F_0$ is the counterpart of (\ref{eq:Free_int}) for the Kohn-Sham system, defined as
+where $v^{\mathrm e}_0(\bm{r}), \Delta_0(\bm{r}, \bm{r'}),$ and $v^{\rm n}_{0}(\underline(\bm R)))$ 
+are the Kohn-Sham potentials and $F_0$ is the counterpart of (\ref{eq:Free_int}) for the 
+Kohn-Sham system, defined as
 %
 \begin{equation} %%%%%%% Free energy of Kohn-Sham system
 \begin{split}
@@ -190,7 +192,21 @@ Kohn-Sham potentials and $F_0$ is the counterpart of (\ref{eq:Free_int}) for the
 %
 Here $T^{\rm e}_0[n, \chi, \Gamma], T^{\rm n}_0[n, \chi, \Gamma],$ and $S_0[n, \chi, \Gamma]$ 
 represents the electronic and nuclear kinetic energy and the entropy of the Kohn-Sham system, respectively.
+$S_0[n, \chi, \Gamma]$ is defined as 
 %
+\begin{equation}
+	\begin{split}
+	& S_0[n, \chi, \Gamma] = -{\rm Tr}\{\hat{\rho}_{\rm s}[n, \chi, \Gamma]
+	\ln(\hat{\rho}_{\rm s}[n, \chi, \Gamma])\}, \\
+	& \hat{\rho}_{\rm s}[n, \chi, \Gamma] = \frac{e^{-\beta\hat{H}_{\rm KS}}}
+	{ {\rm Tr}e^{-\beta\hat{H}_{\rm KS}}}, \\
+	& \hat{H}_{\rm KS} = \hat{T}^{\rm e} + v^{\rm e}_0 + \Delta_0,
+	\label{eq:KSentropydef}
+\end{split}
+\end{equation}
+%
+where $\hat{H}_{\rm KS}$ is the Kohn-Sham Hamiltonian and $v^{\rm e}_0, \Delta_0$ represent the 
+Kohn-Sham potentials which are defined below.
 
 The exchange-correlation free energy is defined as
 %
@@ -645,7 +661,7 @@ With these definitions and after some calculations, the frequency-dependent prop
 \end{equation}
 %
 \begin{equation}
-	F^{\rm s\ast}_{\sigma\sigma'}({\bm r},{\bm r'},\omega_n) = \delta_{\sigma,-\sigma'}{\rm sgn}(\sigma)
+	F^{\rm s\dag}_{\sigma\sigma'}({\bm r},{\bm r'},\omega_n) = \delta_{\sigma,-\sigma'}{\rm sgn}(\sigma)
 	\sum_{i}
 	\left[
 		\frac{u^\ast_i(\bm r)v_i(\bm r')}{i\omega_n+E_i} - 
@@ -688,8 +704,6 @@ but do not consider the effect of spin fluctuations.
 \caption{Lowest-order phononic contributions to $F_{\rm xc}$.}
 \end{figure}
 %
-\clearpage
-%
 \subsection*{Phononic kernels}
 Lowest-order contributions from electron-phonon interaction can be written as
 %
@@ -727,7 +741,7 @@ where the explicit form of function $I$ is
 The diagrammatic expression for $F^{(1)}_{\rm xc}$ and $F^{(2)}_{\rm xc}$ is depicted in 
 Figs.\ref{fig:Fbxc} and \ref{fig:Fcxc}, respectively.
 
-Now we can compute the phononic contributions to the exchange-correlation kernels ${\mathcal F}_{{\rm Hxc},ij}$
+We can compute the phononic contributions to the exchange-correlation kernels ${\mathcal F}_{{\rm Hxc},ij}$
 (see (\ref{eq:def-fxc})).
 The exchange-correlation kernel arising from $F^{(1)}_{\rm xc}$ is nondiagonal and its form is
 %
@@ -821,7 +835,7 @@ and the second is the exchange-correlation free energy $F^{(3)}_{\rm xc}$ (Fig.\
 	\label{fig:Fcoulxc}
 \end{figure}
 %
-For convenience, an approximation is applied to {\it both} of the anomalous Hartree energy and $F_{\rm xc}$ 
+For convenience, an approximation is applied to the sum of the anomalous Hartree energy and $F_{\rm xc}$ 
 as follows\cite{Luders2005_1}:
 %
 \begin{equation}
@@ -839,22 +853,22 @@ can be written as
 \begin{split}
 	{\mathcal K}^{\rm el}_{ij} &\equiv \frac{\delta^2 \left( F^{(3)}_{\rm xc} + E^{{\rm ee},\chi}_{\rm H} \right)}
 	{\delta \chi^\ast_i \delta\chi_j} \\
-	& = v^{\rm scr}_{ij},
+	& = v^{\rm screen}_{ij},
 \end{split}
 \end{equation}
 %
 where
 %
 \begin{equation}
-	v^{\rm scr}_{ij} = \int d^3r \int d^3r' \varphi^\ast_i(\bm r)\varphi_i({\bm r'})
-	v^{\rm scr}(\bm r, {\bm r'}) \varphi_j(\bm r) \varphi^\ast_j({\bm r'}).
+	v^{\rm screen}_{ij} = \int d^3r \int d^3r' \varphi^\ast_i(\bm r)\varphi_i({\bm r'})
+	v^{\rm screen}(\bm r, {\bm r'}) \varphi_j(\bm r) \varphi^\ast_j({\bm r'}).
 	\label{eq:Keldef}
 \end{equation}
 %
 
-There are some way how to approximate the screened Coulomb interaction $v^{\rm scr}(\bm r, \bm r')$. 
+There are some way how to approximate the screened Coulomb interaction $v^{\rm screen}(\bm r, \bm r')$. 
 L\"{u}ders {\it et al.} applied the Thomas-Fermi interaction to the Coulomb interaction\cite{Luders2005_1}.
-There are also some studies which applies the random phase approximation to $v^{\rm scr}$\cite{RA2012}.
+Akashi {\it et al.}\cite{RA2012} applied the random phase approximation to $v^{\rm screen}$.
 In our calculation, we applied the adiabatic local density approximation(ALDA)\cite{Zangwill1980} and 
 so we now summarize the expression for the screened Coulomb interaction in ALDA.
 Furthermore, it should be taken account of the dynamical structure of the Coulomb interaction which is represented by
@@ -880,17 +894,31 @@ where $\Pi_0$ indicates the independent-particle polarization function
 	\label{eq:chi0}
 \end{equation}
 %
-where $\theta(\xi)$ is the step function. We used adiabatic local density apploximation(ALDA)\cite{TDDFT} to calculate
-the polarization function $\Pi$. Now the screened Coulomb interaction within the ALDA is written as
+where $\theta(\xi)$ is the step function.
+Now the screened Coulomb interaction within the ALDA is written as
 %
 \begin{equation}
-	v^{\rm scr}(\bm r, \bm r', \omega) = \frac{1}{|\bm r - \bm r'|} + 
+	v^{\rm screen}(\bm r, \bm r', \omega) = \frac{1}{|\bm r - \bm r'|} + 
 	\iint d^3r_1 d^3r_2 
 	\left(
 	\frac{1}{|\bm r - \bm r_1|} + \frac{\delta^2E_{\rm xc}}{\delta\rho(\bm r)\delta\rho(\bm r_1)}
 	\right)
 	\Pi(\bm r_1, \bm r_2, \omega) \frac{1}{|\bm r_2 - \bm r'|}
 	\label{eq:vscr}
+\end{equation}
+%
+Within the static approximation, which means that one neglects the frequency dependence of $\Pi_0$ 
+and the resulting screened Coulomb interaction $v^{\rm screen}$, the electron-electron kernel
+is written as 
+%
+\begin{equation}
+	\begin{split}
+	& K^{\rm el, stat}_{n\bm k,n' \bm k'} = W_{n \bm k, n' \bm k'}, \\
+	& W_{n\bm kn'\bm k'} = 
+	\int d^3r \int d^3r' \varphi_{n\bm k}(\bm r)\varphi_{n-\bm k}({\bm r'})
+	v^{\rm screen}(\bm r, {\bm r'}) \varphi_{n'\bm k'}(\bm r) \varphi_{n'-\bm k'}({\bm r'}).
+	\label{eq:Kelstat}
+\end{split}
 \end{equation}
 %
 If we take into account of the frequency-dependent screened Coulomb interaction,
@@ -910,7 +938,7 @@ the formulation for ${\mathcal K}^{\rm el}_{ij}$ should be modified as follows\c
 where $F_{n\bm k}({\rm i}\tilde\omega) = 
 \frac{1}{\rm i \tilde\omega + E_{n\bm k}}-\frac{1}{\rm i \tilde\omega - E_{n\bm k}}$
 and $\tilde\omega$ means the bosonic Matsubara frequency and we defined 
-$W_{n\bm kn'\bm k'}({\rm i}\omega)$ as below
+$W_{n\bm kn'\bm k'}({\rm i}\omega)$ as 
 %
 \begin{equation}
 	W_{n\bm kn'\bm k'}({\rm i}\omega) = 
@@ -919,7 +947,7 @@ $W_{n\bm kn'\bm k'}({\rm i}\omega)$ as below
 	\label{eq:dynWnknk}
 \end{equation}
 %
-We describe how to calcurate the summation with respect to the even Matsubara frequency in (\ref{eq:Keldyn})
+We describe how to calculate the summation with respect to the even Matsubara frequency in (\ref{eq:Keldyn})
 in Appendix.
 Using the kernels derived above, the resulting SCDFT gap equation is written as
 %
@@ -949,7 +977,7 @@ including the effect of spin fluctuations and derive the expression for the kern
 	\label{fig:SF-self}
 \end{figure}
 
-In order to surpass the GW approximation, at first the $T$-matrix\cite{Gordon1961,Ersoy2010} is considered.
+In order to include the higher-order terms beyond the GW approximation, at first the $T$-matrix\cite{Gordon1961,Ersoy2010} is considered.
 The $T$-matrix is defined through the Bethe-Salpeter equation\cite{BSE1951} as
 %
 \begin{equation}
@@ -964,30 +992,30 @@ where $\bm r_1$, $\tau_1$, $\sigma_1$ is the real space coordinate,
 the Matsubara imaginary time and the spin index, respectively.
 Using this $T$-matrix, the contribution of spin fluctuations to the self-energy can be written as $\bar{\Sigma}^{T}=\bar{G}T$.
 Is is known that the response function within the $T$-matrix approximation reasonably describes the magnetic response function\cite{Ersoy2010,Onida2002}.
-However, due to the reason we discuss later, we do not directly use this $T$-matrix.
+However, we do not directly use this $T$-matrix because the $T$-matrix is a four-point function
+which is numerically difficult to handle.
 
 Alternatively, we start from particle-hole propagator $\Lambda$ in order to 
 take account of spin fluctuations in self-energy (Fig. \ref{fig:SF-self}).
 Particle-hole propagator $\Lambda$ contains all irreducible 
 diagrams with respect to Coulomb interaction and has two 
-incoming and outgoing points. The $T$-matrix is fully contained in the$\Lambda$.
-In the following, we assume that we consider about the case of collinear magnetic systems and 
+incoming and outgoing points. The $T$-matrix is fully contained in $\Lambda$.
+In the following, we limit ourselves to the case of collinear magnetic systems and 
 then the Green's function becomes diagonal with respect to spin indices.
-We consider one of the Hedin's equation\cite{Sole1994} which is depicted
-in Fig.\ref{fig:Hedineq}
+We employ the irreducible particle-hole propagator\cite{Arya2008}
+%
+\begin{equation}
+	\Lambda_0(1,2,3,4) = \frac{\delta\Sigma^{\rm V}(1,2)}{\delta G(3,4)},
+	\label{eq:lambda0}
+\end{equation}
+%
+which enters one of the Hedin's equations\cite{Sole1994} which is depicted in Fig.\ref{fig:Hedineq}
 %
 \begin{equation}
 	\Gamma(1,2,3) = \delta(1,2)\delta(1,3) + 
 	\int d(4,5,6,7)\Lambda_0(1,2,4,5)
-	G(4,6)G(7,5)\Gamma(6,7,3),
+	G(4,6)G(7,5)\Gamma(6,7,3).
 	\label{eq:Hedineq}
-\end{equation}
-%
-where 
-%
-\begin{equation}
-	\Lambda_0(1,2,3,4) = \frac{\delta\Sigma^{\rm V}(1,2)}{\delta G(3,4)}.
-	\label{eq:lambda0}
 \end{equation}
 %
 \begin{figure} %%%%%%% FIGURE Hedin's eq.
@@ -998,12 +1026,11 @@ where
 \end{figure}
 The coordinates 1 and 4 are connected to the lines which go outside,
 and the coordinates 2 and 3 are connected to the lines which come inside.
-$\Lambda_0$ is called an irreducible particle-hole propagator\cite{Arya2008}.
 The self-energy used to calculate $\Lambda_0$ is written as $\Sigma^{\rm V}$.
 We will apply an approximation for $\Sigma^{\rm V}$ later.
-The $\Lambda_0$ contains all connected and irreducible diagrams with
+$\Lambda_0$ contains all connected and irreducible diagrams with
 respect to the Coulomb interaction and the particle-hole propagator.
-If we obtain the $\Lambda_0$, we can get the $\Lambda$ by using the
+If we obtain $\Lambda_0$, we can get $\Lambda$ by using the
 Bethe-Salpeter equation(BSE)\cite{BSE1951} for $\Lambda$.
 However, before considering the BSE for $\Lambda$, we have to note that
 there can be two possible contributions to $\Lambda_0$.
@@ -1012,7 +1039,7 @@ The functional derivative of the self-energy with respect to $G$
 correspond to the removal of one Green's function in self-energy. 
 Hence, the two possible contributions to $\Lambda_0$ come from
 the type of the Green's function which is removed.
-If the removed Green's function was a factor of a loop, we call
+If a loop is broken by removing one Green's function, we call
 the resulting contribution to $\Lambda_0$ as direct contribution $\Lambda^{\rm d}$.
 Otherwise, we call these contributions as crossed ones and define as $\Lambda^{\rm c}$.
 Then we can write these contributions as follows:
@@ -1079,7 +1106,7 @@ the total irreducible particle-hole propagator can be written as follows:
 }
 \end{figure}
 %
-Furthermore, we have to consider how higher order irreducible particle-hole propagators are constructed.
+Furthermore, we have to consider how higher order particle-hole propagators are constructed.
 There can be three patterns how crossed and direct contributions are linked:
 (a) If two crossed contributions are connected, the resulting contribution is also crossed one(Fig.\ref{fig:crosscross}).
 (b) If crossed and direct contributions are linked, the resulting contribution becomes direct one(Fig.\ref{fig:crossdirect}).
@@ -1110,7 +1137,7 @@ and $\Lambda^{\rm c, \rm d}_{(0)}$ is equal to $\Lambda^{\rm c, \rm d}_0$ define
 From Eqs.(\ref{eq:cnplus1}) and (\ref{eq:dnplus1}), we obtain the BSE for $\Lambda^{\rm c - \rm d}$ as
 %
 \begin{equation}
-	\Lambda^{\rm c - \rm d}= \Lambda_0 + 
+	\Lambda^{\rm c - \rm d}=  - \Lambda_0 - 
 	\Lambda_0GG\Lambda^{\rm c - \rm d},
 	\label{eq:BSELambda}
 \end{equation}
@@ -1125,8 +1152,8 @@ where $\Lambda_0$ is defined in Eq.(\ref{eq:lambdadiff}).
 \end{figure}
 So far, we considered only the normal Green's function because
 we neglected the effects of spin fluctuations on superconductors.
-We are interested in the theory in superconductors, so we have to 
-construct the self-energy comes from spin fluctuations(Fig.\ref{fig:SF-self})
+Since we are interested in the theory in superconductors, we have to 
+construct the self-energy coming from spin fluctuations(Fig.\ref{fig:SF-self})
 with normal and anomalous Green's functions(Fig.\ref{fig:arrows}).
 In anomalous terms in which $F$ and $F^\dag$ appear, no loop is created
 when we construct the self-energy(Fig.\ref{fig:Fself}).
@@ -1166,7 +1193,7 @@ With this normal contributions, the equation of the self-energy from spin fluctu
 %
 
 We obtained the equation for the self-energy from spin fluctuations with $\Lambda^{\rm c + \rm d}$ and $\Lambda^{\rm c - \rm d}$.
-We can simplify the expression because it is already assumed that we are now interested in singlet cuperconductor and magnetic collinear system.
+We can simplify the expression because it is already assumed that we are now interested in singlet superconductors and the magnetic collinear system.
 From this assumption, we already know that the normal Green's function 
 conserves the spin while the anomalous one flips the spin(see from Eq.
 (\ref{eq:Gfuncdef}) to Eq.(\ref{eq:Fdagfuncdef})).
@@ -1219,9 +1246,9 @@ By using these relations, we can rewrite the expression of the self-energy as fo
 \end{equation}
 %
 This is a more convenient result than Eq.({\ref{eq:GFself}}) because 
-we have to solve the BSE for only $\Lambda^{\rm c - \rm d}$ and 
+we only have to solve the BSE for only $\Lambda^{\rm c - \rm d}$ and 
 we do not have to compute both $\Lambda^{\rm c}$ and $\Lambda^{\rm d}$ separately.
-In the above expression, we omitted the integral and we will use this 
+In the above expression, we have omitted the integral and we will use this 
 notation below unless the expression leads any ambiguity. 
 
 In the previous explanation, we derived the approximated expression of the self-energy from spin fluctuations.
@@ -1462,15 +1489,15 @@ final form of the self-energy from spin fluctuations
 %
 where $a, b$ indicate the Nambu index.
 The expression (\ref{eq:SFselfenergy}) has the GW form and then $\Lambda^{\rm SF}$ can be interpreted
-as the effective interaction originated from the spin fluctuation.
+as the effective interaction originating from the spin fluctuation.
 The present form of the effective interaction reduces to the formalism by Vignale and Singwi\cite{Vignale1985} 
-in the limit of a homogeneous electron gas and the similar form can be derived from the 
+in the limit of a homogeneous electron gas and a similar form can be derived from the 
 paramagnon-pole model\cite{Zhu1986}.
-The xc kernel defined in (\ref{eq:fxcdef}) can be calculated using the Time-Dependent DFT(TDDFT)
+The exchange-correlation (xc) kernel defined in (\ref{eq:fxcdef}) can be calculated using the Time-Dependent DFT(TDDFT)
 \cite{Runge1984} within the ALDA.
 
-\subsection{Kernel originated from spin fluctuations}
-So far we have derived the spin fluctuations contribution to the self-energy in collinear superconductors.
+\subsection{Kernel originating from spin fluctuations}
+So far we have derived the spin fluctuations contribution to the self-energy in the collinear superconductors.
 Then we can consider the effect of spin fluctuations in the framework of SCDFT using the Sham-Schl\"{u}ter connection\cite{Sham1983,MarquesphD}.
 The noninteracting Kohn-Sham system is mapped to the interacting system by the following self-energy
 %
@@ -1494,7 +1521,7 @@ Because the normal density and the anomalous density is defined as
 \end{equation}
 %
 \begin{equation}
-	\chi(\bm r_1, \bm r_2) = \frac{1}{\beta}\sum_{\omega_n}F(\bm r_1, \bm r_2, -\omega_n),
+	\chi(\bm r_1, \bm r_2) = - \frac{1}{\beta}\sum_{\omega_n}F(\bm r_1, \bm r_2, -\omega_n),
 	\label{eq:anomdensity}
 \end{equation}
 %
@@ -1518,12 +1545,12 @@ $\Delta^{\rm xc}$. The Matsubara summation in (\ref{eq:SSeqrho}) and (\ref{eq:SS
 executed by means of the residue theorem:
 %
 \begin{equation}
-	\frac{1}{\beta} \sum_{n}^{\infty}A(\rm i\omega_n) = 
+	\frac{1}{\beta} \sum_{n}^{\infty}A({\rm i}\omega_n) = 
 	\sum_{m}^{{\rm Poles} \in \gamma} {\rm res}[f_{\beta}(z)A(z),z_{m}],
 	\label{eq:residue}
 \end{equation}
 %
-where $A(z)$ is an analytic function. After the Matsubara summation and some of algebra, we obtain
+where $A(z)$ is an analytic function. After the Matsubara summation and some algebra, we obtain
 the gap equation which is similar to the conventional one (\ref{eq:truegapeq}):
 %
 \begin{equation}
@@ -1540,7 +1567,7 @@ the gap equation which is similar to the conventional one (\ref{eq:truegapeq}):
 %
 \begin{equation}
 	\begin{split}
-	\mathcal Z^{\rm SF} &= - \frac{1}{\beta^2}\frac{2}{\tanh[(\beta/2)\xi_{k}]} 
+		\mathcal Z^{\rm SF}_{k} &= - \frac{1}{\beta^2}\frac{2}{\tanh[(\beta/2)\xi_{k}]} 
 	\sum_{n,m}\sum_{k'}\frac{1}{{\rm i}\omega_n + E_k}\frac{1}{{\rm i}\omega_m + E_{k'}}
 	\left(\frac{1}{{\rm i}\omega_n + E_k} - \frac{1}{ {\rm i}\omega_n - E_{k'}} \right)\Lambda^{\rm SF}_{kk'}(\omega_n - \omega_m) \\
 	&\quad + \frac{2}{\beta^2}\left(\frac{1}{\xi_k} - \frac{(\beta/2)}{\sinh[(\beta/2)\xi_k]\cosh[(\beta/2)\xi_k]} \right)
@@ -1645,40 +1672,255 @@ In order to estimate $T_{\rm c}$, we solve the partially linearized gap equation
 the temperature. When we get the vanishingly-small $\Delta_{k}$ solution at some temperature, 
 we regard that temperature as the superconducting transition temperature $T_{\rm c}$.
 %
-%%%%%%%%%%%%%%%%%%%%    Equation  %%%%%%%%%%%%%%%%%%%%%
-%\section{Equation}\label{sec:method_model}
-%\subsection{Equation}\label{sec:method_model_model}	
-% equation
-%  \begin{equation}  %%%%%%% Etot =
-%   E_{\rm{total}}(u_m,e_i)=E_0 + E_{\rm{phonon}}(u_m) + E_{\rm{spin}}(u_m,e_i).
-%\end{equation} 
+%%%%%%%%%%%%%%%%%%   kokokara Appendix youno text %%%%%%%%%%%%%%%%%%%%%%%
+%
 
-%\section{Figure}\label{sec:method_parameters}
+\section{tmpApp}
+In this appendix, we review the detail of the derivation of the SCDFT gap equation
+(\ref{eq:aftergapeq}) from the Sham-Schl\"{u}ter connection according to Ref.\cite{MarquesphD}.
 
-%%%%%%%%%%%%%%%%%%%%% Figure %%%%%%%%%%%%%%%%%%%%%i%
-%\subsection{Figure}
-%FIGURE
-%\begin{figure} %%%%%%% FIGURE 4state-mapping
-%	\centering
-%	\includegraphics[width=14truecm,clip]{../figure/method/4statemapping.eps}
-%	\caption{The four different spin configurations   \label{fig:4states}}
-%\end{figure}
+We start from the following self-energy
 %
-%\begin{figure}[h]
-% \begin{minipage}[b]{0.4\linewidth}
-%  \centering
-%     \subcaption{}
-%  \includegraphics[keepaspectratio, scale=0.2]
-%  {../figure/method/CoPt_2.eps}
-% \end{minipage}
-%  \begin{minipage}[b]{0.6\linewidth}
-%  \centering
-%    \subcaption{}
-%  \includegraphics[keepaspectratio, scale=0.6]
-%  {../figure/method/CoPt_mae_2.eps}
-%   \end{minipage}
-% \caption{(a) The unit cell of CoPt.  (b) Magnetic anisotropic energy of CoPt. }\label{fig:structure_copt}
-%\end{figure}
+\begin{equation}
+	\begin{split}
+	\bar{\Sigma}^{\rm SS} &= \bar{\Sigma}^{\rm GW} + \bar{\Sigma}^{\rm SF} + \bar{\Sigma}^{\rm ph}
+	-\delta(\tau - \tau') 
+	\begin{pmatrix}
+		 v_{\rm xc}\delta(\bm r - \bm r')  &   \Delta^{\rm xc}(\bm r, \bm r')   \\
+		 \Delta^{\rm xc\ast}(\bm r, \bm r')  & - v_{\rm xc}\delta(\bm r - \bm r')
+	\end{pmatrix} \\
+	& \equiv \bar{\Sigma}^{\rm xc} - \delta(\tau - \tau')
+	\begin{pmatrix}
+		 v_{\rm xc}\delta(\bm r - \bm r')  &   \Delta^{\rm xc}(\bm r, \bm r')   \\
+		 \Delta^{\rm xc\ast}(\bm r, \bm r')  & - v_{\rm xc}\delta(\bm r - \bm r')
+	\end{pmatrix} \\
+	\label{eq:appSSself}
+\end{split}
+\end{equation}
 %
+\begin{equation}
+	\bar{\Sigma}^{\rm GW}(\bm r \tau, \bm r' \tau') = \tau^z v^{\rm screen}(\bm r \tau, \bm r' \tau')
+	\begin{pmatrix}
+		0  &   F^{\rm KS}(\bm r \tau, \bm r' \tau')   \\
+		F^{\rm KS\dag}(\bm r \tau, \bm r' \tau')  & 0
+	\end{pmatrix},
+	\label{eq:GWself}
+\end{equation}
 %
+\begin{equation}
+	\bar{\Sigma}^{\rm ph}(\bm r \tau, \bm r' \tau') = \tau^z \sum_{\lambda \bm q}
+	V_{\lambda \bm q}(\bm r)V_{\lambda -\bm q}(\bm r') D_{\lambda\bm q}(\tau, \tau')
+	\begin{pmatrix}
+		G(\bm r \tau, \bm r' \tau')  &   F^{\rm KS}(\bm r \tau, \bm r' \tau')   \\
+		F^{\rm KS\dag}(\bm r \tau, \bm r' \tau')  & G^{\rm KS\dag}(\bm r' \tau', \bm r \tau)
+	\end{pmatrix},
+	\label{eq:phself}
+\end{equation}
+%
+\begin{equation}
+	\bar{\Sigma}^{\rm SF}(\bm r \tau, \bm r' \tau') = 3\tau^z 
+	\Lambda^{\rm SF}(\bm r \tau, \bm r' \tau')
+	\begin{pmatrix}
+		G(\bm r \tau, \bm r' \tau')  &   F^{\rm KS}(\bm r \tau, \bm r' \tau')   \\
+		F^{\rm KS\dag}(\bm r \tau, \bm r' \tau')  & G^{\rm KS\dag}(\bm r' \tau', \bm r \tau)
+	\end{pmatrix},
+	\label{eq:SFself}
+\end{equation}
+%
+where $\tau^z$ is the third Pauli matrix. 
+Here it is assumed that the diagonal part of $\bar{\Sigma}^{\rm GW}$ is canceled
+because the mass renormalization due to the Coulomb interaction is already considered through the
+band calculations. Therefore, we assume that the diagonal component of 
+$\bar{\Sigma}^{\rm GW}$ is zero in the above expression. With the above self-energy, the 
+Dyson's equation of Green's equation is written as 
+%
+\begin{equation}
+	\bar{G}(\bm r \tau, \bm r' \tau') = \bar{G}^{\rm KS}(\bm r \tau, \bm r' \tau') +
+	\int d^{3}(r_1 r_2)\int d(\tau_1 \tau_2)\bar{G}^{\rm KS}(\bm r \tau, \bm r_1 \tau_1)
+	\bar{\Sigma}^{\rm SS}(\bm r_1 \tau, \bm r_2 \tau_2)\bar{G}(\bm r_2 \tau_2, \bm r' \tau'),
+	\label{eq:GDysoneq}
+\end{equation}
+%
+where $\bar{G}$ indicates the full Green's function. 
+
+If the Hamiltonian is time-independent, the
+Green's functions depend on the difference of time $\tau - \tau'$. Therefore it is convenient
+to carry out the Fourier transform with respect to time as follows
+%
+\begin{equation}
+	G^{\rm KS}(\bm r \tau, \bm r' \tau') = \frac{1}{\beta} \sum_{\omega_n}
+	e^{-{\rm i}\omega_n(\tau-\tau')} G^{\rm KS}(\bm r,\bm r', \omega_n),
+	\label{eq:GFourier1}
+\end{equation}
+%
+\begin{equation}
+	G^{\rm KS}(\bm r, \bm r', \omega_n) = \int_{0}^{\beta} d(\tau-\tau')
+	e^{{\rm i}\omega_n(\tau-\tau')} G^{\rm KS}(\bm r \tau,\bm r' \tau'),
+	\label{eq:GFourier2}
+\end{equation}
+%
+where $\omega_n$ is the even Matsubara frequency. It is also convenient to introduce the Fourier
+transform with respect to space as follows
+%
+\begin{equation}
+	G^{\rm KS}(\bm r, \bm r', \omega_n) = \sum_{ k}\varphi_{\bm k}(\bm r)
+	G^{\rm KS}( k, \omega_n)\varphi_{ k}(\bm r'),
+\label{eq:GFourier3}
+\end{equation}
+%
+\begin{equation}
+	G^{\rm KS}( k, \omega_n) = \int d^3(rr') \varphi^{\ast}_{ k}(\bm r)
+	G^{\rm KS}(\bm r,\bm r', \omega_n)
+	\varphi_{ k}(\bm r'),
+	\label{eq:GFourier4}
+\end{equation}
+%
+where $k=\{ n, \bm k \}$ is the set of band index and crystal momentum and 
+$\varphi_{ k}(\bm r)$ is the one-particle wavefunction. After these transforms,
+the Green's functions can be written as
+%
+\begin{equation}
+	G^{\rm KS}( k, \omega_n) = \frac{|u_{ k}|^2}{ {\rm i}\omega_n - E_{ k}}
+	- \frac{|v_{ k}|^2}{ {\rm i}\omega_n + E_{ k}},
+	\label{eq:Gkomega}
+\end{equation}
+%
+\begin{equation}
+	F^{\rm KS}( k, \omega_n) = - u_{ k}v_{ k}^{\ast} \left( 
+	\frac{1}{ {\rm i}\omega_n + E_{ k}} -\frac{1}{ {\rm i}\omega_n - E_{ k}}
+	\right),
+	\label{eq:Fkomega}
+\end{equation}
+%
+where $E_{ k} $ is defined in (\ref{eq:KS-energy}), $u_{ k}$ and $v_{ k}$ can be obtained
+through the Kohn-Sham BdG equation (see (\ref{eq:KS-BdG-par}) and (\ref{eq:KS-BdG-hole})) 
+and written as
+%
+\begin{equation}
+	u_{ k} = \frac{1}{\sqrt{2}} {\rm sgn}(\tilde{E}_{ k})e^{ {\rm i}\phi_{ k}}
+	\sqrt{1 + \frac{\xi_{ k}}{\tilde{E}_{ k}}}
+	\label{eq:uk}
+\end{equation}
+%
+\begin{equation}
+	v_{ k} = \frac{1}{\sqrt{2}} \sqrt{1 - \frac{\xi_{ k}}{\tilde{E}_{ k}}},
+	\label{eq:vk}
+\end{equation}
+%
+\begin{equation}
+	e^{ {\rm i}\phi_{ k}} = \frac{\Delta_{ k}}{|\Delta_{ k}|}.
+	\label{eq:phase}
+\end{equation}
+%
+
+With these preparations, we go back to the main topic. After the Fourier transform into frequency space,
+the Sham-Schl\"{u}ter connection can be written as
+%
+\begin{equation}
+	0 = \lim_{\bm r_1 \to \bm r_2} \frac{2}{\beta} \sum_{\omega_n}
+	e^{ {\rm i}\omega_n 0^{+}} 
+	\int d^3(r_1 r_2) \left[ \bar{G}^{\rm KS}(\bm r_1, \bm r_2, \omega_n)
+	\bar{\Sigma }^{\rm SS}(\bm r_1, \bm r_2, \omega_n) \bar{G}(\bm r_2, \bm r', \omega_n)
+	\right]_{11},
+	\label{eq:AppSSrho}
+\end{equation}
+%
+\begin{equation}
+	0 = - \frac{1}{\beta} \sum_{\omega_n}
+	e^{ {\rm i}\omega_n 0^{+}} 
+	\int d^3(r_1 r_2) \left[ \bar{G}^{\rm KS}(\bm r_1, \bm r_2, -\omega_n)
+	\bar{\Sigma }^{\rm SS}(\bm r_1, \bm r_2, -\omega_n) \bar{G}(\bm r_2, \bm r', -\omega_n)
+	\right]_{12}.
+	\label{eq:AppSSanom}
+\end{equation}
+%
+These are the generalized Sham-Schl\"{u}ter equations for SCDFT.
+
+We describe more technical and complex derivation in the following.
+We decompose $\bar{\Sigma}^{\rm SS} $ into two terms like in (\ref{eq:appSSself}) and rewrite the 
+above two equations as follows:
+%
+\begin{equation}
+	\begin{split}
+	& \frac{2}{\beta} \sum_{\omega_n}
+	e^{ {\rm i}\omega_n 0^{+}} 
+	\int d^3(r_1 r_2) \left[ \bar{G}^{\rm KS}(\bm r_1, \bm r_2, \omega_n)
+	\bar{\Sigma }^{\rm xc}(\bm r_1, \bm r_2, \omega_n) \bar{G}(\bm r_2, \bm r, \omega_n)
+	\right]_{11} \\
+	&\quad =
+	\frac{2}{\beta}\sum_{\omega_n} e^{ {\rm i}\omega_n 0^{+}}\int d^3r_1 
+	v_{\rm xc}(\bm r_1) [G^{\rm KS}(\bm r,\bm r_1,\omega_n)G(\bm r_1, \bm r', \omega_n)+
+	F^{\rm KS}(\bm r, \bm r_1, \omega_n)F^{\dag}(\bm r_1, \bm r', \omega_n)] \\
+	&\quad \quad + 
+	\frac{2}{\beta}\sum_{\omega_n}e^{ {\rm i}\omega_n 0^{+}}
+	\int d^3r_1 d^3r_2 
+	[\Delta_{\rm xc}^{\ast}(\bm r_1, \bm r_2)
+	F^{\rm KS}(\bm r,\bm r_1, \omega_n)G(\bm r_2, \bm r', \omega_n) 
+	- \Delta_{\rm xc}(\bm r_1, \bm r_2)
+	G^{\rm KS}(\bm r,\bm r_1, \omega_n)F^{\dag}(\bm r_2, \bm r', \omega_n) 
+	],
+	\label{eq:11comp1}
+\end{split}
+\end{equation}
+%
+\begin{equation}
+	\begin{split}
+	& \frac{1}{\beta} \sum_{\omega_n}
+	e^{ {\rm i}\omega_n 0^{+}} 
+	\int d^3(r_1 r_2) \left[ \bar{G}^{\rm KS}(\bm r_1, \bm r_2, -\omega_n)
+	\bar{\Sigma }^{\rm xc}(\bm r_1, \bm r_2, -\omega_n) \bar{G}(\bm r_2, \bm r, -\omega_n)
+	\right]_{12} \\
+	&\quad =
+	\frac{1}{\beta}\sum_{\omega_n} e^{ {\rm i}\omega_n 0^{+}}\int d^3r_1 
+	v_{\rm xc}(\bm r_1) [G^{\rm KS}(\bm r,\bm r_1,-\omega_n)F(\bm r_1, \bm r', -\omega_n)+
+	F^{\rm KS}(\bm r, \bm r_1, -\omega_n)G(\bm r', \bm r_1, \omega_n)] \\
+	&\quad \quad + 
+	\frac{1}{\beta}\sum_{\omega_n}e^{ {\rm i}\omega_n 0^{+}}
+	\int d^3r_1 d^3r_2 
+	[\Delta_{\rm xc}^{\ast}(\bm r_1, \bm r_2)
+	F^{\rm KS}(\bm r,\bm r_1, -\omega_n)F(\bm r_2, \bm r', -\omega_n) 
+	- \Delta_{\rm xc}(\bm r_1, \bm r_2)
+	G^{\rm KS}(\bm r,\bm r_1, -\omega_n)G(\bm r', \bm r_2, \omega_n) 
+	].
+	\label{eq:12comp1}
+\end{split}
+\end{equation}
+%
+These two equations determines the exchange-correlation(xc) potentials together.
+We now carry out the Fourier transform into $k$-space and write the matrix element explicitly
+as follows:
+%
+\begin{equation}
+	\begin{split}
+	& \frac{1}{\beta} \sum_{k,\omega_n} [\Sigma^{\rm xc}_{11}(k,k,\omega_n)
+	  G^{\rm KS}(k,\omega_n)G(k,\omega_n) + \Sigma^{\rm xc}_{21}(k,k,\omega_n)
+	  F^{\rm KS}(k,\omega_n)G(k,\omega_n) \\
+  	&\quad \quad \quad - \Sigma^{\rm xc}_{12}(k,k,\omega_n)G^{\rm KS}(k,\omega_n)F^{\dag}(k,\omega_n)
+	- \Sigma^{\rm xc}_{22}(k,k,\omega_n)F^{\rm KS}(k,\omega_n)F^{\dag}(k,\omega_n)] \\
+	& = \frac{1}{\beta}\sum_{k, \omega_n} v_{\rm xc}(k,k)
+	[G^{\rm KS}(k,\omega_n)G(k,\omega_n) + F^{\rm KS}(k,\omega_n)F^{\dag}(k,\omega_n)] \\
+	&\quad + \frac{1}{\beta} \sum_{k,\omega_n}[\Delta^{\rm xc\ast}_{k}
+		F^{\rm KS}(k, \omega_n)G(k, \omega_n) - \Delta^{\rm xc}_{k}G^{\rm KS}(k,\omega_n)
+	F^{\dag}(k,\omega_n)],
+	\label{eq:11comp2}
+\end{split}
+\end{equation}
+%
+\begin{equation}
+	\begin{split}
+	& \frac{1}{\beta} \sum_{\omega_n} [\Sigma^{\rm xc}_{11}(k,k',-\omega_n)
+	  G^{\rm KS}(k,-\omega_n)F(k',-\omega_n) + \Sigma^{\rm xc}_{21}(k,k',-\omega_n)
+	  F^{\rm KS}(k,-\omega_n)G(k',\omega_n) \\
+  	&\quad \quad \quad - \Sigma^{\rm xc}_{12}(k,k',\omega_n)G^{\rm KS}(k,-\omega_n)G(k',\omega_n)
+	- \Sigma^{\rm xc}_{22}(k,k',-\omega_n)F^{\rm KS}(k,-\omega_n)G(k',\omega_n)] \\
+	& = \frac{1}{\beta}\sum_{\omega_n} v_{\rm xc}(k,k')
+	[G^{\rm KS}(k,-\omega_n)F(k',-\omega_n) + F^{\rm KS}(k,-\omega_n)G(k',\omega_n)] \\
+	&\quad + \frac{1}{\beta} \sum_{\omega_n}\delta_{kk'}[\Delta^{\rm xc\ast}_{k}
+		F^{\rm KS}(k, -\omega_n)F(k', -\omega_n) - \Delta^{\rm xc}_{k}G^{\rm KS}(k,-\omega_n)
+	G(k',\omega_n)],
+	\label{eq:12comp2}
+\end{split}
+\end{equation}
+where we dropped the factor $e^{ {\rm i}\omega_n0^{+}}$ for simplicity.
+
 \include{end}

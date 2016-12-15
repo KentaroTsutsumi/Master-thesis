@@ -4,8 +4,9 @@
 % Contents
 %
 \chapter{Application to elemental metals}
-In this section, we show our results of the SCDFT including the effect of spin fluctuations 
-in case of V, Nb and Al. We show that, in case of V, the magnitude of the kernel originated 
+\label{application}
+In this section, we show our calculation results including the effect of spin fluctuations 
+for V, Nb and Al. We show that, in case of V, the magnitude of the kernel originating 
 from spin fluctuations $\mathcal K^{\rm SF}$ is comparable to that of Coulomb interaction.
 According to that, the estimated $T_{c}$ is significantly lower than that without including the
 effect of spin fluctuations. We also show that the magnitude of $\mathcal K^{\rm SF}$ and the 
@@ -13,7 +14,7 @@ resulting amount of $T_{c}$ reduction is related to the electronic locarization.
 
 \section{Computational details}
 We used the Quantum ESPRESSO\cite{QE} package to obtain the Kohn-Sham energies and wave functions.
-We obtained the phonon frequencies and electron-phonon coupling by using the density functional
+We obtained the phonon frequencies and electron-phonon coupling by applying the density functional
 perturbation theory(DFPT)\cite{DFPT}.
 We used the GGA-PBE exchange-correlation functional\cite{GGAPBE} and the norm-conserving 
 pseudopotentials\cite{normcons} for all materials. 
@@ -39,7 +40,7 @@ with width = $0.025$Ry for metallic calculations.
 	\label{tab:numcond}
 \end{table}
 
-\section{Results}
+\section{Results and discussion}
 Calculated results are summarized in table\ref{tab:results}.
 The lattice constants resulting from the structure optimization agree with the experimental ones.
 We used the theoretically optimized lattice constants in the following calculations.
@@ -48,19 +49,19 @@ screened Coulomb interaction and spin fuctuations-mediated interaction.
 We applied the ALDA for the screened Coulomb interaction as mentioned in the previous chapter, 
 while RPA is applied in Ref.\cite{RA2013}.
 
-In case of V, we obtain $T_c = 17.8$K with dinamical calculation when we did not take account of 
-spin fluctuations and this value is extremely higher than experimental value.
+In case of V, we obtain $T_c = 17.8$K with dinamical calculation when we do not take account of 
+spin fluctuations and this value is extremely higher than the experimental value.
 On the other hand, when we include the spin fluctuations, $T_c$ is reduced to $8.3$K.
 Although this value is still higher than exprerimental one by about 60\%, the agreement between 
 the experimental value is improved.
-In case of Nb, we obtain $T_c = 11.1$K with dinamical calculation when we did not take account of 
+In case of Nb, we obtain $T_c = 11.1$K with dinamical calculation when we do not take account of 
 spin fluctuations and this value is higher than experimental value by about 15\%.
-On the other hand, when we include the spin fluctuations, $T_c$ is reduced to $8.9$K.
+If the effect of spin fluctuations is included, $T_c$ is reduced to $8.9$K.
 The qualitative trend that the $T_c$ is reduced due to the effect of spin fluctuations is same as 
-in case of V, but the amount of reduction of $T_c$ is relatively smaller than in case of V.
+in case of V, but the amount of reduction of $T_c$ is relatively smaller than that of V.
 This quantitatively different behavior comes from the strength of electronic locarization in each material.
 
-The ferromagnetic fluctuations come from the exchange effect: Two electrons having same spins are 
+The ferromagnetic fluctuations come from the exchange effect\cite{Berk1966}: Two electrons having same spins are 
 required to be saparated in space due to the Pauli's rule. As a result, in the 
 nearly homogeneous system, these two electron have lower energy than that of two electrons having 
 opposite spins and the ferromagnetic fluctuations are induced.
@@ -97,6 +98,7 @@ exchange effect is relatively smaller than in case of V and Nb.
 	\end{tabular}
 	\label{tab:results}
 \end{table}
+%
 
 We found that the effect of spin fluctuations on $T_c$ is at least qualitatively reasonable and 
 the amount of the $T_c$ reduction is related to the electronic locarization.
@@ -111,7 +113,7 @@ consider the partially averaged nondiagonal exchange correlation kernel which is
 %
 
 The averaged exchange correlation kernels and corresponding gap functions calculated for V 
-are plotted in Fig.\ref{fig:Vaveker}. The kernel originated from the electron-phonon interaction
+are plotted in Fig.\ref{fig:Vaveker}. The kernel originating from the electron-phonon interaction
 $\mathcal K^{\rm ph}$ is negative within the low energy region and nearly zero in the region 
 where $\xi \gtrsim 1$eV. The kernels of the static Coulomb interaction is nearly constant in the
 whole energy region. On the other hand, the kernel stemmed from the plasmon-induced dynamical
@@ -119,13 +121,12 @@ Coulomb interaction rises from nearly zero to positive around $\xi \approx 10^{-
 This contribution suppresses the effective repulsion between quasiparticles due to the 
 retardian effect and the resulting $T_c$ is enhanced compared to that of static approximation
 \cite{RA2013}.
-The kernel originated from dynamical spin fluctuations is nearly positive constant in the energy region where
-the contribution from the dynamical Coulomb interaction is nearly zero and that from the
-electron-phonon interaction is negative. In the high-energy region, on the other hand, 
-the contribution from spin fluctuations reduces to zero. 
+The kernel originating from dynamical spin fluctuations is nearly positive constant in the energy region 
+In the high-energy region, on the other hand, the contribution from spin fluctuations reduces to zero. 
 Furthermore, the magnitude of repulsion due to spin fluctuations in low-energy region is comparative 
 to that of the static Coulomb interaction. This energy dependence of
-$\mathcal K^{\rm SF}$ suppresses the low-energy positive gap function (Fig.\ref{fig:Vaveker}(b)) and
+$\mathcal K^{\rm SF}$ suppresses the low-energy positive gap function (Figs.\ref{fig:Vaveker}(b)
+and \ref{fig:VgapT}) and
 the resulting $T_c$ strongly.
 It should be noted that a cusp is observed in the gap function with spin fluctuations 
 around $\xi \approx 10^{-2}{\rm eV}$. This cusp may be caused by the result that there is a small
@@ -142,10 +143,18 @@ $\mathcal K^{\rm SF}$ is slightly reduced in low-energy region.
 	\label{fig:Vaveker}
 \end{figure}
 %
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=10truecm,clip]{../figure/result/V_gap_mod.eps}
+	\caption{Temperature dependence of the gap functions calculated with and without 
+		the spin fluctuations kernel $\mathcal K^{\rm SF}$ and the experimental $T_c$ in V.}
+	\label{fig:VgapT}
+\end{figure}
+%
 
 Next, we see the averaged exchange-correlation kernels calculated for Nb in Fig.\ref{fig:Nbaveker}.
 In case of Nb, the quantitive trend is same as in case of V: The averaged kernel of spin fluctuations
-is nearly positive constant and reduces to zero in high energy region.
+is nearly positive constant in low energy region and reduces to zero in high energy region.
 However, the magnitude of the kernel $\mathcal K^{\rm SF}$ is relatively smaller than that of V.
 As noted above, this is due to the strength of the electronic locarization.
 %
@@ -158,6 +167,13 @@ As noted above, this is due to the strength of the electronic locarization.
 	\label{fig:Nbaveker}
 \end{figure}
 %
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=10truecm,clip]{../figure/result/Nb_gap_mod.eps}
+	\caption{Temperature dependence of the gap functions calculated with and without 
+		the spin fluctuations kernel $\mathcal K^{\rm SF}$ and the experimental $T_c$ in Nb.}
+	\label{fig:NbgapT}
+\end{figure}
 
 Finally, we see the averaged exchange-correlation kernels calculated for Al in Fig.\ref{fig:Alaveker}.
 The kernel $\mathcal K^{\rm SF}$ is significantly smaller than that of the static Coulomb interaction.
@@ -168,8 +184,8 @@ Therefore, the corresponding gap function and the resulting $T_c$ is not so modi
 Here we should note about the expression of the spin fluctuations-mediated interaction (\ref{eq:finallambda}).
 As mentioned in the previous chapter, we neglected the linear term of $f^{\rm xc}$ defined as 
 (\ref{eq:deffxc}). If we include the linear term, we observe an unreasonable result in the
-calculation for Al: The gap function is enhanced in low-energy region and the resulting $T_c$
-is also enhanced. It can be considered that this strange results may comes from the frequency
+calculation for Al: The gap function is enhanced in low energy region and the resulting $T_c$
+is also enhanced. It can be considered that this strange result may comes from the frequency
 dependence of $\Lambda^{\rm SF}$. Here we show the expression of $\Lambda^{\rm SF}$ with the linear term in crystals 
 which is written with the double-Fourier transformation\cite{Hybertsen1987}
 %
@@ -183,8 +199,25 @@ which is written with the double-Fourier transformation\cite{Hybertsen1987}
 In the above expression, there is a frequency-dependent term and a frequency-independent term.
 The reason why $f^{\rm xc}$ is frequency-independent is that we carried out a local approximation
 to the starting self-energy $\Sigma^{V}$ (see (\ref{eq:localapp})). Within this approximation,
-one is obliged to apply the adiabatic approximation to $f^{\rm xc}(\bm r,t)$ and therefore $f^{\rm xc}$
-becomes $\omega$-independent.
+since one is obliged to apply the adiabatic approximation to $f^{\rm xc}(\bm r_1,t_1, \bm r_2,t2)$
+%
+\begin{equation}
+	f^{\rm xc}_{\rm adia}(\bm r_1,t_1, \bm r_2, t_2) = f^{\rm xc}(\bm r_1,\bm r_2, t_1)\delta(t_1 - t_2),
+	\label{eq:adiabatic}
+\end{equation}
+%
+$f^{\rm xc}$ becomes $\omega$-independent after the Fourier transformation.
+However, this $\omega$-independent term is physically unreasonable. 
+We discuss the reason in anologous to the screened Coulomb interaction below.
+In case of the frequency-dependent screened interaction, in the high-frequency limit, 
+the screened Coulomb interaction reduces to the bare Coulomb interaction because
+the polarization function reduces to zero (see (\ref{eq:chi0})).
+This frequency-dependence reflects the fact that electrons behave as bare ones, namely, 
+do not feel any exchange-correlation effect in the high-frequency region.
+According to this consideration, the effectrive interaction mediated by spin fluctuations originating
+from the exchange-correlation effect should be vanish in the high-frequency limit.
+Therefore, the frequency-independent non-zero term $f^{\rm xc}$ is physically unreasonable and 
+neglected in our calculations.
 %
 % kokomade DISCUSSION deha ?????
 %
