@@ -173,16 +173,15 @@ above two equations as follows:
 \begin{equation}
 	\begin{split}
 	& \frac{2}{\beta} \sum_{\omega_n}
-	e^{ {\rm i}\omega_n 0^{+}} 
 	\int d^3(r_1 r_2) \left[ \bar{G}^{\rm KS}(\bm r, \bm r_1, \omega_n)
 	\bar{\Sigma }^{\rm xc}(\bm r_1, \bm r_2, \omega_n) \bar{G}(\bm r_2, \bm r, \omega_n)
 	\right]_{11} \\
 	&\quad =
-	\frac{2}{\beta}\sum_{\omega_n} e^{ {\rm i}\omega_n 0^{+}}\int d^3r_1 
+	\frac{2}{\beta}\sum_{\omega_n} 
 	v_{\rm xc}(\bm r_1) [G^{\rm KS}(\bm r,\bm r_1,\omega_n)G(\bm r_1, \bm r, \omega_n)+
 	F^{\rm KS}(\bm r, \bm r_1, \omega_n)F^{\dag}(\bm r_1, \bm r, \omega_n)] \\
 	&\quad \quad + 
-	\frac{2}{\beta}\sum_{\omega_n}e^{ {\rm i}\omega_n 0^{+}}
+	\frac{2}{\beta}\sum_{\omega_n}
 	\int d^3r_1 d^3r_2 
 	[\Delta_{\rm xc}^{\ast}(\bm r_1, \bm r_2)
 	F^{\rm KS}(\bm r,\bm r_1, \omega_n)G(\bm r_2, \bm r, \omega_n) 
@@ -196,16 +195,15 @@ above two equations as follows:
 \begin{equation}
 	\begin{split}
 	& \frac{1}{\beta} \sum_{\omega_n}
-	e^{ {\rm i}\omega_n 0^{+}} 
 	\int d^3(r_1 r_2) \left[ \bar{G}^{\rm KS}(\bm r, \bm r_1, -\omega_n)
 	\bar{\Sigma }^{\rm xc}(\bm r_1, \bm r_2, -\omega_n) \bar{G}(\bm r_2, \bm r', -\omega_n)
 	\right]_{12} \\
 	&\quad =
-	\frac{1}{\beta}\sum_{\omega_n} e^{ {\rm i}\omega_n 0^{+}}\int d^3r_1 
+	\frac{1}{\beta}\sum_{\omega_n} 
 	v_{\rm xc}(\bm r_1) [G^{\rm KS}(\bm r,\bm r_1,-\omega_n)F(\bm r_1, \bm r', -\omega_n)+
 	F^{\rm KS}(\bm r, \bm r_1, -\omega_n)G(\bm r', \bm r_1, \omega_n)] \\
 	&\quad \quad + 
-	\frac{1}{\beta}\sum_{\omega_n}e^{ {\rm i}\omega_n 0^{+}}
+	\frac{1}{\beta}\sum_{\omega_n}
 	\int d^3r_1 d^3r_2 
 	[\Delta_{\rm xc}^{\ast}(\bm r_1, \bm r_2)
 	F^{\rm KS}(\bm r,\bm r_1, -\omega_n)F(\bm r_2, \bm r', -\omega_n) 
@@ -216,6 +214,7 @@ above two equations as follows:
 \end{split}
 \end{equation}
 %
+where we dropped the factor $e^{ {\rm i}\omega_n0^{+}}$ for simplicity. 
 These two equations determines the exchange-correlation(xc) potentials together.
 We now carry out the Fourier transform into $k$-space and write the matrix elements explicitly
 as follows:
@@ -251,7 +250,6 @@ as follows:
 	\label{eq:12comp2}
 \end{split}
 \end{equation}
-where we dropped the factor $e^{ {\rm i}\omega_n0^{+}}$ for simplicity. 
 Here we defined the $k$-space quantities as follows:
 %
 \begin{equation}
