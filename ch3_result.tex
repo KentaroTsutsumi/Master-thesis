@@ -189,8 +189,8 @@ As mentioned in the previous chapter, we neglected the linear term of $f^{\rm xc
 (\ref{eq:deffxc}). If we include the linear term, we observe an unreasonable result in the
 calculation for Al: The gap function is enhanced in low energy region and the resulting $T_c$
 is also enhanced. It can be considered that this strange result may comes from the frequency
-dependence of $\Lambda^{\rm SF}$. Here we show the expression of $\Lambda^{\rm SF}$ with the linear term in crystals 
-which is written with the double-Fourier transform\cite{Hybertsen1987}
+dependence of $\Lambda^{\rm SF}$. Here we show the expression of $\Lambda^{\rm SF}$ in crystals with 
+the linear term which is written with the double-Fourier transform\cite{Hybertsen1987}
 %
 \begin{equation}
 	\Lambda^{\rm SF}_{\mathbf G \mathbf G'}(\mathbf q, \omega) = f^{\rm xc}(\mathbf G' - \mathbf G) - 
@@ -212,6 +212,15 @@ the adiabatic approximation to $f^{\rm xc}(\bm r_1,t_1, \bm r_2,t_2)$
 \end{equation}
 %
 $f^{\rm xc}$ becomes $\omega$-independent after the Fourier transform.
+
+In the original paper, this term is neglected based on the following assumption.
+It is assumed that this formalism is applied to the unconventional superconductors like Fe-based ones
+in which magnetic fluctuations are nearly strong enough to reach the magnetic ordered phase.
+In such cases, the second term in (\ref{eq:lambdamiss}) proportional to the spin 
+susceptibility $\chi$ is dominant and the linear $f^{\rm xc}$ term can be neglected.
+
+On the other hand, this assumption is not valid in case of elemental metals such as Al and the 
+linear $f^{\rm xc}$ term can not be neglected.
 However, this $\omega$-independent term is physically unreasonable. 
 We discuss the reason in anologous to the screened Coulomb interaction below.
 In case of the frequency-dependent screened interaction, in the high-frequency limit, 
@@ -223,6 +232,11 @@ According to this consideration, the effectrive interaction mediated by spin flu
 from the exchange-correlation effect should be vanish in the high-frequency limit.
 Therefore, the frequency-independent non-zero term $f^{\rm xc}$ is physically unreasonable and 
 neglected in our calculations.
+In fact, there are some theoretical studies on the frequency dependence of the functional derivative
+of the exchange-correlation potential with respect to the electronic density\cite{Qian2002}.
+On the other hand, similar analyses on the functional derivative with respect to the spin density is lacking.
+If the function form with respect to frequency is developed, it may be able to take into account the 
+linear $f^{\rm xc}$ term.
 %
 % kokomade DISCUSSION deha ?????
 %

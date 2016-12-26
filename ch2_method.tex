@@ -816,9 +816,11 @@ where the function $J$ is defined as
 	\left[
 		\frac{f_\beta(\xi') + f_\beta(\xi-\Omega)}{\xi-\xi'-\Omega} -
 		\beta f_\beta(\xi-\Omega) f_\beta(-\xi'+\Omega)
-	\right].
+	\right],
 	\label{eq:Jtildefunc}
 \end{equation}
+%
+where $f_{\beta}$ is the fermi distrubution function.
 %
 %
 \subsection*{Electron-electron kernels}
@@ -913,7 +915,7 @@ is written as
 %
 \begin{equation}
 	\begin{split}
-	& K^{\rm el, stat}_{n\bm k,n' \bm k'} = W_{n \bm k, n' \bm k'}, \\
+	& K^{\rm el, stat}_{n\bm kn' \bm k'} = W_{n \bm k, n' \bm k'}, \\
 	& W_{n\bm kn'\bm k'} = 
 	\int d^3r \int d^3r' \varphi_{n\bm k}(\bm r)\varphi_{n-\bm k}({\bm r'})
 	v^{\rm screen}(\bm r, {\bm r'}) \varphi_{n'\bm k'}(\bm r) \varphi_{n'-\bm k'}({\bm r'}).
@@ -936,8 +938,8 @@ the formulation for ${\mathcal K}^{\rm el}_{ij}$ should be modified as follows\c
 \end{equation}
 %
 where $F_{n\bm k}({\rm i}\tilde\omega) = 
-\frac{1}{\rm i \tilde\omega + E_{n\bm k}}-\frac{1}{\rm i \tilde\omega - E_{n\bm k}}$
-and $\tilde\omega$ means the bosonic Matsubara frequency and we defined 
+\frac{1}{ {\rm i} \tilde\omega + E_{n\bm k}}-\frac{1}{ {\rm i} \tilde\omega - E_{n\bm k}}$
+and $\tilde\omega$ means the fermionic Matsubara frequency and we defined 
 $W_{n\bm kn'\bm k'}({\rm i}\omega)$ as 
 %
 \begin{equation}
@@ -947,8 +949,34 @@ $W_{n\bm kn'\bm k'}({\rm i}\omega)$ as
 	\label{eq:dynWnknk}
 \end{equation}
 %
-We describe how to calculate the summation with respect to the even Matsubara frequency in (\ref{eq:Keldyn})
-in Appendix.
+In practice, the Coulombic kernel $\mathcal K^{\rm el,dyn}$ is decomposed into static and dynamical
+terms as follows\cite{RAphD}
+%
+\begin{equation}
+	\begin{split}
+	{\mathcal K}^{\rm el, dyn}_{n\bm k,n'\bm k'} &={\mathcal K}^{\rm el,stat}_{n\bm k,n'\bm k'} 
+	+ \Delta{\mathcal K}^{\rm el, dyn}_{n\bm k,n'\bm k'} \\
+	&= W_{n\bm k n' \bm k'}(0)  \\
+	&\quad +
+	\lim_{\{\Delta_{n\bm k}\} \to 0}
+	\frac{1}{\tanh[(\beta/2)E_{n\bm k}]}\frac{1}{\tanh[(\beta/2)E_{n'\bm k'}]}
+	\frac{1}{\beta^2}
+	\sum_{\tilde{\omega}_1\tilde{\omega}_2}
+	F_{n\bm k}({\rm i}\tilde\omega_1)F_{n'\bm k'}({\rm i}\tilde\omega_2)
+	\left[ 
+		W_{n\bm kn'\bm k'}[{\rm i}(\tilde\omega_1 - \tilde\omega_2)] - W_{n\bm k n' \bm k'}(0)
+	\right].
+	\label{eq:Kelsep}
+\end{split}
+\end{equation}
+%
+Thanks to the above separation and some algebra following this expression, 
+there is no need to execute the Matsubara summation in different temperatures\cite{RAphD}.
+%In order to compute the Matsubara summation in (\ref{eq:Kelsep}) numerically, a
+%frequency cutoff is inevitably introduced. Thanks to the above separation, the numerical error due 
+%to introducing the cutoff can be sufficiently suppressed 
+%We describe how to calculate the summation with respect to the odd Matsubara frequency in (\ref{eq:Keldyn})
+%in Appendix.
 Using the kernels derived above, the resulting SCDFT gap equation is written as
 %
 \begin{equation}
@@ -1606,8 +1634,11 @@ In $\mathcal K$, the electron phonon interaction is attracting but the interacti
 spin fluctuations is repulsive.
 This sign difference comes from the number of loops contained in diagrams discussed above
 (see (\ref{eq:Fself})). The detail of derivation of these equations are described in Appendix.
+
 In practice, the Matsubara summation in (\ref{eq:ZSFdef}) is too complex and numerically demanding.
 Therefore, in our calculation we neglect the term ${\mathcal Z}^{\rm SF}$.
+Furthermore, we do not employ the separation of $\mathcal K^{\rm SF}$ into static and dynamical
+terms like in case of $\mathcal K^{\rm el}$ (\ref{eq:Kelsep}) in order to avoid the numerical error.
 
 \section{Estimating $T_{\rm c}$}
 So far, we have derived the SCDFT gap equation with the effect of spin fluctuations.

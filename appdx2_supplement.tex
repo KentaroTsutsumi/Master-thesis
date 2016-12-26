@@ -1,0 +1,119 @@
+\include{preamble}
+\include{begin}
+%
+% Contents
+%
+\appendix
+\chapter{Numerical method to execute the Matsubara summation}
+\label{appdx:Msum}
+
+In this appendix, we describe how to execute the Matsubara summation in (\ref{eq:Keldyn}) 
+following Ref.\cite{RAphD}. We also explain the difference of the numerical scheme between in case of
+Coulomb interaction (\ref{eq:Keldyn}) and the effect of spin fluctuations (\ref{eq:KSFdef}).
+
+The quantity which we have to evaluate is 
+%
+\begin{equation}
+	\begin{split}
+        {\mathcal K}^{\rm el, dyn}_{n\bm k,n'\bm k'} & =
+	\lim_{\{\Delta_{n\bm k}\} \to 0}
+	\frac{1}{\tanh[(\beta/2)E_{n\bm k}]}\frac{1}{\tanh[(\beta/2)E_{n'\bm k'}]} \\
+	&\quad \times
+	\frac{1}{\beta^2}
+	\sum_{\tilde{\omega}_1\tilde{\omega}_2}
+	F_{n\bm k}({\rm i}\tilde\omega_1)F_{n'\bm k'}({\rm i}\tilde\omega_2)
+	W_{n\bm kn'\bm k'}[{\rm i}(\tilde\omega_1 - \tilde\omega_2)],
+	\label{eq:Keldyn}
+\end{split}
+\end{equation}
+%
+where the function $F$ is defined as
+%
+\begin{equation}
+F_{n\bm k}({\rm i}\tilde\omega) = 
+\frac{1}{ {\rm i} \tilde\omega + E_{n\bm k}}-\frac{1}{ {\rm i} \tilde\omega - E_{n\bm k}},
+	\label{eq:Ffunc}
+\end{equation}
+%
+and $\tilde\omega$ means the fermionic Matsubara frequency and
+$W_{n\bm kn'\bm k'}$ is the matrix element of the dynamical Coulomb interaction.
+We explain the scheme for the summation with respect to 
+$\Lambda^{\rm SF}_{n\bm k n'\bm k'}({\rm i}\tilde{\omega})$ later.
+
+At first, we transform the variable as $\tilde{\nu} \equiv \tilde{\omega}_1 - \tilde{\omega}_2$.
+Furthermore, we separate the static term $W_{n\bm k n' \bm k'}(0)$ from the finite-frequency term.
+The reason why this separation is applied will be described later.
+By using the relation $W_{n \bm k n' \bm k'}(-{\rm i}\omega) = W_{n\bm k n' \bm k'}({\rm i}\omega)$
+and the formula (\ref{eq:sumform1}),
+the Matsubara summation with respect to $\tilde{\omega}_1$ can be analytically carried out as follows
+%
+\begin{equation}
+	\begin{split}
+	&\frac{1}{\beta^2}
+	\sum_{\tilde{\omega}_1\tilde{\omega}_2}
+	F_{n\bm k}({\rm i}\tilde\omega_1)F_{n'\bm k'}({\rm i}\tilde\omega_2)
+	W_{n\bm kn'\bm k'}[{\rm i}(\tilde\omega_1 - \tilde\omega_2)] \\
+	&\quad =
+	\tanh[(\beta/2)E_{n\bm k}]\tanh[(\beta/2)E_{n' \bm k'}]W_{n\bm k n' \bm k'}(0) \\
+	& \quad \quad +
+	\frac{2}{\beta}\sum_{\tilde{\nu}}
+	[W_{n\bm k n' \bm k'}({\rm i}\tilde{\nu}) - W_{n\bm k n' \bm k'}(0)]
+	\left[ 
+		\frac{f_\beta(E_{n'\bm k'}) - f_\beta(E_{n\bm k})}{ {\rm i}\tilde{\nu} - (E_{n\bm k}-E_{n'\bm k'})}
+		- \frac{f_\beta(E_{n'\bm k'}) - f_\beta(-E_{n\bm k})}{ {\rm i}\tilde{\nu} - (-E_{n\bm k}-E_{n'\bm k'})}
+	\right] \\
+	& \quad =
+	\tanh[(\beta/2)E_{n\bm k}]\tanh[(\beta/2)E_{n' \bm k'}]W_{n\bm k n' \bm k'}(0) \\
+	& \quad \quad +
+	\frac{4}{\beta}\sum_{\tilde{\nu} > 0}
+	[W_{n\bm k n' \bm k'}({\rm i}\tilde{\nu}) - W_{n\bm k n' \bm k'}(0)] \\
+	& \quad \quad \quad \times
+	\left[ 
+		\frac{[f_\beta(E_{n'\bm k'}) - f_\beta(E_{n\bm k})](E_{n'\bm k'} - E_{n\bm k})}
+		{ \tilde{\nu}^2 + (E_{n\bm k}-E_{n'\bm k'})^2}
+		-\frac{[f_\beta(E_{n'\bm k'}) - f_\beta(-E_{n\bm k})](E_{n'\bm k'} + E_{n\bm k})}
+		{ \tilde{\nu}^2 + (E_{n\bm k}+E_{n'\bm k'})^2}
+	\right], 
+	\label{eq:nutrans}
+\end{split}
+\end{equation}
+%
+where $f_{\beta}$ is the fermi distribution function. Based on this separation, the kernel
+${\mathcal K}^{\rm el}$ can be written as ${\mathcal K}^{\rm el} = {\mathcal K}^{\rm el,stat} +
+\Delta{\mathcal K}^{\rm el,dyn}$ where
+%
+\begin{equation}
+	\begin{split}
+	\Delta{\mathcal K}^{\rm el,dyn}_{n\bm k, n'\bm k'} & =
+	\frac{1}{\tanh[(\beta/2)\xi_{n\bm k}]\tanh[(\beta/2)\xi_{n'\bm k'}]} \\
+	&\quad \times
+	[ 
+		\{f_{\beta}(\xi_{n'\bm k'}) - f_{\beta}(\xi_{n\bm k})\}{\rm sgn}(\xi_{n'\bm k'}-\xi_{n\bm k})
+		L_{n\bm k n' \bm k'}(|\xi_{n'\bm k'}-\xi_{n\bm k}|) \\
+	&\quad \quad -
+	\{f_{\beta}(\xi_{n'\bm k'}) - f_{\beta}(-\xi_{n\bm k})\}{\rm sgn}(\xi_{n'\bm k'}+\xi_{n\bm k})
+		L_{n\bm k n' \bm k'}(|\xi_{n'\bm k'}+\xi_{n\bm k}|) 
+	],
+	\label{eq:deltaKeldyn}
+\end{split}
+\end{equation}
+%
+where the function $L_{n\bm k n \bm k'}$ is defined as 
+%
+\begin{equation}
+	L_{n\bm k n' \bm k'}(x) = \frac{4}{\beta}\sum_{\tilde{\nu}>0}
+	\left[ 
+		W_{n\bm k n' \bm k'}({\rm i}\tilde{\nu}) - W_{n\bm k n' \bm k'}(0)
+	\right]
+	\frac{x}{\tilde{\nu}^2 + x^2}.
+	\label{eq:Lfunc}
+\end{equation}
+%
+
+Now the remaining problem is how to evaluate the bosonic Matsubara summation.
+In order to construct an algorithm to calculate this, we use the Euler-Maclaurin formula
+
+
+
+\include{end}
+
