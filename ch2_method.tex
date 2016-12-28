@@ -1306,7 +1306,7 @@ can be calculated using the following result:
 	\frac{\delta\rho_{\sigma_5\sigma_6}(\bm x_5)}{\delta G(3,4)} \\
 	&= \iint d5d6 f^{\rm xc}_{\sigma_1\sigma_2\sigma_5\sigma_6}(\bm x_1 \bm x_5)
 	\frac{\delta G(5,6)}{\delta G(3,4)}\delta_{\bm x_5\bm x_6} \\
-	&= f^{\rm xc}_{\sigma_1\sigma_2\sigma_5\sigma_6}(\bm x_1, \bm x_3)\delta_{\bm x_3 \bm x_4},
+	&= f^{\rm xc}_{\sigma_1\sigma_2\sigma_3\sigma_4}(\bm x_1, \bm x_3)\delta_{\bm x_3 \bm x_4},
 	\label{eq:dervxc}
 \end{split}
 \end{equation}
@@ -1314,9 +1314,9 @@ can be calculated using the following result:
 where $\bm x_1 = (\bm r_1 \tau_1)$ and $f^{\rm xc}$ is defined as
 %
 \begin{equation}
-	f^{\rm xc}_{\sigma_1\sigma_2\sigma_5\sigma_6}(\bm x_1 \bm x_5)
+	f^{\rm xc}_{\sigma_1\sigma_2\sigma_3\sigma_4}(\bm x_1 \bm x_3)
 	\equiv 
-	\frac{\delta v^{\rm xc}_{\sigma_1\sigma_2}(\bm x_1)}{\delta\rho_{\sigma_5\sigma_6}(\bm x_5)}.
+	\frac{\delta v^{\rm xc}_{\sigma_1\sigma_2}(\bm x_1)}{\delta\rho_{\sigma_3\sigma_4}(\bm x_3)}.
 	\label{eq:deffxc}
 \end{equation}
 %
@@ -1339,15 +1339,15 @@ where $\bm x_1 = (\bm r_1 \tau_1)$ and $f^{\rm xc}$ is defined as
 If we approximate the full Green's function in (\ref{eq:BSELambda}) by the Kohn-Sham one, 
 the BSE for $\Lambda^{\rm c - \rm d}$ can be written as
 \begin{equation}
-	\Lambda^{\rm c - \rm d}_{\sigma_1\sigma_1\sigma_2\sigma_2} = 4f^{\rm xc}_{\sigma_1\sigma_1\sigma_2\sigma_2} 
-	+ 16 \sum_{\sigma_6\sigma_7}f^{\rm xc }_{\sigma_1\sigma_1\sigma_6\sigma_6}
+	\Lambda^{\rm c - \rm d}_{\sigma_1\sigma_1\sigma_2\sigma_2} = -4f^{\rm xc}_{\sigma_1\sigma_1\sigma_2\sigma_2} 
+	- 16 \sum_{\sigma_6\sigma_7}f^{\rm xc }_{\sigma_1\sigma_1\sigma_6\sigma_6}
 	P_{\sigma_6\sigma_6\sigma_7\sigma_7}f^{\rm xc}_{\sigma_7\sigma_7\sigma_2\sigma_2},
 	\label{eq:longlambda}
 \end{equation}
 %
 \begin{equation}
-	\Lambda^{\rm c - \rm d}_{\sigma-\sigma\sigma-\sigma} = 4f^{\rm xc}_{\sigma-\sigma\sigma-\sigma} 
-	+ 16 f^{\rm xc }_{\sigma-\sigma\sigma-\sigma}
+	\Lambda^{\rm c - \rm d}_{\sigma-\sigma\sigma-\sigma} = -4f^{\rm xc}_{\sigma-\sigma\sigma-\sigma} 
+	- 16 f^{\rm xc }_{\sigma-\sigma\sigma-\sigma}
 	P_{\sigma-\sigma\sigma-\sigma}f^{\rm xc}_{\sigma-\sigma\sigma-\sigma},
 	\label{eq:translambda}
 \end{equation}
@@ -1442,13 +1442,13 @@ Using these representations, we can rewrite the effective interaction $\Lambda^{
 more transparent form as follows
 %
 \begin{equation}
-	\Lambda^{\rm c - \rm d}_{\sigma_1\sigma_1\sigma_2\sigma_2} = 
+	\Lambda^{\rm c - \rm d}_{\sigma_1\sigma_1\sigma_2\sigma_2} = -
 	\sum_{ij \in \{0,z\}} f^{\rm T}_{i\sigma_1}P_{ij}(1-\delta_{i0}\delta_{j0})f_{j\sigma_2},
 	\label{eq:longlambdaafter}
 \end{equation}
 %
 \begin{equation}
-	\Lambda^{\rm c - \rm d}_{\sigma-\sigma\sigma-\sigma} = 
+	\Lambda^{\rm c - \rm d}_{\sigma-\sigma\sigma-\sigma} = -
 	2f^{\rm F}_{\sigma}\chi^{\rm F}_{\sigma}f^{\rm F}_{\sigma},
 	\label{eq:translambdaafter}
 \end{equation}
@@ -1485,7 +1485,7 @@ in three directions. Within these assumptions, the effective interaction (\ref{e
 	z_{\sigma_1}z_{\sigma_2}\Lambda^{\rm SF}(\bm x_1,\bm x_2), \\
 	&\Lambda^{\rm c - \rm d}_{\sigma-\sigma\sigma-\sigma}(\bm x_1, \bm x_2) = 
 	2\Lambda^{\rm SF}(\bm x_1,\bm x_2), \\
-	&\Lambda^{\rm SF}(\bm x_1,\bm x_2) \equiv \iint d\bm x d\bm x'
+	&\Lambda^{\rm SF}(\bm x_1,\bm x_2) \equiv -\iint d\bm x d\bm x'
 	f^{\rm xc}_{zz}(\bm x_1,\bm x)\chi_{zz}(\bm x,\bm x')f^{\rm xc}_{zz}(\bm x',\bm x_2),
 	\label{eq:finallambda}
 \end{split}

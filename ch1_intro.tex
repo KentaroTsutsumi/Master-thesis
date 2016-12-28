@@ -27,7 +27,7 @@ Although many results were presented experimentally soon after the discovery of 
 it took a nearly half century until a successful microscopic theory for superconductors is presented.
 
 In 1950, Fr\"{o}hlich\cite{Froehlich1950} demonstrated that the electron-phonon interaction induces the
-effective attractive interaction between electrons. This idea is consistent to the isotope effect.
+effective attractive interaction between electrons. This idea is consistent with the isotope effect.
 Based on this idea that the electronic condensation originates from the electron-phonon interaction, 
 Bardeen, Cooper and Schrieffer(BCS)\cite{BCS1957} successfully constructed the microscopic 
 theory by introducing the electronic many-body wave function which consist of electron pairs named as
@@ -38,8 +38,8 @@ Cooper pairs\cite{Cooper1956}. According to the BCS theory, $T_c$ is written as
 	\label{eq:TcBCS}
 \end{equation}
 %
-where $\omega, N(0), V$ is the typical phonon frequency, the density of states at the Fermi energy, 
-and the characteristic attractive interaction between electrons respectively.
+where $\omega, N(0), V$ are the typical phonon frequency, the density of states at the Fermi energy, 
+and the characteristic attractive interaction between electrons, respectively.
 
 In the BCS theory, the effective interaction between electrons is only assumed to be attractive and
 the detail of the interaction is not studied.
@@ -49,7 +49,7 @@ formalism\cite{Migdal1958,Nambu1960,Eliashberg1960,Morel1962,Schrieffer1964,Scal
 This theory is called as Migdal-Eliashberg(ME) theory.
 McMillan\cite{McMillan1968} solved the Eliashberg equations\cite{Parks1969}
 and statistically derived an equation which describe $T_c$ with a simple analytic funcion. 
-Later, the McMillan's equation was improved by Allen and Dynes\cite{AllenDynes} and the resulting 
+Later, the McMillan equation was improved by Allen and Dynes\cite{AllenDynes} and the resulting 
 equation often called McMillan-Allen-Dynes formula is
 %
 \begin{equation}
@@ -71,7 +71,7 @@ where $\mu$ is the dimensionless Coulomb interaction parameter defined as the pr
 of states at the Fermi energy and the averaged screened Coulomb interaction, $E_c$ is the
 electronic band width and $\omega_{\rm ph}$ is the typical phonon frequency.
 The reduction of the Coulomb parameter from $\mu$ to $\mu^{\ast}$ due to the difference of 
-typical electronic and phononic energy range is called as retardian effect\cite{Bogo1958,Morel1962}.
+typical electronic and phononic energy range is called as retardation effect\cite{Bogo1958,Morel1962}.
 
 %\section{Effect of spin fluctuations on the Eliashberg theory} %%%%% Title should be modified?
 %The Eliashberg equations are believed to provide accurate results for $T_c$
@@ -135,27 +135,31 @@ typical electronic and phononic energy range is called as retardian effect\cite{
 \section{Density functional theory for superconductors}
 \label{scdft}
 
-One can obtain the reliable $T_c$ within the ME theory with reliable normal-state quantities.
-However, there are some problems in the ME theory. First, there is an empirical parameter $\mu^{\ast}$
-which means the electronic Coulomb interaction. As long as there is an empirical parameter, 
-the ME theory is not appropriate to predict $T_c$ quantitatively.
+In principle, one can obtain the reliable $T_c$ within the ME theory with reliable normal-state quantities.
+However, there are some problems in the practice of the ME theory. First, there is an empirical parameter $\mu^{\ast}$
+which represents the effect of the electronic Coulomb interaction suppressing the pairing. 
+As long as there is an empirical parameter, 
+the ME theory is not appropriate for quantitative prediction of $T_c$.
 Another reason is that if we introduce $\mu^{\ast}$, it is implicitly assumed that electronic
-Coulomb repulsion suppress the pairing of electrons. Within this restriction, we can not treat the
+Coulomb repulsion suppress the pairing of electrons. Within this restriction, we cannnot treat the
 pairing originating from the repulsive interaction, e.g. plasmon mechanism and spin fluctuations.
-To avoid introducing the empirical parametrer, the Green's function formalism is developed by Takada
+To avoid the empirical treatment, a Green's function based formalism has been developed by Takada
 \cite{Takada1978plasmon} to consider the plasmon-driven superconducting phase for homogeneous electron gas.
 
-On the same purpose, an extension of the density functional theory for superconductors (SCDFT)
-was developed in 1988\cite{Oliveira1988}. Based on this idea, a numerical scheme to calculate
-$T_c$ without introducing any empirical parameter was implemented in 2005\cite{Luders2005} 
-and applied to various kind of materials. We summarized some calculation results and experimental 
-$T_c$ in Fig.\ref{fig:scdft_compare}. It has been shown that this scheme reproduce experimental $T_c$ 
-of phonon-mediated conventional superconductors within a few Kelvin even if only electron-phonon 
-interaction and static screened Coulomb interaction is considered.
+For the same purpose, an extension of the density functional theory for superconductors (SCDFT)
+has been developed in 1988\cite{Oliveira1988}. Based on this theory, a numerical scheme to calculate
+$T_c$ without introducing any empirical parameter has been implemented in 2005\cite{Luders2005} 
+and applied to various kind of materials. We summarize some calculation results and experimental 
+$T_c$ in Fig.\ref{fig:scdft_compare}. It has been shown that this scheme reproduces experimental $T_c$ 
+of phonon-mediated conventional superconductors within an accuracy of a few Kelvin even if only electron-phonon 
+interaction and static screened Coulomb interaction is considered within the level of the random
+phase approximation.
 It should be noted that there are some other applications of this scheme and its extension: 
 Lithium under high pressure
 \cite{Profeta2006Pressure, RA2013}, CaBeSi\cite{Bersier2009CaBeSi}, layered nitrides\cite{RA2012}, 
-alkali-doped fullerides\cite{RA2013alkali}, and recently discovered sulfur hydrides\cite{RA2015}.
+alkali-doped fullerides\cite{RA2013alkali}, recently discovered sulfur hydrides\cite{Flores2016,RA2015,Errea2015},
+calculation of the order parameter and the condensation energy in real-space\cite{Linscheid2015},
+and Fe-based superconductors\cite{Essenberger2016}.
 
 In this scheme, the following gap equation analogous to that of the BCS theory is employed
 %
@@ -173,14 +177,14 @@ $\xi_{n\bm k} = \varepsilon_{n\bm k} - \mu$ is the one-particle energy measured 
 potential $\mu$, $\mathcal Z$ and $\mathcal K$ are the exchange-correlation kernels; the former
 indicates the mass renormalization originating from the electron-phonon interaction, and the latter
 includes the effect of the electron-phonon pairing interaction and the electronic Coulomb interaction.
-This scheme also includes the phonon retardian effect through the exchange-correlation kernels.
+This scheme also includes the phonon retardation effect through the exchange-correlation kernels.
 This equation is much simpler than the Eliashberg equations and the exchange-correlation kernels 
 can be calculated without introudcing any adjustable parameter such as $\mu^{\ast}$.
 Therefore, we can carry out the {\it ab-initio} calculation of $T_c$ within this scheme.
 The detail of the derivation of the SCDFT gap equation and the exchange-correlation kernels is 
 summarized in the next chapter.
 
-This numerical scheme is energetically extended to consider other contributions:
+This numerical scheme has been extended to consider other contributions:
 Particle-hole asymmetric electronic structure\cite{RA2013phasy}, dynamical screened Coulomb 
 interaction\cite{RA2013}, and the effect of spin fluctuations\cite{Essenberger2014}.
 These extensions also do not include the empirical parameters. 
@@ -196,16 +200,16 @@ These extensions also do not include the empirical parameters.
 
 \section{Effect of spin fluctuations in superconductors} %%%%% Title should be modified?
 \subsection{Unconventional superconductors}
-Recently, surprisingly high-$T_c$ cuprate superconductor whose $T_c$ is 153K is discovered
-\cite{Bednorz1986}. In 2008, Fe-based superconductor is discovered\cite{Kamihara2008} and the highest
-$T_c$ of them is 56K\cite{wang2008}. On the other hand, in 1979 it is found that $\rm CeCu_2Si_2$ 
-shows the superconducting state below $T_c \approx 0.5\rm K$. Since then the superconductibity in
-heavy fermion compounds has been energetically studied and mainly Ce-based and U-based superconductors
+Recently, cuprate superconductors whose $T_c$ is surprisingly high has been discovered
+\cite{Bednorz1986}. In 2006, Fe-based superconductor is discovered\cite{Kamihara2006} and the highest
+$T_c$ of them is 56K\cite{wang2008}. On the other hand, in 1979 it has been found that $\rm CeCu_2Si_2$ 
+shows the superconducting state below $T_c \approx 0.5\rm K$\cite{Steglich1979}. Since then the superconductibity in
+heavy fermion compounds has been energetically explored and mainly Ce-based and U-based superconductors
 has been discovered\cite{Pfleiderer2009}.
-These novel superconducting phases can not be explained within the phonon-driven pairing mechanism and
-the pairing mechanism is energetically discussed\cite{Scalapino2012}.
-A common feature among these novel superconductors is that the proximity of the superconducting phase
-and the magnetic ordered phase such as antiferromagnetic state.
+These novel superconducting phases cannnot be explained within the phonon-driven pairing mechanism and
+the pairing mechanism is discussed\cite{Scalapino2012}.
+A common feature among these novel superconductors is the proximity of the superconducting phase
+and the magnetic ordered phase in phase diagrams.
 According to this feature, it has been thought that the pairing mechanism in these unconventional
 superconductors is related to spin fluctuations\cite{Scalapino2012}.
 
@@ -214,20 +218,21 @@ superconductors is related to spin fluctuations\cite{Scalapino2012}.
 However, the effect of spin fluctuations is also crucial in conventional phonon-driven superconductors.
 If a metal has considerably enhanced magnetic susceptibility nearly enough to be a ferromagnet
 due to the exchange interaction, the pairing of antiparallel spins is strongly suppressed because
-parallel spin allignment is favored. This idea was proposed in case of Pd whose superconducting phase
-is not observed\cite{Parks1969} and the ME theory was extended to include the effect of spin 
+parallel spin alignment is favored. This idea was proposed in case of Pd whose superconducting phase
+is not observed\cite{Parks1969} and the ME theory has been extended to include the effect of spin 
 fluctuations by means of the particle-hole $t$-matrix in the late 1960s\cite{Berk1966, Schrieffer1968}.
 %The ME theory are believed to provide accurate results for $T_c$
 %if reliable normal-state quantities, e.g. the electronic band structure, the electron-phonon coupling,
 %phonon frequencies and the Coulomb interaction constant $\mu^{\ast}$, are given.
 %However, in 1977, it is found that calculated $T_c$ within the ME theory is higher than experimental 
 %value by factor 2 or more for some transition metals.
-Later, it is found that within the conventional ME theory, the calculated $T_c$ for both of Nb 
+Later, it has been found that within the conventional ME theory using the rigid muffin-tin approximation, 
+the calculated $T_c$ for both of Nb 
 ($T_c = 9.2 \rm K$) and V ($T_c = 5.3 \rm K$) is about 16K\cite{Papa1977}.
-In 1979, Rietschel and Winter\cite{Rietschel1979} proposed that the overestimation of $T_c$ for 
+In 1979, Rietschel and Winter\cite{Rietschel1979} has proposed that the overestimation of $T_c$ for 
 these materials comes from the neglected spin fluctuations effect and they employed the extended ME 
 theory to consider the effect of spin fluctuations with some parameters. They calculated the $T_c$ 
-for Nb and V within this extended theory and found that the effect of spin fluctuations suppresses $T_c$. 
+for Nb and V with this extended theory and found that the effect of spin fluctuations somehow suppresses $T_c$. 
 
 \section{Motivation and outline}
 %As mentioned in the previous section, the effect of spin fluctuations on $T_c$ of conventional 
@@ -240,22 +245,25 @@ for Nb and V within this extended theory and found that the effect of spin fluct
 %However, non-empirical studies on the effect of spin fluctuations in conventional superconductors
 %and quantitative estimation of the reduction of $T_c$ is lacking.
 
-As mentioned in the section \ref{scdft}, SCDFT can describe the $T_c$ of various kind of conventional
-superconductors within a few Kelvin. 
-For this reason, first-principles calculations of $T_c$ within such accuracy become more significant.
-However, the problem that $T_c$ for some transition metals is 
-considerably overestimated within the ME theory is still remained. In order to confirm that SCDFT
+As mentioned in the section \ref{scdft}, SCDFT has enabled us to calculate the $T_c$ of various kind of conventional
+superconductors with an accuracy of a few Kelvin. 
+For this reason, first-principles calculations of $T_c$ with such accuracy become more significant.
+%However, the problem that $T_c$ for some transition metals is 
+%considerably overestimated within the ME theory is still remained. 
+However, the effect of spin fluctuations on $T_c$ of conventional superconductors has scarcely been 
+studied from first-principles.
+In order to confirm that SCDFT
 can describe $T_c$ for such materials in sufficient accuracy like other conventional superconductors,
 first-principles calculations of $T_c$ including the effect of spin fluctuations within SCDFT is 
 worth carrying out.
 
-Therefore, we explored the recently developed scheme\cite{Essenberger2014} on $T_c$ of Nb and V 
+Therefore, we applied the recently developed scheme\cite{Essenberger2014} on $T_c$ of Nb and V 
 whose $T_c$ is overestimated within the ME theory, and Al whose $T_c$ is reproduced within 
 SCDFT (Fig.\ref{fig:scdft_compare}) in sufficient accuracy. We also studied the difference of the 
 effect of spin fluctuations among these materials.
 
 In Chapter \ref{theory} we briefly review the theorical foundation of the numerical scheme 
-developed by L\"{u}ders and his coworkers\cite{Luders2005} and the extended version of it 
+developed by L\"{u}ders and his coworkers\cite{Luders2005} and its extension 
 including the effect of spin fluctuations\cite{Essenberger2014}.
 In Chapter \ref{application} we apply the extended scheme to elemental metals Nb, V and Al and show 
 the calculation results and compare the results between materials.
