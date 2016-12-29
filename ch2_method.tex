@@ -22,24 +22,24 @@
 % and electron-phonon matrix elements and so on. 
 %First, we review their theory including electron-phonon interaction and Coulomb interaction. 
 %After that, we review how to include the effect of spin fluctuations into the SCDFT.
-Expansion of density functional theory\cite{HK1964,KS1965} (DFT) to describe the superconducting phase 
-has been developed
+Extension of density functional theory\cite{HK1964,KS1965} (DFT) to describe the superconducting phase 
+has been developed for more than a decade.
 %\cite{Kreibich2001,Oliveira1988} 
-. Kreibich and Gross\cite{Kreibich2001} developed a multicomponent DFT which treats electrons and 
+Kreibich and Gross\cite{Kreibich2001} developed a multicomponent DFT which treats electrons and 
 nuclei on the same footing by introducing the diagonal part of nuclear $N$-body density matrix 
 $\Gamma(\underline{\bm R})$ in order to go beyond the Born-Oppenheimer approximation.
 In principle, the multicomponent DFT framework should be able to describe the phonon-driven 
-superconducting phase. However, in practice, it is not appropriate: Thanks to the 
-Hohenberg-Kohn therem\cite{HK1964}, the order parameter $\chi(\bm r, \bm r')$ is written as the 
-functional of the electronic density. However, the functional is non-local and its explicit form 
-is unknown. An idea\cite{Oliveira1988} to avoid this difficulty 
-is to treat the order parameter as a basic density in DFT and describe all observable quantities
-as a functional of the electronic density and the order parameter.
+superconducting phase. However, in practice, it is not appropriate: thanks to the 
+Hohenberg-Kohn therem\cite{HK1964}, an order parameter $\chi(\bm r, \bm r')$ is written as the 
+functional of the electronic density, while the functional is non-local and its explicit form 
+is unknown. An idea to avoid this difficulty 
+is to treat the order parameter as a basic density in DFT and describe all the observable quantities
+as functionals of the electronic density and the order parameter\cite{Oliveira1988}.
 Based on this DFT for superconductors(SCDFT), numerical scheme to calculate $T_c$ from the
-first-principles has been developed recently. In 2005, L\"{u}ders {\it et al.} implemented a 
-method\cite{Luders2005} to consider the phonon mediated pairing. In 2014, Essenberger {\it et al.}
-\cite{Essenberger2014} extended this method to include the effect of spin fluctuations.
-We review these theoretical formulation below.
+first principles has been developed recently. In 2005, L\"{u}ders {\it et al.} implemented a 
+method to consider the phonon mediated pairing\cite{Luders2005}. In 2014, Essenberger {\it et al.}
+extended this method to include the effect of spin fluctuations\cite{Essenberger2014}.
+We review these theoretical formulations below.
 
 \section{Density functionals and Kohn-Sham system for superconductors}
 We consider a system of electrons and nuclei. For the later discussion which is anologous to the 
@@ -89,11 +89,13 @@ $\hat{\Phi}^\dag$ and $\hat{\Phi}$ are used. The term
 %
 indicates the external pairing field. This term must be included in order to break the gauge invariance of
 the Hamiltonian. We will take the limit $\Delta_\mathrm{ext} \to 0$ at the end of the derivation.
-In this thesis, it is assumed that we treat singlet superconductors. However,  we can extend the formulation 
+In this thesis, it is assumed that we treat singlet superconductors. We can extend the formulation 
 for triplet superconductors straightforwardly.
 Finally, $\mu$ means the chemical potential and $\hat{N}$ is the total number operator of electrons. 
 
-The formulation of this theory is based on three densities: (i) The usual electronic density 
+The formulation of this theory is based on three densities. 
+
+(i) The usual electronic density, 
 %
 \begin{equation} %%%%%%%  electronic density
 	n\left(\bm{r}\right) = \sum_{\sigma}\left<\hat{\Psi}^\dag_\sigma \left(\bm{r}\right)
@@ -111,24 +113,26 @@ The bracket indicates the thermal average
 %
 where $\hat{\rho}_0$ is the grand canonical density operator and $\beta$ is the inverse temperature.
 
-(ii) The anomalous density
+(ii) The anomalous density,
 %
 \begin{equation} %%%%%%%  anomalous density
 	\chi \bigl(\bm{r}, \bm{r'} \bigr) = \left<\hat{\Psi}_\uparrow \bigl(\bm{r}\bigr)
-	                                                    \hat{\Psi}_\downarrow \bigl(\bm{r'}\bigr) \right>
+	                                                    \hat{\Psi}_\downarrow \bigl(\bm{r'}\bigr) \right>,
 \end{equation}
 %
-is the order parameter for the singlet superconductors. This quantity becomes zero above the $T_\mathrm{c}$ and non-zero below it.
+is the order parameter for the singlet superconductors. This quantity becomes zero above 
+$T_\mathrm{c}$ and non-zero below it.
 
-(iii) The diagonal part of nuclear $N$-body density matrix
+(iii) The diagonal part of nuclear $N$-body density matrix,
 %
 \begin{equation} %%%%%%% diagonal part of nuclear density matrix
-	\Gamma(\underline{\bm{R}}) = \left<\hat{\Gamma}(\underline{\bm{R}}) \right>
+	\Gamma(\underline{\bm{R}}) = \left<\hat{\Gamma}(\underline{\bm{R}}) \right>,
 \end{equation}
 %
 is introduced to describe the nuclear degrees of freedom.
 
-Extending the Hohenberg-Kohn theorem in usual DFT\cite{HK1964,Mermin1965} for present multicomponent theory straightforwardly, 
+Extending the Hohenberg-Kohn theorem in usual DFT\cite{HK1964,Mermin1965} for the present 
+multicomponent theory straightforwardly, 
 the existence of one-to-one mapping between the set of the densities $ \left\{ n(\bm{r}), \chi \bigl(\bm{r}, \bm{r'} \bigr), 
 \Gamma(\underline{\bm{R}}) \right\}$ and a set of the corresponding potentials 
 $ \left\{ v^{\rm e}_{\rm ext}(\bm{r}), \Delta_\mathrm{ext}(\bm{r}, \bm{r'}), v^{\rm n}_{\rm ext}(\underline{\bm{R}}) \right\}$
@@ -286,7 +290,7 @@ These definitions are analogous to that in the standard DFT.
 %
 \section{The Kohn-Sham equations}
 %
-We introduced the Kohn-Sham system in the previous section 
+We introduced the Kohn-Sham system in the previous section.
 Now the problem of minimizing the grand canonical potential (\ref{eq:grand_pot_KS}) can be recast to
 solving a set of three differential equations self-consistently.
 Two of them describe the electronic degrees of freedom and the third desctibes the nuclear degrees of freedom.
@@ -322,12 +326,12 @@ the usual nuclear Born-Oppenheimer equation.
 
 In principle, when we solve the equations (\ref{eq:KS-BdG-par})-(\ref{eq:BO-approx}) iteratively, 
 we can obtain the ground state densities $\{n, \chi, \Gamma\}$.
-It is not so difficult to calculate the electronic band structure for whole energy range.
+It is not so difficult to calculate the electronic band structure for the whole energy range.
 However, at the same time, it requires extraordinarily high accuracy to resolve the superconducting energy gap
-because the magnitude of it is about $10^{-3}$ \verb|~| $10^{-4}$ times typical electronic energy.
+because its magnitude is about $10^{-3} - 10^{-4}$ times smaller than that of the typical electronic energy.
 In order to avoid this difficulty, so-called ``decoupling approximation''\cite{Gross1991,KurthphD,LudersphD} is employed.
 
-In the decoupling approximation, we approximate the particle and hole one-particle wavefunctions as follows
+In the decoupling approximation, we approximate the particle and hole one-particle wavefunctions as follows:
 %
 \begin{equation}
 	u_n(\bm{r}) \approx u_n\varphi_n(\bm{r}),   v_n(\bm{r}) \approx v_n\varphi_n(\bm{r}), 
@@ -403,7 +407,7 @@ harmonic oscillator wavefunctions with respect to the collective coordinates $\b
 %(ii) For pair potential $\Delta_0[n, \chi, \Gamma]$, we start from a square well potential 
 %centered at the Fermi energy which width is in the order of the Debye frequency and height is
 %
-Now we describe how to treat the density dependence of potentials in order to preceed calculations more simply.
+Now we describe how to treat the density dependence of the potentials in order to preceed calculations more simply.
 (i) For $v^{\rm e}_0[n, \chi, \Gamma]$, we neglect the dependense on $\chi$ and $\Gamma$ because 
 the typical electronic energies are three orders of magnitudes bigger than superconducting gap and phonons
 and consequently they do not modify electronic structures so much.
@@ -434,7 +438,7 @@ and the gap equation (\ref{eq:Delta_gap}) can be linearized as below
 	\label{eq:line_gap}
 \end{equation}
 %
-where ${\mathcal F}_{{\rm Hxc}, i,j}$ are the Hartree exchange-correlation energy kernels which defined as
+where ${\mathcal F}_{{\rm Hxc}, i,j}$ are the Hartree exchange-correlation energy kernels defined as
 %
 \begin{equation}
 	{\mathcal F}_{{\rm Hxc},i,j} = \left. -\frac{\delta \Delta_{{\rm Hxc}, i}}{\delta \chi_j} 
@@ -454,10 +458,10 @@ where we defined the matrix element of anomalous density $\chi_i$ as
 
 \section{Kernels of Gap Equation from functional derivatives}
 
-Through the previous sections, we derived the gap equation (\ref{eq:line_gap}) from a density functional
+In the previous sections, we derived the gap equation (\ref{eq:line_gap}) from density functional
 theory for superconductors. In principle, it is possible to calculate the $T_{\rm c}$ by solving 
 the gap equation for any superconductors. However, the exact expression of $F_{\rm xc}$ in (\ref{eq:def-fxc})
-is unknown yet, so we have to make approximations to $F^{\rm xc}$.
+is unknown yet, so we have to make approximations for $F^{\rm xc}$.
 In the following, we briefly review the Kohn-Sham perturbation theory,
 as described by G\"{o}rling and Levy\cite{Levy1994}, 
 and how to derive the concrete expressions for ${\mathcal F}_{{\rm Hxc},ij}$.
@@ -486,7 +490,7 @@ equilibrium position $\underline{\bm R}_0$ and
 	\hat{\Psi}_{\sigma}({\bm r}) 
 	\left[
 		\int d^3r' \frac{n({\bm r'})}{|{\bm r}-{\bm r'}|} + v^{\rm e}_{\rm xc}(\bm r)
-	\right]
+	\right],
 \end{equation}
 %
 \begin{equation}
@@ -499,7 +503,7 @@ equilibrium position $\underline{\bm R}_0$ and
 			+ \Delta^\ast_{\rm xc}({\bm r}, {\bm r'})
 		\right]
 		+ {\rm H.c.}
-	\right\}
+	\right\},
 	\label{eq:DeltaHxc}
 \end{split}
 \end{equation}
@@ -868,12 +872,12 @@ where
 \end{equation}
 %
 
-There are some way how to approximate the screened Coulomb interaction $v^{\rm screen}(\bm r, \bm r')$. 
-L\"{u}ders {\it et al.} applied the Thomas-Fermi interaction to the Coulomb interaction\cite{Luders2005_1}.
+There are some ways to approximate the screened Coulomb interaction $v^{\rm screen}(\bm r, \bm r')$. 
+L\"{u}ders {\it et al.} applied the Thomas-Fermi approximation to the Coulomb interaction\cite{Luders2005}.
 Akashi {\it et al.}\cite{RA2012} applied the random phase approximation to $v^{\rm screen}$.
 In our calculation, we applied the adiabatic local density approximation(ALDA)\cite{Zangwill1980} and 
-so we now summarize the expression for the screened Coulomb interaction in ALDA.
-Furthermore, it should be taken account of the dynamical structure of the Coulomb interaction which is represented by
+so hereafter we summarize the expression for the screened Coulomb interaction in ALDA.
+We also take account of the dynamical structure of the Coulomb interaction which is represented by
 the frequency-dependent polarization function $\Pi$.
 The polarization function $\Pi$ is obtained by the following equation
 %
@@ -950,7 +954,7 @@ $W_{n\bm kn'\bm k'}({\rm i}\omega)$ as
 \end{equation}
 %
 In practice, the Coulombic kernel $\mathcal K^{\rm el,dyn}$ is decomposed into static and dynamical
-terms as follows\cite{RAphD}
+terms as follows\cite{RAphD}:
 %
 \begin{equation}
 	\begin{split}
@@ -962,7 +966,8 @@ terms as follows\cite{RAphD}
 	\frac{1}{\tanh[(\beta/2)E_{n\bm k}]}\frac{1}{\tanh[(\beta/2)E_{n'\bm k'}]}
 	\frac{1}{\beta^2}
 	\sum_{\tilde{\omega}_1\tilde{\omega}_2}
-	F_{n\bm k}({\rm i}\tilde\omega_1)F_{n'\bm k'}({\rm i}\tilde\omega_2)
+	F_{n\bm k}({\rm i}\tilde\omega_1)F_{n'\bm k'}({\rm i}\tilde\omega_2) \\
+	&\quad \quad \times
 	\left[ 
 		W_{n\bm kn'\bm k'}[{\rm i}(\tilde\omega_1 - \tilde\omega_2)] - W_{n\bm k n' \bm k'}(0)
 	\right].
@@ -1108,7 +1113,7 @@ the total irreducible particle-hole propagator can be written as follows:
 	\label{eq:lambdadiff}
 \end{equation}
 %
-\begin{figure}[h]
+\begin{figure}[H]
 \centering{
 \begin{minipage}[b]{0.3\linewidth}
 	\subcaption{}
@@ -1474,10 +1479,10 @@ In addition, we neglected $f^{\rm xc}_{\sigma-\sigma\sigma-\sigma}$ in (\ref{eq:
 in order to avoid the physically unreasonable result. We will discuss this problem later.
 
 So far we derived the two-point expression of the effective interaction $\Lambda^{\rm c - \rm d}$.
-In addition, we make further two assumptions: The response functions and xc kernel $f^{\rm xc}$ are
+In addition, we make further two assumptions: the response functions and xc kernel $f^{\rm xc}$ are
 diagonal with respect to the Pauli index and the effect of the external magnetic field is degenerated
 in three directions. Within these assumptions, the effective interaction (\ref{eq:longlambdaafter}) and
-(\ref{eq:translombdaafter}) can be written in simple form as follows:
+(\ref{eq:translambdaafter}) can be written in simple form as follows:
 %
 \begin{equation}
 	\begin{split}
@@ -1525,7 +1530,7 @@ The exchange-correlation (xc) kernel defined in (\ref{eq:fxcdef}) can be calcula
 \cite{Runge1984} within the ALDA.
 
 \subsection{Kernel originating from spin fluctuations}
-So far we have derived the spin fluctuations contribution to the self-energy in the collinear superconductors.
+So far we have derived the contribution of spin fluctuations to the self-energy in the collinear superconductors.
 Then we can consider the effect of spin fluctuations in the framework of SCDFT using the Sham-Schl\"{u}ter connection\cite{Sham1983,MarquesphD}.
 The noninteracting Kohn-Sham system is mapped to the interacting system by the following self-energy
 %
@@ -1567,8 +1572,8 @@ then the Sham-Schl\"{u}ter connection is written as follows:
 	\label{eq:SSeqanom}
 \end{equation}
 %
-In order to handle these equations, we approximate the full Green's function with the Kohn-Sham
-Green's function. Furthermore, we neglect all higher order term with respect to the xc potential
+In order to handle these equations, we approximate the full Green's function by the Kohn-Sham
+Green's function. Furthermore, we neglect all the higher order terms with respect to the xc potential
 $\Delta^{\rm xc}$. The Matsubara summation in (\ref{eq:SSeqrho}) and (\ref{eq:SSeqanom}) can be
 executed by means of the residue theorem:
 %
@@ -1628,15 +1633,24 @@ the gap equation which is similar to the conventional one (\ref{eq:truegapeq}):
 \end{equation}
 %
 In the above equations, $k = \{n,\bm k \}$ and the kernels labeled ph and el are same as ones
-derived in the preivious section. Note that the contribution from spin fluctuations to $\mathcal Z$
+derived in the preivious section. It should be noted that in the original paper by Essenberger
+\cite{Essenberger2014}, the kernels $\mathcal K^{\rm SF}$ and $\mathcal Z^{\rm SF}$ are written 
+with integrals with respect to frequency while our expression is written with the Matsubara summation.
+These two expressions are equal under the analytic continuation.
+Note that the contribution from spin fluctuations to $\mathcal Z$
 has the same sign from phonon contribution, while in $\mathcal K$ they have different signs.
 In $\mathcal K$, the electron phonon interaction is attracting but the interaction mediated by
 spin fluctuations is repulsive.
 This sign difference comes from the number of loops contained in diagrams discussed above
 (see (\ref{eq:Fself})). The detail of derivation of these equations are described in Appendix.
 
-In practice, the Matsubara summation in (\ref{eq:ZSFdef}) is too complex and numerically demanding.
-Therefore, in our calculation we neglect the term ${\mathcal Z}^{\rm SF}$.
+In practice, the summation with respect to $k$-points in the second term in 
+(\ref{eq:ZSFdef}) is numerically demanding.
+So far, we have not achieved successful development of algorithms to compute the $k$-point summation 
+with a good accuracy. In our calculation, we do not take account of the term $\mathcal Z^{\rm SF}$.
+Further studies are required to compute this term.
+We set the development of algorithms to calculate this term as a further study.
+%Therefore, in our calculation we neglect the term ${\mathcal Z}^{\rm SF}$.
 Furthermore, we do not employ the separation of $\mathcal K^{\rm SF}$ into static and dynamical
 terms like in case of $\mathcal K^{\rm el}$ (\ref{eq:Kelsep}) in order to avoid the numerical error.
 
@@ -1666,7 +1680,7 @@ introduced\cite{Marques2005} as follows:
 \end{split}
 \end{equation}
 %
-where the $\alpha^2F(\omega)$ is called as the Eliashberg function and defined as
+where the $\alpha^2F(\omega)$ is called the Eliashberg function and defined as
 %
 \begin{equation}
 	\begin{split}
