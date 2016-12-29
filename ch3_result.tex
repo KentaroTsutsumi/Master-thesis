@@ -13,6 +13,7 @@ effect of spin fluctuations. We also show that the magnitude of $\mathcal K^{\rm
 resulting amount of $T_{c}$ reduction is related to the electronic localization.
 
 \section{Computational details}
+We developed 
 We used the Quantum ESPRESSO package\cite{QE} to obtain the Kohn-Sham energies and wave functions.
 We obtained the phonon frequencies and electron-phonon coupling by applying the density functional
 perturbation theory(DFPT)\cite{DFPT}.
@@ -76,7 +77,9 @@ exchange effect is relatively smaller than in the case of V and Nb.
 %
 \begin{table}[htbp]
 	\centering
-	\caption{Calculation results. SF means spin fluctuations.} 
+	\caption{Calculation results. SF means spin fluctuations. Values of $\mu^{\ast}$ are 
+	calculated with McMillan-Allen-Dynes formula using $\lambda$, $\omega_{\rm ln}$ and 
+	$T_c$ calculated with SCDFT.} 
 	\begin{tabular}{lccc}
 		\hline \hline
 		& V & Nb & Al \\
@@ -85,7 +88,7 @@ exchange effect is relatively smaller than in the case of V and Nb.
 		lattice constant $a$ [\AA] (experiment) & 3.02\cite{Kuentzler1985} & 3.31\cite{Laesser1985} & 4.04\cite{Sumiyama1990} \\
 		\hline
 		$\lambda$ & 1.31 & 1.39 & 0.42 \\
-		$\omega_{\rm ln}$ & 212 & 175 & 298 \\
+		$\omega_{\rm ln}$ [K] & 212 & 175 & 298 \\
 		\hline
 		$T_c$ (static, without SF) [K] & 10.5 & 7.4 & 0.5 \\
 		$T_c$ (dynamical, without SF) [K] & 17.8 & 11.1 & 1.4 \\
@@ -95,6 +98,11 @@ exchange effect is relatively smaller than in the case of V and Nb.
 		$T_c$ (static RPA, without SF) [K] & - & - & 0.8\cite{RA2013} \\
 		$T_c$ (dynamical RPA, without SF) [K] & - & - & 1.4\cite{RA2013} \\
 		$T_c$ (experimental)\cite{Ashcroft} [K] & 5.38 & 9.50 & 1.14 \\
+		\hline
+		$\mu^{\ast}$ (SCDFT, static,without SF) & 0.252 & 0.299 & 0.142 \\
+		$\mu^{\ast}$ (SCDFT, dynamical, without SF) & 0.144 & 0.228 & 0.105 \\
+		$\mu^{\ast}$ (SCDFT, static, with SF) & 0.349 & 0.324 & 0.149 \\
+		$\mu^{\ast}$ (SCDFT, dynamical, with SF) & 0.288 & 0.269 & 0.105 \\
 		\hline \hline
 	\end{tabular}
 	\label{tab:results}
@@ -137,7 +145,7 @@ $\mathcal K^{\rm SF}$ is slightly reduced in low-energy region.
 %
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=12truecm,clip]{../figure/result/V_kernels.pdf}
+	\includegraphics[width=13truecm,clip]{../figure/result/V_kernels.pdf}
 	\caption{(a) Decomposition of the averaged exchange-correlation kernels defined in 
 		(\ref{eq:aveK}) at $T=0.01$K in V. (b) Corresponding gap funtions without 
 	and with SF. $\xi$ is the energy measured from the chemical potential $\mu$.}
@@ -162,7 +170,7 @@ As noted above, this is due to the strength of the electronic localization.
 %
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=12truecm,clip]{../figure/result/Nb_kernels.pdf}
+	\includegraphics[width=13truecm,clip]{../figure/result/Nb_kernels.pdf}
 	\caption{(a) Decomposition of the averaged exchange-correlation kernels
 		at $T=0.01$K in Nb. (b) Corresponding gap funtions without 
 	and with SF.}
@@ -183,6 +191,15 @@ The kernel $\mathcal K^{\rm SF}$ is significantly smaller than that of the stati
 Therefore, the corresponding gap function and the resulting $T_c$ is not so modified.
 %
 % kokokara DISCUSSION deha ?????
+%
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=13truecm,clip]{../figure/result/Al_kernels.pdf}
+	\caption{(a) Decomposition of the averaged exchange-correlation kernels
+		at $T=0.01$K in Al. (b) Corresponding gap funtions without 
+	and with SF.}
+	\label{fig:Alaveker}
+\end{figure}
 %
 
 Here we should note the expression of the spin fluctuations-mediated interaction (\ref{eq:finallambda}).
@@ -241,15 +258,6 @@ linear $f^{\rm xc}$ term.
 %
 % kokomade DISCUSSION deha ?????
 %
-%
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=12truecm,clip]{../figure/result/Al_kernels.pdf}
-	\caption{(a) Decomposition of the averaged exchange-correlation kernels
-		at $T=0.01$K in Al. (b) Corresponding gap funtions without 
-	and with SF.}
-	\label{fig:Alaveker}
-\end{figure}
 %
 %%%%%%%%%%%%%%%%%%%%%  CRYSTAL STRUCTURE  %%%%%%%%%%%%%%%%
 %\section{Table} \label{sec:Constructing the Model}
