@@ -995,7 +995,7 @@ where $\mathcal Z$ contains the phonon contribution (\ref{eq:Zphprac}) and $\mat
 the phonon term (\ref{eq:Kph}) and Coulombic term (\ref{eq:Keldyn}).
 \section{Spin fluctuations kernel from Sham-Shl\"{u}ter connection}
 In the previous section, we derived the phononic and 
-electron-electron Coulomb kernel from functional derivatives.
+electron-electron Coulomb kernel within the level of ALDA from functional derivatives.
 Now we review the derivation of the expression for kernels arising 
 from spin fluctuations by Essenberger and coworkers\cite{Essenberger2014}.
 In the following, we will construct the SCDFT gap equation from the Sham-Shl\"{u}ter connection
@@ -1031,7 +1031,7 @@ which is numerically difficult to handle.
 Alternatively, we start from particle-hole propagator $\Lambda$ in order to 
 take account of spin fluctuations in self-energy (Fig. \ref{fig:SF-self}).
 Particle-hole propagator $\Lambda$ contains all irreducible 
-diagrams with respect to Coulomb interaction and has two 
+diagrams with respect to a bare Coulomb interaction and has two 
 incoming and outgoing points. The $T$-matrix is fully contained in $\Lambda$.
 In the following, we limit ourselves to the case of collinear magnetic systems and 
 then the Green's function becomes diagonal with respect to spin indices.
@@ -1062,7 +1062,7 @@ and the coordinates 2 and 3 are connected to the lines which come inside.
 The self-energy used to calculate $\Lambda_0$ is written as $\Sigma^{\rm V}$.
 We will apply an approximation for $\Sigma^{\rm V}$ later.
 $\Lambda_0$ contains all connected and irreducible diagrams with
-respect to the Coulomb interaction and the particle-hole propagator.
+respect to the bare Coulomb interaction and the particle-hole propagator.
 If we obtain $\Lambda_0$, we can get $\Lambda$ by using the
 Bethe-Salpeter equation(BSE)\cite{BSE1951} for $\Lambda$.
 However, before considering the BSE for $\Lambda$, we have to note that
@@ -1113,7 +1113,7 @@ the total irreducible particle-hole propagator can be written as follows:
 	\label{eq:lambdadiff}
 \end{equation}
 %
-\begin{figure}[h]
+\begin{figure}[H]
 \centering{
 \begin{minipage}[b]{0.3\linewidth}
 	\subcaption{}
@@ -1397,7 +1397,7 @@ The basis transformation between these two representations is defined as
 	& A_{\alpha\beta\delta\gamma} = \frac{1}{4}\sum_{ij}
 	\sigma^{i}_{\alpha\beta}A_{ij}\sigma^{j}_{\gamma\delta}, \\
 	& A_{ij} = \sum_{\alpha\beta\gamma\delta}
-	\sigma^{i}_{\beta\alpha}A_{\alpha\beta\gamma\delta}\sigma^{i}_{\delta\gamma},
+	\sigma^{i}_{\beta\alpha}A_{\alpha\beta\gamma\delta}\sigma^{j}_{\delta\gamma},
 	\label{eq:basistrans}
 \end{split}
 \end{equation}
@@ -1476,9 +1476,9 @@ In (\ref{eq:longlambdaafter}), we subtracted $f^{\rm xc}_{\sigma_1\sigma_1\sigma
 f^{\rm T}_{0\sigma_1}P_{00}f_{0\sigma_2}$ in order to avoid the double counting.
 In fact, this contribution is already included in the self-energy from the screened Coulomb interaction.
 In addition, we neglected $f^{\rm xc}_{\sigma-\sigma\sigma-\sigma}$ in (\ref{eq:translambdaafter})
-in order to avoid the physically unreasonable result. We will discuss this problem later.
+in order to avoid the physically unreasonable result. We will discuss this problem in chapter\ref{application}.
 
-So far we derived the two-point expression of the effective interaction $\Lambda^{\rm c - \rm d}$.
+So far we have derived the two-point expression of the effective interaction $\Lambda^{\rm c - \rm d}$.
 In addition, we make further two assumptions: the response functions and xc kernel $f^{\rm xc}$ are
 diagonal with respect to the Pauli index and the effect of the external magnetic field is degenerated
 in three directions. Within these assumptions, the effective interaction (\ref{eq:longlambdaafter}) and
