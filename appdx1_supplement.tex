@@ -39,9 +39,9 @@ We start from the following self-energy
 %
 \begin{equation}
 	\bar{\Sigma}^{\rm ph}(\bm r \tau, \bm r' \tau') = \tau^z \sum_{\lambda \bm q}
-	V_{\lambda \bm q}(\bm r)V_{\lambda -\bm q}(\bm r') D_{\lambda\bm q}(\tau, \tau')
+	V^{\rm BO}_{\lambda \bm q}(\bm r)V^{\rm BO}_{\lambda -\bm q}(\bm r') D^{\rm s}_{\lambda\bm q}(\tau, \tau')
 	\begin{pmatrix}
-		G(\bm r \tau, \bm r' \tau')  &   F^{\rm KS}(\bm r \tau, \bm r' \tau')   \\
+		G^{\rm KS}(\bm r \tau, \bm r' \tau')  &   F^{\rm KS}(\bm r \tau, \bm r' \tau')   \\
 		F^{\rm KS\dag}(\bm r \tau, \bm r' \tau')  & G^{\rm KS\dag}(\bm r' \tau', \bm r \tau)
 	\end{pmatrix},
 	\label{eq:phself}
@@ -51,17 +51,13 @@ We start from the following self-energy
 	\bar{\Sigma}^{\rm SF}(\bm r \tau, \bm r' \tau') = 3\tau^z 
 	\Lambda^{\rm SF}(\bm r \tau, \bm r' \tau')
 	\begin{pmatrix}
-		-G(\bm r \tau, \bm r' \tau')  &   F^{\rm KS}(\bm r \tau, \bm r' \tau')   \\
+		-G^{\rm KS}(\bm r \tau, \bm r' \tau')  &   F^{\rm KS}(\bm r \tau, \bm r' \tau')   \\
 		F^{\rm KS\dag}(\bm r \tau, \bm r' \tau')  & -G^{\rm KS\dag}(\bm r' \tau', \bm r \tau)
 	\end{pmatrix},
 	\label{eq:SFself}
 \end{equation}
 %
 where $\tau^z$ is the third Pauli matrix. 
-Here it is assumed that the diagonal part of $\bar{\Sigma}^{\rm GW}$ is canceled
-because the mass renormalization due to the Coulomb interaction is already considered through the
-band calculations. It is also assumed that the normal and anomalous Hartree term is included in the instataneous term.
-Therefore, the diagonal component of $\bar{\Sigma}^{\rm GW}$ is zero in the above expression. 
 With the above self-energy, the Dyson's equation of Green's equation is written as 
 %
 \begin{equation}
@@ -89,7 +85,7 @@ to carry out the Fourier transformation with respect to time as follows
 	\label{eq:GFourier2}
 \end{equation}
 %
-where $\omega_n$ is the even Matsubara frequency. It is also convenient to introduce the Fourier
+where $\omega_n$ is the odd Matsubara frequency. It is also convenient to introduce the Fourier
 transformation with respect to space as follows
 %
 \begin{equation}
@@ -143,7 +139,7 @@ and written as
 \end{equation}
 %
 
-With these preparations, we go back to the main topic. After the Fourier transformation into frequency space,
+With these preparations, we go back to the main story line. After the Fourier transformation into frequency space,
 the Sham-Schl\"{u}ter connection can be written as
 %
 \begin{equation}
@@ -275,8 +271,8 @@ approximation that we neglect the $k$ dependence of the xc potential:
 This approximation is valid if the system we consider is nearly homogeneous and the xc potential is
 nearly constant everywhere in the unit cell. For this reason this approximation is not appropriate
 in case of highly inhomogeneous materials such as high-$T_c$ layered superconductors.
-Within this approximation, equation (\ref{eq:12comp2}) can be solved with respect to $v_{\rm xc}$
-and (\ref{eq:11comp2}) can be rewritten as
+Within this approximation, equation (\ref{eq:12comp2}) can be solved with respect to $v_{\rm xc}$.
+Substituting the form of $v_{\rm xc}$ into (\ref{eq:11comp2}) yields
 %
 \begin{equation}
 \begin{split}
@@ -403,7 +399,7 @@ Terms of the self-energy stemming from the electron-phonon interaction are writt
 	\begin{split}
 	&\frac{1}{\beta} \sum_{\omega_n}G^{\rm KS}(k,\omega_n)\Sigma^{\rm ph}_{12}(k,k,\omega_n)G^{\rm KS}(k,-\omega_n)\\
 	& \quad =
-	-\frac{1}{2}\sum_{k',\lambda,q}\frac{\Delta^{\rm xc}_{k'}}{\xi_{k}\xi_{k'}}
+	-\frac{1}{2}\sum_{k',\lambda,q}\frac{\Delta^{\rm xc}_{k'}}{E_{k}E_{k'}}
 	|g^{kk'}_{\lambda,q}|^2 [I(\xi_k,\xi_{k'},\Omega_{\lambda q})-I(\xi_k,-\xi_{k'},\Omega_{\lambda q})],
 	\end{split}
 	\label{eq:ph12sum}
@@ -448,7 +444,7 @@ Finally, terms including the self-energy originating from spin fluctuations is w
 	&\quad =
 	\frac{1}{\beta^2}\frac{\Delta^{\rm xc}_{k}}{2\xi_{k}}\sum_{k',\omega_n,\omega_m}
 	\frac{1}{ {\rm i}\omega_n-\xi_k}\frac{1}{ {\rm i}\omega_m-\xi_{k'}}
-	\left( \frac{1}{ {\rm i}\omega_n+E_k} - \frac{1}{ {\rm i}\omega_n-E_k} \right)
+	\left( \frac{1}{ {\rm i}\omega_n+\xi_k} - \frac{1}{ {\rm i}\omega_n-\xi_k} \right)
 	3\Lambda_{kk'}(\omega_n-\omega_m).
 	\label{eq:SF11sum2}
 	\end{split}
