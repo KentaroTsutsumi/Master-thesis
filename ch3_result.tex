@@ -80,19 +80,20 @@ The result in Al can be interpreted similarly. In the case of Al, the $T_c$ redu
 is not observed. This result is reasonable because the valence states are formed by less localized
 3$s$ and 3$p$ states in Al and the exchange effect is relatively smaller than in the case of V and Nb.
 
-We also calculated the values of $\mu^{\ast}$ based on the McMillan-Allen-Dynes formula (\ref{eq:Allen})
-using calculated $\lambda, \omega_{\rm ln}$ listed in Table\ref{tab:results} to reproduce the $T_c$ 
-calculated in SCDFT. 
+We also calculated the values of $\mu^{\ast}$ based on the improved McMillan-Allen-Dynes formula 
+(Eq.(34) in Ref.\cite{AllenDynes})
+using calculated $\lambda, \omega_{\rm ln}, \omega_2$ listed in Table\ref{tab:results} to reproduce 
+the $T_c$ calculated in SCDFT. 
 The calculated values of $\mu^{\ast}$ with the effect of spin fluctuations for V and Nb are 
-0.288 and 0.269, respectively. In the analyses in ME theory, this value is conventionally
+0.294 and 0.278, respectively. In the analyses in ME theory, this value is conventionally
 set to about 0.10\cite{Carbotte1990}. This means that the repulsive effect of spin fluctuations 
 is also appreciable in these materials.
 %
 \begin{table}[htbp]
 	\centering
 	\caption{Calculation results. SF means spin fluctuations. Values of $\mu^{\ast}$ are 
-	calculated with McMillan-Allen-Dynes formula using $\lambda$, $\omega_{\rm ln}$ and 
-	$T_c$ calculated with SCDFT.} 
+	calculated with the improved McMillan-Allen-Dynes formula 
+	using $T_c$ calculated with SCDFT, $\lambda$, $\omega_{\rm ln}$ and $\bar{\omega}_2$.} 
 	\begin{tabular}{lccc}
 		\hline \hline
 		& V & Nb & Al \\
@@ -102,6 +103,7 @@ is also appreciable in these materials.
 		\hline
 		$\lambda$ & 1.31 & 1.39 & 0.42 \\
 		$\omega_{\rm ln}$ [K] & 212 & 175 & 298 \\
+		$\bar{\omega}_2$ [K] & 246 & 199 & 328 \\
 		\hline
 		$T_c$ (static, without SF) [K] & 10.5 & 7.4 & 0.5 \\
 		$T_c$ (dynamical, without SF) [K] & 17.8 & 11.1 & 1.4 \\
@@ -112,10 +114,10 @@ is also appreciable in these materials.
 		$T_c$ (dynamical RPA, without SF) [K] & - & - & 1.4\cite{RA2013} \\
 		$T_c$ (experimental)\cite{Ashcroft} [K] & 5.38 & 9.50 & 1.14 \\
 		\hline
-		$\mu^{\ast}$ (SCDFT, static,without SF) & 0.252 & 0.299 & 0.142 \\
-		$\mu^{\ast}$ (SCDFT, dynamical, without SF) & 0.144 & 0.228 & 0.105 \\
-		$\mu^{\ast}$ (SCDFT, static, with SF) & 0.349 & 0.324 & 0.149 \\
-		$\mu^{\ast}$ (SCDFT, dynamical, with SF) & 0.288 & 0.269 & 0.105 \\
+		$\mu^{\ast}$ (SCDFT, static,without SF) & 0.260 & 0.306 & 0.143 \\
+		$\mu^{\ast}$ (SCDFT, dynamical, without SF) & 0.161 & 0.240 & 0.106 \\
+		$\mu^{\ast}$ (SCDFT, static, with SF) & 0.352 & 0.330 & 0.143 \\
+		$\mu^{\ast}$ (SCDFT, dynamical, with SF) & 0.294 & 0.278 & 0.106 \\
 		\hline \hline
 	\end{tabular}
 	\label{tab:results}

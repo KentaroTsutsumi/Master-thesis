@@ -1766,10 +1766,21 @@ With the Eliashberg function, the electron-phonon coupling coefficient $\lambda$
 and the logarithmic averaged phonon frequencies $\omega_{\rm ln}$ is defined as
 %
 \begin{equation}
-	\omega_{\rm ln} = \exp\left[ \frac{2}{\lambda}\int d\omega \frac{\alpha^2F(\omega)}{\omega}\ln \omega \right].
+	\omega_{\rm ln} = \exp\left[ \frac{2}{\lambda}\int d\omega \frac{\alpha^2F(\omega)}{\omega}\ln \omega \right],
 	\label{eq:omegaln}
 \end{equation}
 %
+and also the second moment of the normalized weight function 
+$g(\omega) = (2/\lambda\omega)\alpha^{2}F(\omega)$\cite{AllenDynes} is defined as
+%
+\begin{equation}
+\begin{split}
+	\bar{\omega}_2 &= \left<\omega^2 \right>^{\frac{1}{2}} \\
+	&=
+	\sqrt{\frac{2}{\lambda}\int d\omega \alpha^2F(\omega)\omega^{2-1}}.
+	\label{eq:secondmoment}
+\end{split}
+\end{equation}
 
 In order to estimate $T_{\rm c}$, we solve the partially linearized gap equation (\ref{eq:aftergapeq}) with increasing 
 the temperature from zero. When we get the vanishingly-small $\Delta_{k}$ solution at some temperature, 
