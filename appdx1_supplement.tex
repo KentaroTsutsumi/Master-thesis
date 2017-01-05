@@ -340,14 +340,14 @@ Then we can carry out some of the Matsubara summation analytically making use of
 In the following we summarize the calculation results: 
 %
 \begin{equation}
-	\frac{i}{\beta}\sum_{\omega_n}
+	\frac{1}{\beta}\sum_{\omega_n}
 	G^{\rm KS}(k,\omega_n)G^{\rm KS}(k,-\omega_n) 
-	= \frac{1}{2\xi_{k}}\tanh\left( \frac{\beta}{2}\xi_{k} \right),
+	= \frac{1}{2E_{k}}\tanh\left( \frac{\beta}{2}E_{k} \right),
 	\label{eq:GGsum1}
 \end{equation}
 %
 \begin{equation}
-	\frac{i}{\beta}\sum_{\omega_n}
+	\frac{1}{\beta}\sum_{\omega_n}
 	G^{\rm KS}(k,\omega_n)G^{\rm KS}(k,\omega_n) 
 	= - \frac{1}{2} \frac{\beta/2}{\cosh^2\left( \frac{\beta}{2}\xi_{k} \right)},
 	\label{eq:GGsum2}
@@ -450,7 +450,8 @@ Finally, terms including the self-energy originating from spin fluctuations is w
 	\end{split}
 \end{equation}
 %
-Inserting these expressions into (\ref{eq:Deltaxceq}), the SCDFT gap equation including the effect 
+Inserting these expressions into (\ref{eq:Deltaxceq}) and taking the limit 
+$\{\Delta_k\} \to 0$ properly, the SCDFT gap equation including the effect 
 of spin fluctuations is derived straightforwardly.
 
 
