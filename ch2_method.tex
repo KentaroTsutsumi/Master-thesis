@@ -995,13 +995,13 @@ Using the kernels derived above, the resulting SCDFT gap equation is written as
 %
 where $\mathcal Z$ contains the phonon contribution (\ref{eq:Zphprac}) and $\mathcal K$ contains 
 the phonon term (\ref{eq:Kph}) and Coulombic term (\ref{eq:Keldyn}).
-\section{Spin fluctuations kernel from Sham-Shl\"{u}ter connection}
+\section{Spin fluctuations kernel from Sham-Schl\"{u}ter connection}
 In the previous section, we derived the phononic and 
 electron-electron Coulomb kernel within the level of ALDA from functional derivatives.
 Now we review the derivation of the expression for kernels arising 
 from spin fluctuations by Essenberger and coworkers\cite{Essenberger2014}.
 In the following, the SCDFT gap equation and the kernel including the effect of spin fluctuations 
-are derived from the Sham-Shl\"{u}ter connection
+are derived from the Sham-Schl\"{u}ter connection
 including the effect of spin fluctuations and derive the expression for the kernel from the spin fluctuations.
 
 \subsection{Spin fluctuations contribution to the self-energy}
@@ -1653,10 +1653,10 @@ the gap equation which is similar to the conventional one (\ref{eq:truegapeq}):
 %
 \begin{equation}
 	\begin{split}
-		\mathcal Z^{\rm SF}_{k} &= \frac{1}{\beta^2}\frac{1}{\tanh[(\beta/2)\xi_{k}]} 
+		\mathcal Z^{\rm SF}_{k} &= -\frac{1}{\beta^2}\frac{1}{\tanh[(\beta/2)\xi_{k}]} 
 	\sum_{n,m}\sum_{k'}\frac{1}{{\rm i}\omega_n - \xi_k}\frac{1}{{\rm i}\omega_m - \xi_{k'}}
 	\left(\frac{1}{{\rm i}\omega_n + \xi_k} - \frac{1}{ {\rm i}\omega_n - \xi_{k'}} \right)3\Lambda^{\rm SF}_{kk'}(\omega_n - \omega_m) \\
-	&\quad - \frac{2}{\beta^2}\left(\frac{1}{\xi_k} - \frac{(\beta/2)}{\sinh[(\beta/2)\xi_k]\cosh[(\beta/2)\xi_k]} \right)
+	&\quad + \frac{2}{\beta^2}\left(\frac{1}{\xi_k} - \frac{(\beta/2)}{\sinh[(\beta/2)\xi_k]\cosh[(\beta/2)\xi_k]} \right)
 	\frac{1}
 	{\sum_{k_1}\frac{\beta/2}{\cosh^2\left[(\beta/2)\xi_{k_1}\right]}}
 	\sum_{nm}\sum_{k'k''} \frac{1}{({\rm i}\omega_n - \xi_{k'})^2} \frac{3\Lambda^{\rm SF}_{k'k''}(\omega_n - \omega_m)}{ {\rm i}\omega_m - \xi_{k''}},
@@ -1676,7 +1676,7 @@ the gap equation which is similar to the conventional one (\ref{eq:truegapeq}):
 	\frac{1}{\beta^2}
 	\sum_{\omega_n\omega_m}
 	F_{k}({\rm i}\omega_n)F_{k'}({\rm i}\omega_m)
-	\Lambda^{\rm SF}_{kk'}(\omega_n - \omega_m),
+	3\Lambda^{\rm SF}_{kk'}(\omega_n - \omega_m),
 	\label{eq:KSFdef}
 \end{equation}
 %

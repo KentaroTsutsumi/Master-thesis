@@ -16,6 +16,7 @@ resulting amount of $T_{c}$ reduction is related to the electronic localization.
 We developed source codes to compute the kernel originating from spin fluctuations (\ref{eq:KSFdef}) 
 based on the programs to calculate the screened Coulomb interaction in ALDA
 developed by Kawamura\cite{KMurl,Kawamura2016}.
+We solved the SCDFT gap equation using the source codes developed by Akashi\cite{RA2012,RA2015}.
 
 We used the Quantum ESPRESSO package\cite{QE} to obtain the Kohn-Sham energies and wave functions.
 We obtained the phonon frequencies and electron-phonon coupling by applying the density functional
@@ -232,8 +233,8 @@ dependence of $\Lambda^{\rm SF}$. Here we show the expression of $\Lambda^{\rm S
 the linear term which is written with the double-Fourier transform\cite{Hybertsen1987}
 %
 \begin{equation}
-	\Lambda^{\rm SF}_{\mathbf G \mathbf G'}(\mathbf q, \omega) = f^{\rm xc}(\mathbf G' - \mathbf G) - 
-	3\sum_{\mathbf G_1 \mathbf G_2} f^{\rm xc}(\mathbf G_1 - \mathbf G)\chi_{\mathbf G_1 \mathbf G_2}(\mathbf q, \omega)
+	\Lambda^{\rm SF}_{\mathbf G \mathbf G'}(\mathbf q, \omega) = -f^{\rm xc}(\mathbf G' - \mathbf G) - 
+	\sum_{\mathbf G_1 \mathbf G_2} f^{\rm xc}(\mathbf G_1 - \mathbf G)\chi_{\mathbf G_1 \mathbf G_2}(\mathbf q, \omega)
 	f^{\rm xc}(\mathbf G' - \mathbf G_2).
 	\label{eq:lambdamiss}
 \end{equation}
